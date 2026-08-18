@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: V0 Compile
+        run: python -m compileall -q src/qdw tests
+
+      - name: Lint
+        run: ruff check src/qdw tests
+
+      - name: Unit tests
+        run: pytest tests/unit tests/contract -q --junitxml=.qdw/ci/unit.xml
+
+      - name: Factory fixtures
+        run: pytest tests/factories -q --junitxml=.qdw/ci/factories.xml
+
+      - name: Property/adversarial tests
+        run: pytest tests/adversarial -q --junitxml=.qdw/ci/adversarial.xml
+
+      - name: CLI smoke
+        run: python -m qdw.cli verify CI-SMOKE "python3 -c 'print(\"ok\")'"
+
+      - name: Import checks
+        run: |
+          python -c "from qdw.system import QDWSystem"
+          python -c "from qdw.interfaces.api import app"
+          python -c "from qdw.interfaces.mcp_server import mcp"
+          python -c "from qdw.hotswap.router import HotSwapRouter"
+          python -c "from qdw.agenthub.resolver import resolve_architecture"
+
+      - name: Build certificate
+        run: python scripts/build_certificate.py

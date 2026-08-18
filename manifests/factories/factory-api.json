@@ -1,0 +1,14 @@
+{
+  "factory_id": "factory-api",
+  "version": "1.0.0",
+  "kind": "api",
+  "name": "API Factory",
+  "phases": ["generate", "verify", "package"],
+  "mandatory_teams": ["qa"],
+  "conditional_teams": {},
+  "default_budget_usd": 0.10,
+  "fixture": {
+    "fixture_id": "api-success-v1",
+    "max_cost_usd": 0.05
+  }
+}

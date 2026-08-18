@@ -1,0 +1,295 @@
+{
+  "build_id": "build_20260818_152518",
+  "git_sha": "ce438a54a059ffdae49b96ec07f7c32895a8634b",
+  "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+  "timestamp": "2026-08-18T15:25:18.344180+00:00",
+  "artifacts": [
+    {
+      "path": "src/qdw/__init__.py",
+      "sha256": "6b83114b9755e0d1d82bc11a0da0fd400a7d56aadeb1e3f483f5dd29fc1aed96",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/agenthub/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/agenthub/failures.py",
+      "sha256": "46df43aebf2ae56b5875f195938a8a0ec08c09c475f7f28d4c2ca9ce0720fc2e",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/agenthub/kanban.py",
+      "sha256": "6d6a84c2f01c15d318be265e7fdeb39aeca85ab3b5a7b800ff134c7f5ec8e8ea",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/agenthub/resolver.py",
+      "sha256": "46ea203aada53c1d5076da6e4cbb45067e16e02adbcecf12d6d0b35c5ceba1cf",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/agenthub/types.py",
+      "sha256": "088dcabbbc3d93097a493ca0638d7040b05dbc542b734de2b4da59dbf614bb9f",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/cli.py",
+      "sha256": "65f3eb36f510d2c98b946ae8ab3506c3d2f8e34cccf3f7a6b51c2f23cb46f4db",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/__init__.py",
+      "sha256": "10efec49ffaa4d2104431e6a94d19fba57e3e62d3bc54aeb6b4f4934b7cd7a19",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/db.py",
+      "sha256": "30877cbc7a537c5bb6fcd88750dd62f4992d702bc4788929540dc555ada34941",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/graph/__init__.py",
+      "sha256": "6865b4c42eff16f0ad353ebbd2c03198634ff11d1de248a5fe2f267ad0b91f69",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/graph/scheduler.py",
+      "sha256": "73dab528853db24bbd0812b5ef9a96021b36617804d81567de48f4873c175358",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/graph/store.py",
+      "sha256": "659f523dd9d6dca6456150fd1de50ff6a9c5764341b78a91e4de904509821e8c",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/ledger/__init__.py",
+      "sha256": "57271a1a0af99f722cf2a65b2dcdb9c4b71618796711b5292550465b87a192a1",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/ledger/anchor.py",
+      "sha256": "1db3adce36d6bad27e4e06bf2477982e65286fd81308dbd09ff56324646e6dab",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/ledger/events.py",
+      "sha256": "60366e3d39c5a708c8104c7079915abef67e8e014919e244e05012881d63e52b",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/ledger/merkle.py",
+      "sha256": "141f0ebdf3ef6968c728d40bafa1bd3a5223956464555355464f6f257d19e5f1",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/ledger/signing.py",
+      "sha256": "6533578d860cfc814374303f497ebb1df90e1a6136cd1dfcbd5cdb91de37c9e3",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/portfolio/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/portfolio/costs.py",
+      "sha256": "0e8fcd329c83c5feb79b16dd3c2ec0109299ca433f9fc704cf4d410eb2d8ed33",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/portfolio/learning.py",
+      "sha256": "4ba61d871b257e9c3ea4ad95616d0ab87eac2c57261e93c1e7eef3ffb7cf1022",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/portfolio/replay.py",
+      "sha256": "cedf84a695b19853cc801797f342cfd82fb9ea6d7c03311a96096a5f6e8fdd3c",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/portfolio/reward.py",
+      "sha256": "c687fa21a72c83dc54d54957e9d035aec3525375ed275c421f840c411c6d833a",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/scheduling/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/scheduling/service.py",
+      "sha256": "f4e809ae4f9cb30c38e3a9380d2a0ff32b47087a54f33058fdb8086a7365f366",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/verification/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/verification/acceptance.py",
+      "sha256": "f1927e0c84701289f23b58feee16b17ea76fe7b311eac3ddde6d4a5466aece7d",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/verification/certificate.py",
+      "sha256": "d16888ea879b521b62131060a424a3977417311ce228bd6b05246137a8cfcdfa",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/verification/gates.py",
+      "sha256": "fcf92f7e1a1824813e2e379878c4a5c59fc426fcb1aad31827bb78c9c801cc8a",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/core/verification/runner.py",
+      "sha256": "b3f3892c5680b4ddd666f74f771126e202557859a58f4ab8776806fc1a9a02ae",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/executors/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/executors/hermes.py",
+      "sha256": "9b0ead8f390bbc0081a6f5697fc8e188480249a4f2a05d96657c170afb31d86e",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/executors/protocol.py",
+      "sha256": "6d41ec25e33b1bffc77e549f6017a5cd487c25c0f9b2cc6e57e2dee268e9ea1e",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/factories/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/factories/base.py",
+      "sha256": "a70c48eb5a77aab403fc0cdd25c3f261fc6b696f44cf353676ec06007fc2fa5d",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/factories/registry.py",
+      "sha256": "990dd3b695ffa96d696cc8c06f737e2643b6095b2090241d696802309cd6bced",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/hotswap/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/hotswap/accounts.py",
+      "sha256": "b1ca2d0050454f72c8a26e2d1082b3a4365466dc64ea68d01c81d23e17acbab3",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/hotswap/bandit.py",
+      "sha256": "27481135bd87305ad6a54c3c3bbd4ee45e20fec2055442b76177b0257bacbf6c",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/hotswap/failure.py",
+      "sha256": "cfdd053806db1e4ef75509b7c4155c2b3c50364df90a84f6e547aca3cd6ce654",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/hotswap/hermes_plan.py",
+      "sha256": "904cc964b1b88e9cba4c156d19e0008a4bcb7496734ae5cd39589bdd02dac4cd",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/hotswap/policy.py",
+      "sha256": "5aef5a4ab1b37c54a37a669a9b536ed9c1b446f13c51721464a71ed5024833a5",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/hotswap/quota.py",
+      "sha256": "e7300d709188ac19271bbe0e956df4cb3478e5f94a2bf98813c253e3916b1a41",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/hotswap/router.py",
+      "sha256": "2c07bde30fe526c974aa70f990628dd4f4578466ea04a69ba1dbd65e0e6d2483",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/hotswap/stats.py",
+      "sha256": "557667344004ffbf324860f3fde8f226f048b8f637448f5bbd4dd4bfc1f448c3",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/hotswap/types.py",
+      "sha256": "9c4f24222a2354938558a9af0037d204701788744b61700c84a87fe2922d1b9b",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/interfaces/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/interfaces/api.py",
+      "sha256": "d141c161c21c0ae619c91e14c6048b2e36dfa0b4725b2e23761e36043f770fea",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/interfaces/mcp_server.py",
+      "sha256": "c488b879bdef0791246c024500b7950ec457207eb836dc745c60efac5ff92c2f",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/market/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/market/arbitrage.py",
+      "sha256": "963406d8be713b9993404763d9ac81dd8f81e18d230f0a713d7d3509f196d7a4",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/market/marketplaces.py",
+      "sha256": "933c676c136c678157d747f4aed1fb2f2620c72b918460e50eb244ba663f17e1",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/market/opportunity.py",
+      "sha256": "0cc1ff48d0702dd59a82b96091efdc01d588c23b47731b7d42d720544665a222",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/scoring/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/sources/__init__.py",
+      "sha256": "cfb3ebc8bc26fd7d558a79319c31266a5a39cced2164dbf223cf19dd7e1ac30e",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/system.py",
+      "sha256": "e8c9bbbeb0d36c5f2da61b2cf2b77f1ec279304480985f652927290fb88e1048",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/teams/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "source"
+    },
+    {
+      "path": "src/qdw/teams/registry.py",
+      "sha256": "df31dfc70175d3d0ce86029e7c5eaa7e1aa2201cf858ff6b314518b0bec8c2b8",
+      "type": "source"
+    }
+  ],
+  "source_hash": "9975ddc051750a27e81c1258af562560bde07b5f0026fb44f508762707f4d5a1",
+  "status": "PROVEN"
+}
