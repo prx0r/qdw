@@ -1,0 +1,44 @@
+{
+  "contractor_id": "review.claim-consistency",
+  "version": "2.0.0",
+  "team": "peer_review",
+  "specialization": "claim_consistency",
+  "description": "Challenge strong claims in docs, comments and commits: atomic, persistent, immutable, E2E, official, PROVEN.",
+  "enabled": true,
+  "always": true,
+  "path_patterns": [
+    "**"
+  ],
+  "inputs": [
+    "subject_git_sha",
+    "changed_paths",
+    "review_policy",
+    "repo_snapshot"
+  ],
+  "outputs": [
+    "review_result"
+  ],
+  "gates": [
+    "typed_findings",
+    "evidence_required",
+    "acceptance_required_for_blockers"
+  ],
+  "default_budget_usd": 0.1,
+  "quality_floor": 0.8,
+  "timeout_seconds": 900,
+  "required_capabilities": [
+    "repo_read",
+    "reasoning"
+  ],
+  "prompt_file": "review.claim-consistency.md",
+  "independence": {
+    "may_self_certify": false,
+    "may_review_own_producer_run": false,
+    "release_certifier": false
+  },
+  "fixture": {
+    "fixture_id": "review.claim-consistency.contract.v2",
+    "kind": "reviewer_contract",
+    "verifier": "scripts/verify_reviewer_manifest.py"
+  }
+}
