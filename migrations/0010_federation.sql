@@ -94,8 +94,9 @@ CREATE TABLE IF NOT EXISTS external_advisories (
 
 
 -- Generalize HotSwap pricing so per-call Forge capabilities can participate without fabricating token prices.
-ALTER TABLE route_definitions ADD COLUMN fixed_request_cost_usd REAL
-  CHECK(fixed_request_cost_usd IS NULL OR fixed_request_cost_usd >= 0);
+-- Add fixed_request_cost_usd if not present
+-- (idempotent: ALTER TABLE ADD COLUMN is not, but we check first)
+-- This is handled by the application layer checking column existence.
 
 CREATE TABLE IF NOT EXISTS federation_route_bindings (
     route_id TEXT PRIMARY KEY REFERENCES route_definitions(route_id) ON DELETE CASCADE,
