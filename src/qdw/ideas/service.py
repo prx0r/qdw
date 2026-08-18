@@ -99,10 +99,13 @@ class IdeaService:
         cid = new_id("grave")
         with self.db.tx(immediate=True) as con:
             existing = con.execute(
-                "SELECT cemetery_id FROM cemetery_entries WHERE idea_id=?", (idea_id,)
+                "SELECT cemetery_id, status FROM cemetery_entries WHERE idea_id=?", (idea_id,)
             ).fetchone()
-            if existing:
+            if existing and existing["status"] == "DORMANT":
                 raise ValueError(f"idea {idea_id} is already buried (cemetery_id={existing['cemetery_id']})")
+            if existing and existing["status"] == "REVIVED":
+                # Delete the old REVIVED entry so a new burial can be recorded
+                con.execute("DELETE FROM cemetery_entries WHERE idea_id=?", (idea_id,))
             if not con.execute("SELECT 1 FROM ideas WHERE idea_id=?", (idea_id,)).fetchone():
                 raise KeyError(idea_id)
             con.execute(

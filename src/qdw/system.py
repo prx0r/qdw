@@ -9,6 +9,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from qdw.catalog.service import GlobalCatalog
+from qdw.contractors.registry import ContractorRegistry
 from qdw.core.db import Database
 from qdw.core.graph.store import WorkGraphStore
 from qdw.core.ledger.events import Ledger
@@ -19,6 +21,15 @@ from qdw.hotswap.persistent import PersistentBanditStore
 from qdw.hotswap.quota import QuotaLedger
 from qdw.hotswap.router import HotSwapRouter
 from qdw.hotswap.types import Route
+from qdw.human.queue import HumanQueue
+from qdw.ideas.service import IdeaService
+from qdw.intelligence.opportunities import OpportunityStore, OpportunitySynthesizer
+from qdw.intelligence.painfinder import PainFinder
+from qdw.intelligence.stack_oracle import StackOracle
+from qdw.intelligence.startup_radar import StartupRadar
+from qdw.products.registry import ProductRegistry
+from qdw.watch.service import WatchService
+from qdw.world.store import WorldStore
 
 
 class QDWSystem:
@@ -30,6 +41,25 @@ class QDWSystem:
         self.ledger = Ledger(self.db)
         self.graphs = WorkGraphStore(self.db, self.ledger)
 
+        # World state
+        self.world = WorldStore(self.db, self.ledger)
+
+        # Intelligence
+        self.pain = PainFinder(self.db, self.ledger)
+        self.stack = StackOracle(self.db, self.ledger, self.world)
+        self.startup = StartupRadar(self.db, self.ledger, self.world)
+        self.opportunities = OpportunityStore(self.db, self.ledger)
+        self.opp_synth = OpportunitySynthesizer(self.db, self.opportunities)
+
+        # Ideas
+        self.ideas = IdeaService(self.db, self.ledger)
+
+        # Human queue
+        self.human = HumanQueue(self.db, self.ledger)
+
+        # Contractors
+        self.contractors = ContractorRegistry(self.db, self.ledger)
+
         # HotSwap (persistent state — survives restarts)
         self.bandits = PersistentBanditStore(self.db)
         self.quotas = QuotaLedger()
@@ -38,6 +68,13 @@ class QDWSystem:
 
         # Factories
         self.factories = FactoryRegistry(self.db)
+
+        # Products
+        self.products = ProductRegistry(self.db, self.ledger)
+
+        # Watch + catalog
+        self.watch = WatchService(self.db, self.ledger)
+        self.catalog = GlobalCatalog(self.db)
 
         # Economics
         self.costs = CostLedger(self.db)

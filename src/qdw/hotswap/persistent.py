@@ -38,18 +38,29 @@ class PersistentBanditStore:
         return posterior
 
     def update(self, cell_id: str, route_id: str, success: bool, weight: float = 1.0) -> Posterior:
+        """Atomically update posterior. Concurrent calls are safe — each increments."""
+        now = utc_now()
+        if success:
+            sql = """INSERT INTO route_posteriors(cell_id, route_id, alpha, beta, updated_at)
+                VALUES(?, ?, 1.0 + ?, 1.0, ?)
+                ON CONFLICT(cell_id, route_id)
+                DO UPDATE SET alpha = alpha + ?, beta = beta, updated_at = ?"""
+            params = (cell_id, route_id, weight, now, weight, now)
+        else:
+            sql = """INSERT INTO route_posteriors(cell_id, route_id, alpha, beta, updated_at)
+                VALUES(?, ?, 1.0, 1.0 + ?, ?)
+                ON CONFLICT(cell_id, route_id)
+                DO UPDATE SET alpha = alpha, beta = beta + ?, updated_at = ?"""
+            params = (cell_id, route_id, weight, now, weight, now)
+        with self.db.tx(immediate=True) as con:
+            con.execute(sql, params)
+        # Read back the result
         with self.db.connect() as con:
             row = con.execute(
                 "SELECT alpha, beta FROM route_posteriors WHERE cell_id=? AND route_id=?",
                 (cell_id, route_id),
             ).fetchone()
-        current = Posterior(row["alpha"], row["beta"]) if row else Posterior(1.0, 1.0)
-        if success:
-            nxt = Posterior(current.alpha + weight, current.beta)
-        else:
-            nxt = Posterior(current.alpha, current.beta + weight)
-        self._upsert(cell_id, route_id, nxt)
-        return nxt
+        return Posterior(row["alpha"], row["beta"])
 
     def mean_and_lower(self, cell_id: str, route: Route) -> tuple[float, float]:
         p = self.get(cell_id, route)

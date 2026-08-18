@@ -14,6 +14,48 @@ class Ledger:
     def __init__(self, db: Database):
         self.db = db
 
+    def append_in_tx(
+        self,
+        con: Any,
+        kind: str,
+        subject_type: str,
+        subject_id: str,
+        payload: dict[str, Any],
+    ) -> dict[str, Any]:
+        """Append event using an existing transaction connection.
+
+        Used for atomic state+provenance: state mutation and ledger append
+        happen in the same transaction. If either fails, both roll back.
+        """
+        payload_json = canonical_json(payload).decode()
+        payload_hash = sha256_hex(payload_json.encode())
+        prev = con.execute(
+            "SELECT event_hash FROM ledger_events ORDER BY seq DESC LIMIT 1"
+        ).fetchone()
+        prev_hash = prev["event_hash"] if prev else None
+        event_id = new_id("evt")
+        occurred_at = utc_now()
+        body = {
+            "event_id": event_id,
+            "occurred_at": occurred_at,
+            "kind": kind,
+            "subject_type": subject_type,
+            "subject_id": subject_id,
+            "payload_hash": payload_hash,
+            "prev_event_hash": prev_hash,
+        }
+        event_hash = hash_object(body)
+        cur = con.execute(
+            """INSERT INTO ledger_events(
+                event_id, occurred_at, kind, subject_type, subject_id,
+                payload_json, payload_hash, prev_event_hash, event_hash
+            ) VALUES(?,?,?,?,?,?,?,?,?)""",
+            (event_id, occurred_at, kind, subject_type, subject_id,
+             payload_json, payload_hash, prev_hash, event_hash),
+        )
+        seq = cur.lastrowid
+        return {**body, "event_hash": event_hash, "seq": seq, "payload": payload}
+
     def append(
         self,
         kind: str,

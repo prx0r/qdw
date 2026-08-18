@@ -40,6 +40,9 @@ class BuildCertificateBuilder:
         output_path: str | Path | None = None,
     ) -> dict[str, Any]:
         """Issue a build certificate. Raises ValueError if any gate fails."""
+        # 0. Refuse vacuous certification — must have at least one required command
+        if not required_commands:
+            raise ValueError("cannot certify with empty required_commands — no proof of work")
         # 1. Load all receipts for this task
         receipts = [r for r in self.runner.load_receipts() if r.task_id == task_id]
         by_argv = {tuple(r.argv): r for r in receipts}

@@ -89,4 +89,9 @@ def migrate_all(db: Database, migrations_dir: str | Path | None = None) -> None:
                 content_hash TEXT
             );
         """)
+        # Ensure content_hash column exists (for DBs created before this column was added)
+        try:
+            con.execute("SELECT content_hash FROM schema_versions LIMIT 0")
+        except Exception:
+            con.execute("ALTER TABLE schema_versions ADD COLUMN content_hash TEXT")
     migrate(db, migrations_dir=migrations_dir)

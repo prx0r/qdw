@@ -47,7 +47,7 @@ src = ["src", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "UP", "B", "SIM"]
-ignore = ["TC003", "N818", "SIM117", "N806", "SIM108"]
+ignore = ["TC003", "N818", "SIM117", "N806", "SIM108", "E702", "E701"]
 
 [tool.pyright]
 pythonVersion = "3.12"

@@ -20,13 +20,15 @@ class WorkGraphStore:
         self, factory_run_id: str | None = None, graph_id: str | None = None
     ) -> str:
         graph_id = graph_id or new_id("graph")
+        # State + provenance in same transaction for atomicity
         with self.db.tx(immediate=True) as con:
             con.execute(
                 """INSERT INTO work_graphs(graph_id, factory_run_id, status, created_at)
                 VALUES(?,?,?,?)""",
                 (graph_id, factory_run_id, "OPEN", utc_now()),
             )
-        self.ledger.append("graph.created", "work_graph", graph_id, {"factory_run_id": factory_run_id})
+            # Ledger append inside same transaction — if this fails, state rolls back
+            self.ledger.append_in_tx(con, "graph.created", "work_graph", graph_id, {"factory_run_id": factory_run_id})
         return graph_id
 
     def add_node(
