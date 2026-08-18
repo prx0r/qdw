@@ -151,3 +151,16 @@ CREATE TABLE IF NOT EXISTS federation_health_events (
     detail_json TEXT NOT NULL,
     observed_at TEXT NOT NULL
 );
+
+-- Deal routes: Dell deals + LiteLLM baseline pricing
+CREATE TABLE IF NOT EXISTS deal_routes (
+    deal_route_id TEXT PRIMARY KEY,
+    route_id TEXT NOT NULL UNIQUE,
+    model_id TEXT NOT NULL,
+    provider_id TEXT NOT NULL,
+    deal_score REAL NOT NULL DEFAULT 0,
+    litellm_model TEXT,
+    fixed_cost_usd REAL,
+    source TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
