@@ -1,0 +1,37 @@
+{
+  "qdw": {
+    "repo": "prx0r/qdw",
+    "branch": "main",
+    "sha": "46920f2547e552b7f1c0e019169a350fe44cb4c1",
+    "role": "canonical economic/orchestration authority",
+    "reported_tests": "207/207 at HEAD commit message"
+  },
+  "qdw-forge": {
+    "repo": "prx0r/qdw-forge",
+    "branch": "master",
+    "sha": "2037cdb93458278bdc4807be8e84111cce72fb10",
+    "role": "capability registry / lease / invocation exchange",
+    "reported_tests": "49/49 at HEAD commit message"
+  },
+  "qdw-sandbox": {
+    "repo": "prx0r/qdw-sandbox",
+    "branch": "master",
+    "sha": "5e4278c8eeed008bcf11deff288b19110379ece0",
+    "role": "incubator / donor only",
+    "reported_tests": "49/49 at HEAD commit message"
+  },
+  "gitgoblin": {
+    "repo": "prx0r/gitgoblin",
+    "branch": "master",
+    "sha": "c129f801b601af8e088d6fe908f01f769a62b0ee",
+    "role": "technical-frontier / repository intelligence oracle",
+    "reported_tests": "previous hardening commit reports 78/78; latest seed-only commit does not state a count"
+  },
+  "dell": {
+    "repo": "prx0r/dell",
+    "branch": "master",
+    "sha": "f29ed2a9621d307d301c628aa6f00de9d356d5ce",
+    "role": "model/provider/deal/resource oracle",
+    "reported_tests": "not treated as proof by this pack"
+  }
+}

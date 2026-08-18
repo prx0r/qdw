@@ -1,0 +1,262 @@
+[
+  {
+    "id": "QDW-FIN-001",
+    "severity": "CRITICAL",
+    "repos": [
+      "qdw",
+      "qdw-forge"
+    ],
+    "title": "QDW's current Forge integration test uses a local simulator, not qdw-forge",
+    "evidence": "tests/integration/test_estate_forge_integration.py imports qdw.federation.forge_client.ForgeClient; that class says it simulates Forge execution and writes Forge state into QDW DB.",
+    "fix": "Delete production fake; move any fake under tests only. All federation integration tests must use qdw-forge ASGI/HTTP process."
+  },
+  {
+    "id": "QDW-FIN-002",
+    "severity": "CRITICAL",
+    "repos": [
+      "qdw"
+    ],
+    "title": "FederationService is constructed without GitGoblin, Dell or Forge clients/adapters",
+    "evidence": "QDWSystem creates FederationService(system=self, store=...) only.",
+    "fix": "Add typed federation settings/composition and fail explicitly when configured endpoints are unavailable."
+  },
+  {
+    "id": "QDW-FIN-003",
+    "severity": "CRITICAL",
+    "repos": [
+      "qdw",
+      "gitgoblin"
+    ],
+    "title": "Live protocol mismatch: QDW calls /v1/export/qdw but GitGoblin exposes only /v1/export/cuntgoblin",
+    "evidence": "Current GitGoblin API has legacy exporter; integrations/qdw.py is absent at current HEAD.",
+    "fix": "Implement versioned QDW export endpoint in GitGoblin and contract-test it over HTTP."
+  },
+  {
+    "id": "QDW-FIN-004",
+    "severity": "CRITICAL",
+    "repos": [
+      "qdw",
+      "qdw-forge"
+    ],
+    "title": "QDW migration duplicates Forge-owned lease/certificate state and stores plaintext lease token",
+    "evidence": "0010_federation.sql creates forge_leases(token TEXT) and forge_invocation_certs in QDW.",
+    "fix": "Deprecate those tables, purge token material, retain only external refs/digests/observed status in QDW."
+  },
+  {
+    "id": "QDW-FIN-005",
+    "severity": "CRITICAL",
+    "repos": [
+      "qdw-forge"
+    ],
+    "title": "Forge verification trusts caller-authored passed boolean",
+    "evidence": "VerifyBody has certificate_id + passed; InvocationService.bind_verification uses passed directly.",
+    "fix": "Use CertificateReference resolved/validated against an allowlisted issuer and exact invocation/output digest."
+  },
+  {
+    "id": "QDW-FIN-006",
+    "severity": "CRITICAL",
+    "repos": [
+      "qdw-forge"
+    ],
+    "title": "Forge idempotency lookup occurs before lease authorization",
+    "evidence": "InvocationService returns existing client_request_id row before leases.verify().",
+    "fix": "Verify lease/token first; scope idempotency to authorized lease/client_request_id and validate request digest."
+  },
+  {
+    "id": "QDW-FIN-007",
+    "severity": "HIGH",
+    "repos": [
+      "qdw-forge"
+    ],
+    "title": "Forge allowed_operations is not enforced by invocation",
+    "evidence": "Lease contains allowed_operations; invocation path does not require invoke permission.",
+    "fix": "Lease verification must assert requested operation is allowed."
+  },
+  {
+    "id": "QDW-FIN-008",
+    "severity": "HIGH",
+    "repos": [
+      "qdw-forge"
+    ],
+    "title": "Forge lease spend is charged using advertised estimate but actual dispatcher cost is not reconciled",
+    "evidence": "leases.consume(est_cost) occurs before dispatch; DB later records returned actual cost.",
+    "fix": "Reserve estimated maximum then atomically settle actual cost/refund delta; failure cost policy explicit."
+  },
+  {
+    "id": "QDW-FIN-009",
+    "severity": "HIGH",
+    "repos": [
+      "qdw-forge"
+    ],
+    "title": "Forge activation mutates the manifest/hash of an immutable asset_id@version",
+    "evidence": "activate() changes status/certificate_id, recomputes manifest_hash and overwrites same version.",
+    "fix": "Separate immutable manifest from mutable activation state/certificate binding."
+  },
+  {
+    "id": "QDW-FIN-010",
+    "severity": "HIGH",
+    "repos": [
+      "qdw-forge"
+    ],
+    "title": "Forge profile learning can double-count the same certificate",
+    "evidence": "record_verified increments posterior whenever given a non-empty certificate_id; no unique applied-verification record.",
+    "fix": "Persist unique verification application keyed by certificate/subject and make replay idempotent."
+  },
+  {
+    "id": "QDW-FIN-011",
+    "severity": "HIGH",
+    "repos": [
+      "qdw"
+    ],
+    "title": "fixed_request_cost_usd does not survive QDW Route persistence/restart",
+    "evidence": "Route contains fixed_request_cost_usd; PersistentBanditStore save/load omits it and schema migrations do not add the column.",
+    "fix": "New immutable migration adds column; save/load roundtrip mandatory."
+  },
+  {
+    "id": "QDW-FIN-012",
+    "severity": "HIGH",
+    "repos": [
+      "qdw"
+    ],
+    "title": "No canonical federation execution transaction/state machine exists",
+    "evidence": "sync, candidate conversion, route bindings and Forge adapter exist separately; no live path performs route\u2192invoke\u2192verify\u2192cost\u2192learn.",
+    "fix": "Add FederationRuntime owned by QDW with durable attempt state and recovery."
+  },
+  {
+    "id": "QDW-FIN-013",
+    "severity": "HIGH",
+    "repos": [
+      "qdw"
+    ],
+    "title": "Current federation tests are mostly direct dict/unit integration rather than sibling-service contracts",
+    "evidence": "GitGoblin and Dell tests feed hand-built dicts; Forge test uses local simulator.",
+    "fix": "Independent black-box test lab starts real ASGI apps/processes and only uses public protocols."
+  },
+  {
+    "id": "QDW-FIN-014",
+    "severity": "HIGH",
+    "repos": [
+      "qdw"
+    ],
+    "title": "tests/e2e is empty despite V10/V11 claims elsewhere",
+    "evidence": "Current tests/e2e tree contains only __init__.py.",
+    "fix": "Put the real federation V10/V11 tests in tests/e2e and make them mandatory in CI."
+  },
+  {
+    "id": "QDW-FIN-015",
+    "severity": "HIGH",
+    "repos": [
+      "qdw",
+      "dell"
+    ],
+    "title": "Current Dell integration test documents a known recommended-cost loss and still passes",
+    "evidence": "test_dell_integration.py comments that recommended route cost is lost.",
+    "fix": "Turn into a failing regression; federation response exposes complete candidate facts."
+  },
+  {
+    "id": "QDW-FIN-016",
+    "severity": "HIGH",
+    "repos": [
+      "dell"
+    ],
+    "title": "Dell still coerces unknown output price to zero for nonzero output workloads",
+    "evidence": "calculate_workload_cost says unknown must not become zero, then sets missing output_per_m to 0.",
+    "fix": "If output_tokens_per_request > 0 and output price is unknown, return None."
+  },
+  {
+    "id": "QDW-FIN-017",
+    "severity": "HIGH",
+    "repos": [
+      "qdw",
+      "gitgoblin"
+    ],
+    "title": "GitGoblin opportunity proposals are returned by sync but not integrated into QDW evidence/scoring lifecycle",
+    "evidence": "FederationService returns raw opportunity_proposals and leaves importer for later.",
+    "fix": "Persist proposal snapshot/reference and synthesize QDW Opportunity only through QDW policy/evidence gates."
+  },
+  {
+    "id": "QDW-FIN-018",
+    "severity": "HIGH",
+    "repos": [
+      "qdw",
+      "qdw-forge",
+      "gitgoblin"
+    ],
+    "title": "No proven GitGoblin\u2192QDW\u2192Forgejo\u2192Forge\u2192QDW certificate flow",
+    "evidence": "Current tests never span the actual services.",
+    "fix": "Finish-line V11 test in this pack defines the exact cross-service flow."
+  },
+  {
+    "id": "QDW-FIN-019",
+    "severity": "HIGH",
+    "repos": [
+      "qdw-forge"
+    ],
+    "title": "Forgejo sync is unpinned, unpaginated and weakly auditable",
+    "evidence": "list_org_repos uses limit=50 only; qdw.yaml read at default branch; broad errors collapse to a count.",
+    "fix": "Paginate, resolve immutable commit SHA first, record source repo/ref/file digest and typed errors."
+  },
+  {
+    "id": "QDW-FIN-020",
+    "severity": "MEDIUM",
+    "repos": [
+      "qdw-forge"
+    ],
+    "title": "Repo2Bench task identity embeds local filesystem repository path",
+    "evidence": "task repository=str(repo) and task ID hashes str(repo)+sha.",
+    "fix": "Use canonical repository URI + source commit; local checkout path is execution metadata only."
+  },
+  {
+    "id": "QDW-FIN-021",
+    "severity": "MEDIUM",
+    "repos": [
+      "qdw-forge"
+    ],
+    "title": "Forge schema is a mutable bootstrap string, not strict numbered migrations",
+    "evidence": "Database.migrate executes SCHEMA via executescript.",
+    "fix": "Introduce numbered immutable schema migrations before production federation data accumulates."
+  },
+  {
+    "id": "QDW-FIN-022",
+    "severity": "MEDIUM",
+    "repos": [
+      "qdw"
+    ],
+    "title": "Two different production modules export a class named ForgeClient",
+    "evidence": "clients.py has HTTP ForgeClient; forge_client.py has local simulated ForgeClient.",
+    "fix": "One production client: ForgeHTTPClient. Test doubles stay under tests/lab."
+  },
+  {
+    "id": "QDW-FIN-023",
+    "severity": "MEDIUM",
+    "repos": [
+      "qdw"
+    ],
+    "title": "External clients use module-level httpx.request instead of injected clients",
+    "evidence": "BaseClient._request calls httpx.request directly.",
+    "fix": "Inject httpx.Client/AsyncClient for connection reuse, tracing and deterministic transport tests."
+  },
+  {
+    "id": "QDW-FIN-024",
+    "severity": "MEDIUM",
+    "repos": [
+      "qdw",
+      "qdw-forge",
+      "gitgoblin",
+      "dell"
+    ],
+    "title": "Default branches are currently unprotected",
+    "evidence": "branch API reports protected=false.",
+    "fix": "Require federation CI status + review before pin/release promotion."
+  },
+  {
+    "id": "QDW-FIN-025",
+    "severity": "MEDIUM",
+    "repos": [
+      "qdw"
+    ],
+    "title": "Latest QDW green count followed deletion of multiple superseded adversarial tests",
+    "evidence": "HEAD commit removed nine old tests.",
+    "fix": "Require replacement behavior/mutation coverage for each removed invariant, especially migration/trust/concurrency."
+  }
+]

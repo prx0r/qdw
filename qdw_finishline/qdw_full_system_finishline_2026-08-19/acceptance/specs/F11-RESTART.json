@@ -1,0 +1,10 @@
+{
+  "acceptance_id": "F11-RESTART",
+  "invariants": [
+    "fixed route survives restart",
+    "external invocation resume",
+    "no double effects"
+  ],
+  "change_requires_new_hash": true,
+  "acceptance_hash": "sha256:e234341a79880ea979e5123504c660b6a1fe6c08c18c737bf1d313a8f244e745"
+}

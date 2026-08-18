@@ -1,0 +1,9 @@
+{
+  "acceptance_id": "F03-QDW-ROUTING",
+  "invariants": [
+    "fixed call cost restart",
+    "QDW final route authority"
+  ],
+  "change_requires_new_hash": true,
+  "acceptance_hash": "sha256:9618b25eb1359975c5d9fa2ac2d975c02436e5738099103ac91a6d7d9929a6d5"
+}

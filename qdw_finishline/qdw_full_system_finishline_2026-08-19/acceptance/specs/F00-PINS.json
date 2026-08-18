@@ -1,0 +1,9 @@
+{
+  "acceptance_id": "F00-PINS",
+  "invariants": [
+    "exact starting SHAs",
+    "clean pre-change worktrees"
+  ],
+  "change_requires_new_hash": true,
+  "acceptance_hash": "sha256:781f8c5d48ea20d4a12a052db8da318172b3e1053291a2abd579b9e3e01d88f7"
+}

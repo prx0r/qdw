@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "authority",
+    "candidates",
+    "recommended",
+    "excluded",
+    "decision"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "qdw-federation-resource/1"
+    },
+    "authority": {
+      "const": "ADVISORY"
+    },
+    "candidates": {
+      "type": "array"
+    },
+    "recommended": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "excluded": {
+      "type": "array"
+    },
+    "decision": {
+      "type": "object"
+    }
+  }
+}

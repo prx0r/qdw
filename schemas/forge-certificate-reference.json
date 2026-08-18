@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "issuer_system",
+    "certificate_id",
+    "certificate_hash",
+    "subject",
+    "subject_output_digest",
+    "policy_hash",
+    "status"
+  ],
+  "properties": {
+    "issuer_system": {
+      "const": "qdw"
+    },
+    "certificate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "certificate_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "$ref": "federated-ref.json"
+    },
+    "subject_output_digest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "VERIFIED",
+        "REJECTED"
+      ]
+    },
+    "verification_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "signature": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

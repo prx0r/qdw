@@ -1,0 +1,10 @@
+{
+  "acceptance_id": "F06-FORGE-AUTH",
+  "invariants": [
+    "auth before idempotency",
+    "client-scoped replay",
+    "operation enforcement"
+  ],
+  "change_requires_new_hash": true,
+  "acceptance_hash": "sha256:b17ac7a84d625d0e03c53f739838c12a8bab811094bc7e9a07dda67e933e0325"
+}

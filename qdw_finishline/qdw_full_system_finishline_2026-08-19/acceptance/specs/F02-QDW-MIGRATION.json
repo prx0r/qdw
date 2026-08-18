@@ -1,0 +1,10 @@
+{
+  "acceptance_id": "F02-QDW-MIGRATION",
+  "invariants": [
+    "0010 unchanged",
+    "0011 fresh and upgrade pass",
+    "no QDW Forge token persistence"
+  ],
+  "change_requires_new_hash": true,
+  "acceptance_hash": "sha256:1c7434f147b90373daa53dd4ab3384fdb5b1347daf07e886fc356571357bb3bf"
+}

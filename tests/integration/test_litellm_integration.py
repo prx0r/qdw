@@ -65,7 +65,7 @@ class TestDellLiteLLMPipeline:
         pipeline = DellLiteLLMPipeline(db, ledger, litellm)
 
         dell_response = {
-            "candidates": [
+            "schema_version": "qdw-federation-resource/1", "candidates": [
                 {"offer_id": "o1", "provider_id": "openai", "model_id": "gpt-4o",
                  "score": 0.9, "input_per_m": 0.005, "output_per_m": 0.015, "estimated_cost": 0.03},
             ],
@@ -135,7 +135,7 @@ class TestDellLiteLLMPipeline:
 
         # Dell finds a deal for a model LiteLLM knows
         dell_response = {
-            "candidates": [
+            "schema_version": "qdw-federation-resource/1", "candidates": [
                 {"offer_id": "o1", "provider_id": "openai", "model_id": "gpt-4o",
                  "score": 0.9, "estimated_cost": 0.03},
             ],
@@ -152,8 +152,8 @@ class TestDellLiteLLMPipeline:
         # Step 2: Convert to HotSwap routes
         hotswap_routes = pipeline.to_hotswap_routes(deal_routes)
         assert len(hotswap_routes) == 1
-        # LiteLLM knows gpt-4o, so it uses per-token pricing
-        assert hotswap_routes[0].input_per_m > 0
+        # Dell's fixed cost takes precedence over LiteLLM per-token
+        assert hotswap_routes[0].fixed_request_cost_usd == 0.03
 
         # Step 3: Register in database
         pipeline.register_deal(deal_routes[0])

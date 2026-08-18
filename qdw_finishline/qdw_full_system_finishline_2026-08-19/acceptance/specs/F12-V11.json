@@ -1,0 +1,11 @@
+{
+  "acceptance_id": "F12-V11",
+  "invariants": [
+    "real sibling HTTP services",
+    "GitGoblin\u2192QDW",
+    "Forgejo\u2192Forge",
+    "QDW\u2192Forge\u2192QDW cert"
+  ],
+  "change_requires_new_hash": true,
+  "acceptance_hash": "sha256:4f83bce3ebafb87f46ead3940c43036c96a7c5c0ee3fe56b74a660a93da2c490"
+}

@@ -1,0 +1,71 @@
+{
+  "formula_id": "review.federation-finishline",
+  "version": "2.0.0",
+  "reviewers": [
+    {
+      "id": "authority",
+      "checks": [
+        "one WorkGraph authority",
+        "one final route authority",
+        "one QDW verifier"
+      ]
+    },
+    {
+      "id": "external-trust",
+      "checks": [
+        "auth before idempotency",
+        "certificate exact subject/output",
+        "no external lifecycle writer"
+      ]
+    },
+    {
+      "id": "cost-lineage",
+      "checks": [
+        "unknown != zero",
+        "quote/actual/billable separated",
+        "CostEvent exactly once"
+      ]
+    },
+    {
+      "id": "restart",
+      "checks": [
+        "fixed call cost persists",
+        "attempt resume",
+        "no duplicate cost/learning"
+      ]
+    },
+    {
+      "id": "forge-identity",
+      "checks": [
+        "immutable definition hash",
+        "activation separate",
+        "verification replay once"
+      ]
+    },
+    {
+      "id": "git-provenance",
+      "checks": [
+        "Forgejo pagination",
+        "commit pin",
+        "manifest digest",
+        "GitGoblin cursor/batch digest"
+      ]
+    },
+    {
+      "id": "test-integrity",
+      "checks": [
+        "real sibling service tests",
+        "no hidden simulator",
+        "no skip/xfail weakening"
+      ]
+    }
+  ],
+  "subject_must_bind": [
+    "qdw_sha",
+    "forge_sha",
+    "gitgoblin_sha",
+    "dell_sha",
+    "sandbox_sha",
+    "acceptance_hashes"
+  ]
+}

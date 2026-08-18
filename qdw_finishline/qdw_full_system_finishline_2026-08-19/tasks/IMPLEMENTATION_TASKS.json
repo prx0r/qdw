@@ -1,0 +1,554 @@
+[
+  {
+    "task_id": "FIN-000",
+    "title": "Clone exact reviewed heads",
+    "repo": "all",
+    "depends_on": [],
+    "required_proof": [
+      "pin receipt",
+      "clean worktree receipt"
+    ]
+  },
+  {
+    "task_id": "FIN-001",
+    "title": "Run native baseline suites",
+    "repo": "all",
+    "depends_on": [
+      "FIN-000"
+    ],
+    "required_proof": [
+      "per-repo collect count",
+      "stdout/stderr",
+      "exit code"
+    ]
+  },
+  {
+    "task_id": "FIN-002",
+    "title": "Run expected-red independent source gate",
+    "repo": "lab",
+    "depends_on": [
+      "FIN-000"
+    ],
+    "required_proof": [
+      "known-failure mapping"
+    ]
+  },
+  {
+    "task_id": "FIN-003",
+    "title": "Create bounded integration branches",
+    "repo": "all",
+    "depends_on": [
+      "FIN-001",
+      "FIN-002"
+    ],
+    "required_proof": [
+      "branch SHAs"
+    ]
+  },
+  {
+    "task_id": "FIN-004",
+    "title": "Apply overlays and anchored semantic edits",
+    "repo": "all",
+    "depends_on": [
+      "FIN-003"
+    ],
+    "required_proof": [
+      "diff manifest"
+    ]
+  },
+  {
+    "task_id": "FIN-005",
+    "title": "QDW migration 0011 fresh test",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-004"
+    ],
+    "required_proof": [
+      "fresh migration receipt"
+    ]
+  },
+  {
+    "task_id": "FIN-006",
+    "title": "QDW migration 0011 upgrade test",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-004"
+    ],
+    "required_proof": [
+      "0010\u21920011 receipt",
+      "no token table"
+    ]
+  },
+  {
+    "task_id": "FIN-007",
+    "title": "QDW fixed-cost route persistence",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-005"
+    ],
+    "required_proof": [
+      "restart regression"
+    ]
+  },
+  {
+    "task_id": "FIN-008",
+    "title": "QDW real federation composition",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-005"
+    ],
+    "required_proof": [
+      "composition tests"
+    ]
+  },
+  {
+    "task_id": "FIN-009",
+    "title": "GitGoblin QDW exporter",
+    "repo": "gitgoblin",
+    "depends_on": [
+      "FIN-004"
+    ],
+    "required_proof": [
+      "native tests",
+      "HTTP schema contract"
+    ]
+  },
+  {
+    "task_id": "FIN-010",
+    "title": "GitGoblin batch/cursor idempotency",
+    "repo": "gitgoblin",
+    "depends_on": [
+      "FIN-009"
+    ],
+    "required_proof": [
+      "replay tests"
+    ]
+  },
+  {
+    "task_id": "FIN-011",
+    "title": "QDW GitGoblin source ingest",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-008",
+      "FIN-009"
+    ],
+    "required_proof": [
+      "snapshot/world lineage"
+    ]
+  },
+  {
+    "task_id": "FIN-012",
+    "title": "QDW proposal evidence importer",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-011"
+    ],
+    "required_proof": [
+      "advisory-only lifecycle test"
+    ]
+  },
+  {
+    "task_id": "FIN-013",
+    "title": "Dell unknown-output-price repair",
+    "repo": "dell",
+    "depends_on": [
+      "FIN-004"
+    ],
+    "required_proof": [
+      "negative cost regression"
+    ]
+  },
+  {
+    "task_id": "FIN-014",
+    "title": "Dell federation candidate endpoint",
+    "repo": "dell",
+    "depends_on": [
+      "FIN-013"
+    ],
+    "required_proof": [
+      "HTTP contract",
+      "complete price facts"
+    ]
+  },
+  {
+    "task_id": "FIN-015",
+    "title": "QDW Dell adapter v2",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-014",
+      "FIN-008"
+    ],
+    "required_proof": [
+      "candidate normalization tests"
+    ]
+  },
+  {
+    "task_id": "FIN-016",
+    "title": "Forge numbered migration framework",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-004"
+    ],
+    "required_proof": [
+      "fresh/upgrade/drift tests"
+    ]
+  },
+  {
+    "task_id": "FIN-017",
+    "title": "Forge immutable definition/activation split",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-016"
+    ],
+    "required_proof": [
+      "manifest hash invariants"
+    ]
+  },
+  {
+    "task_id": "FIN-018",
+    "title": "Forge legacy manifest-hash mapping",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-017"
+    ],
+    "required_proof": [
+      "old\u2192new audit rows"
+    ]
+  },
+  {
+    "task_id": "FIN-019",
+    "title": "Forge authenticated client identity",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-016"
+    ],
+    "required_proof": [
+      "401/403 contracts"
+    ]
+  },
+  {
+    "task_id": "FIN-020",
+    "title": "Forge auth-before-idempotency",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-019"
+    ],
+    "required_proof": [
+      "disclosure attack rejected"
+    ]
+  },
+  {
+    "task_id": "FIN-021",
+    "title": "Forge operation enforcement",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-019"
+    ],
+    "required_proof": [
+      "disallowed invoke attack"
+    ]
+  },
+  {
+    "task_id": "FIN-022",
+    "title": "Forge idempotency request/route binding",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-020"
+    ],
+    "required_proof": [
+      "same replay",
+      "changed replay conflict"
+    ]
+  },
+  {
+    "task_id": "FIN-023",
+    "title": "Forge concurrent duplicate safety",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-022"
+    ],
+    "required_proof": [
+      "multiprocess/thread race test"
+    ]
+  },
+  {
+    "task_id": "FIN-024",
+    "title": "Forge quote/actual/billable settlement",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-016"
+    ],
+    "required_proof": [
+      "lower/equal/higher actual tests"
+    ]
+  },
+  {
+    "task_id": "FIN-025",
+    "title": "Forge certificate-reference protocol",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-019"
+    ],
+    "required_proof": [
+      "no caller boolean",
+      "protocol endpoint"
+    ]
+  },
+  {
+    "task_id": "FIN-026",
+    "title": "Forge certificate resolver trust",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-025"
+    ],
+    "required_proof": [
+      "wrong issuer/subject/output attacks"
+    ]
+  },
+  {
+    "task_id": "FIN-027",
+    "title": "Forge verification replay idempotency",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-026"
+    ],
+    "required_proof": [
+      "profile increments once"
+    ]
+  },
+  {
+    "task_id": "FIN-028",
+    "title": "Forgejo pagination",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-017"
+    ],
+    "required_proof": [
+      "61-repo test"
+    ]
+  },
+  {
+    "task_id": "FIN-029",
+    "title": "Forgejo immutable commit provenance",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-028"
+    ],
+    "required_proof": [
+      "branch\u2192SHA\u2192manifest receipt"
+    ]
+  },
+  {
+    "task_id": "FIN-030",
+    "title": "Forgejo error receipt isolation",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "FIN-028"
+    ],
+    "required_proof": [
+      "malformed repo + successful siblings"
+    ]
+  },
+  {
+    "task_id": "FIN-031",
+    "title": "QDW Forge HTTP execution adapter",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-008",
+      "FIN-020",
+      "FIN-025"
+    ],
+    "required_proof": [
+      "pinned asset test",
+      "substitution attack"
+    ]
+  },
+  {
+    "task_id": "FIN-032",
+    "title": "QDW federated candidate collection",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-015",
+      "FIN-031"
+    ],
+    "required_proof": [
+      "Dell+Forge route bindings"
+    ]
+  },
+  {
+    "task_id": "FIN-033",
+    "title": "QDW final HotSwap authority",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-032"
+    ],
+    "required_proof": [
+      "no foreign lifecycle writes"
+    ]
+  },
+  {
+    "task_id": "FIN-034",
+    "title": "QDW durable federation attempt state machine",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-033"
+    ],
+    "required_proof": [
+      "state transition tests"
+    ]
+  },
+  {
+    "task_id": "FIN-035",
+    "title": "QDW capability verification policies",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-034"
+    ],
+    "required_proof": [
+      "unknown policy fails closed"
+    ]
+  },
+  {
+    "task_id": "FIN-036",
+    "title": "QDW federation certificate issuance",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-035"
+    ],
+    "required_proof": [
+      "VerificationService-bound cert"
+    ]
+  },
+  {
+    "task_id": "FIN-037",
+    "title": "QDW\u2192Forge certificate bind",
+    "repo": "all",
+    "depends_on": [
+      "FIN-027",
+      "FIN-036"
+    ],
+    "required_proof": [
+      "cross-service subject binding"
+    ]
+  },
+  {
+    "task_id": "FIN-038",
+    "title": "WorkGraph completion after verification only",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-037"
+    ],
+    "required_proof": [
+      "state lifecycle proof"
+    ]
+  },
+  {
+    "task_id": "FIN-039",
+    "title": "External CostEvent exactly once",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-034"
+    ],
+    "required_proof": [
+      "replay test"
+    ]
+  },
+  {
+    "task_id": "FIN-040",
+    "title": "HotSwap learning effect exactly once",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-034"
+    ],
+    "required_proof": [
+      "posterior replay test"
+    ]
+  },
+  {
+    "task_id": "FIN-041",
+    "title": "Crash recovery before/after invocation",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-034",
+      "FIN-022"
+    ],
+    "required_proof": [
+      "resume matrix"
+    ]
+  },
+  {
+    "task_id": "FIN-042",
+    "title": "Sandbox production authority guard",
+    "repo": "qdw-sandbox",
+    "depends_on": [
+      "FIN-004"
+    ],
+    "required_proof": [
+      "authority denial tests"
+    ]
+  },
+  {
+    "task_id": "FIN-043",
+    "title": "Independent source gate green",
+    "repo": "lab",
+    "depends_on": [
+      "FIN-009",
+      "FIN-014",
+      "FIN-027",
+      "FIN-034",
+      "FIN-042"
+    ],
+    "required_proof": [
+      "all source tests pass"
+    ]
+  },
+  {
+    "task_id": "FIN-044",
+    "title": "Independent HTTP contracts green",
+    "repo": "lab",
+    "depends_on": [
+      "FIN-043"
+    ],
+    "required_proof": [
+      "all service contract tests pass"
+    ]
+  },
+  {
+    "task_id": "FIN-045",
+    "title": "Full sibling-service V11",
+    "repo": "all",
+    "depends_on": [
+      "FIN-044",
+      "FIN-029",
+      "FIN-038",
+      "FIN-040"
+    ],
+    "required_proof": [
+      "V11 receipt"
+    ]
+  },
+  {
+    "task_id": "FIN-046",
+    "title": "QDW process restart V11",
+    "repo": "all",
+    "depends_on": [
+      "FIN-045",
+      "FIN-041"
+    ],
+    "required_proof": [
+      "restart receipt"
+    ]
+  },
+  {
+    "task_id": "FIN-047",
+    "title": "Native QDW federation self-review and release gate",
+    "repo": "qdw",
+    "depends_on": [
+      "FIN-046"
+    ],
+    "required_proof": [
+      "review certificate",
+      "finish-line report"
+    ]
+  }
+]

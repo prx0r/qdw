@@ -1,0 +1,10 @@
+{
+  "acceptance_id": "F05-DELL",
+  "invariants": [
+    "federation endpoint",
+    "unknown output price invariant",
+    "complete candidate facts"
+  ],
+  "change_requires_new_hash": true,
+  "acceptance_hash": "sha256:70c92338f746c2bf61cafa7cc39d680d0aa5a054d98a93ea9d5e104f30f038d8"
+}

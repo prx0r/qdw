@@ -1,0 +1,93 @@
+{
+  "gate_id": "QDW-FULL-SYSTEM-FINISH-LINE-v2",
+  "reviewed_heads": {
+    "qdw": {
+      "repo": "prx0r/qdw",
+      "branch": "main",
+      "sha": "46920f2547e552b7f1c0e019169a350fe44cb4c1",
+      "role": "canonical economic/orchestration authority",
+      "reported_tests": "207/207 at HEAD commit message"
+    },
+    "qdw-forge": {
+      "repo": "prx0r/qdw-forge",
+      "branch": "master",
+      "sha": "2037cdb93458278bdc4807be8e84111cce72fb10",
+      "role": "capability registry / lease / invocation exchange",
+      "reported_tests": "49/49 at HEAD commit message"
+    },
+    "qdw-sandbox": {
+      "repo": "prx0r/qdw-sandbox",
+      "branch": "master",
+      "sha": "5e4278c8eeed008bcf11deff288b19110379ece0",
+      "role": "incubator / donor only",
+      "reported_tests": "49/49 at HEAD commit message"
+    },
+    "gitgoblin": {
+      "repo": "prx0r/gitgoblin",
+      "branch": "master",
+      "sha": "c129f801b601af8e088d6fe908f01f769a62b0ee",
+      "role": "technical-frontier / repository intelligence oracle",
+      "reported_tests": "previous hardening commit reports 78/78; latest seed-only commit does not state a count"
+    },
+    "dell": {
+      "repo": "prx0r/dell",
+      "branch": "master",
+      "sha": "f29ed2a9621d307d301c628aa6f00de9d356d5ce",
+      "role": "model/provider/deal/resource oracle",
+      "reported_tests": "not treated as proof by this pack"
+    }
+  },
+  "required": [
+    "all five exact starting SHAs proven before edits",
+    "all native repository baseline suites executed and retained",
+    "independent source regression fails on documented starting defects",
+    "all native repository suites pass after integration",
+    "QDW production fake Forge client removed",
+    "QDWSystem composes real GitGoblin, Dell and Forge HTTP clients when configured",
+    "QDW applied history migration 0010 remains immutable",
+    "QDW migration 0011 removes reusable Forge lease-secret persistence",
+    "fixed_request_cost_usd survives QDW process restart",
+    "GitGoblin exposes qdw-federation-observation/1 over HTTP",
+    "GitGoblin proposal authority remains ADVISORY",
+    "Dell exposes qdw-federation-resource/1 over HTTP",
+    "Dell unknown output price stays unknown for nonzero output workload",
+    "Forge authenticates before idempotency lookup",
+    "Forge idempotency is scoped to authenticated client and exact request",
+    "Forge enforces allowed_operations",
+    "Forge asset definition hash does not change on activation",
+    "Forge certificate status cannot be caller-authored",
+    "Forge certificate application is idempotent",
+    "Forge quote/actual/billable cost semantics are tested",
+    "Forge uses strict numbered migrations after legacy baseline",
+    "Forgejo sync paginates beyond 50 repositories",
+    "Forgejo qdw.yaml is fetched at immutable commit SHA",
+    "Forge stores repo URI, commit SHA and qdw.yaml digest provenance",
+    "QDW HotSwap remains final cross-domain route authority",
+    "external Forge execution remains SUCCEEDED_UNVERIFIED until QDW VerificationService succeeds",
+    "QDW WorkNode cannot succeed from Forge execution status alone",
+    "one federation attempt creates at most one CostEvent",
+    "one federation attempt creates at most one QDW route learning effect",
+    "same QDW attempt replay does not rerun or double charge",
+    "changed payload under same attempt ID returns conflict",
+    "restart after external invocation resumes to COMMITTED without duplicate invocation",
+    "no reusable Forge lease token appears in QDW DB or evidence archive",
+    "Sandbox production router/scheduler/verifier authority remains blocked",
+    "independent source gate is green after integration",
+    "independent HTTP protocol contract suite is green",
+    "full sibling-service V11 is green",
+    "QDW process-restart V11 is green",
+    "QDW native federation self-review has no unsuppressed HIGH or CRITICAL finding"
+  ],
+  "forbidden": [
+    "QDW reads or writes a sibling service SQLite database",
+    "qdw-forge is imported into the QDW service process",
+    "GitGoblin or Dell writes QDW lifecycle state",
+    "Forge directly marks a QDW WorkNode successful",
+    "QDW stores a reusable Forge lease token",
+    "Dell score is copied into QDW as the same posterior probability",
+    "Forge asset posterior is copied into QDW as the same statistical population",
+    "moving default branch is treated as immutable Forge asset provenance",
+    "network failure is represented as successful empty data",
+    "test is deleted, skipped, xfailed or weakened merely to satisfy the gate"
+  ]
+}

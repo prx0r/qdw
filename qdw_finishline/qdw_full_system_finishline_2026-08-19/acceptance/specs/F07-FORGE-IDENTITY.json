@@ -1,0 +1,10 @@
+{
+  "acceptance_id": "F07-FORGE-IDENTITY",
+  "invariants": [
+    "immutable definition",
+    "separate activation",
+    "certificate replay once"
+  ],
+  "change_requires_new_hash": true,
+  "acceptance_hash": "sha256:f10821c3f8347cb20cccf8b69f0cb6dfdf33680752e1fe4f1b7ec4dfcea6d68f"
+}

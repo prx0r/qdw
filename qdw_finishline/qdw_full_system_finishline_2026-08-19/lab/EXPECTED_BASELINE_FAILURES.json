@@ -1,0 +1,26 @@
+{
+  "reviewed_heads": {
+    "qdw": "46920f2547e552b7f1c0e019169a350fe44cb4c1",
+    "qdw-forge": "2037cdb93458278bdc4807be8e84111cce72fb10",
+    "qdw-sandbox": "5e4278c8eeed008bcf11deff288b19110379ece0",
+    "gitgoblin": "c129f801b601af8e088d6fe908f01f769a62b0ee",
+    "dell": "f29ed2a9621d307d301c628aa6f00de9d356d5ce"
+  },
+  "expected_current_failures": [
+    "QDW fake Forge client exists in production package",
+    "QDWSystem federation composition has no real external clients",
+    "QDW stores forge_leases plaintext token table",
+    "QDW Route fixed_request_cost_usd is not persisted by PersistentBanditStore",
+    "QDW tests/e2e has no real tests",
+    "GitGoblin lacks /v1/export/qdw",
+    "Forge verification body accepts passed boolean",
+    "Forge idempotency lookup occurs before lease authorization",
+    "Forge does not enforce invoke allowed_operations",
+    "Forge activation mutates immutable manifest hash",
+    "Forge has no idempotent verification-application table",
+    "Forgejo sync does not paginate/pin commits",
+    "Dell cost function treats unknown output price as zero",
+    "QDW Dell integration test explicitly tolerates recommended cost loss"
+  ],
+  "rule": "After implementation, every listed baseline defect must become a passing regression, not be deleted."
+}

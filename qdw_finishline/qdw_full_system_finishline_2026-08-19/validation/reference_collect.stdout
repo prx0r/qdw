@@ -1,0 +1,12 @@
+tests/test_authority.py: 4
+tests/test_certificates.py: 6
+tests/test_dell.py: 6
+tests/test_forge_auth.py: 8
+tests/test_forge_cost.py: 5
+tests/test_forge_manifest.py: 5
+tests/test_forgejo.py: 5
+tests/test_gitgoblin.py: 6
+tests/test_no_false_green.py: 3
+tests/test_route_restart.py: 3
+tests/test_runtime.py: 10
+

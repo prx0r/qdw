@@ -1,0 +1,11 @@
+{
+  "acceptance_id": "F09-FORGEJO",
+  "invariants": [
+    "pagination",
+    "commit pin",
+    "manifest provenance",
+    "typed receipts"
+  ],
+  "change_requires_new_hash": true,
+  "acceptance_hash": "sha256:3a8142b551a50180c1504cc184c784e7f4fb1c4014dab6b1925eb33832303b46"
+}

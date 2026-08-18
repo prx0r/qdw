@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "attempt_id",
+    "capability",
+    "state",
+    "cost_usd"
+  ],
+  "properties": {
+    "attempt_id": {
+      "type": "string"
+    },
+    "capability": {
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "DISCOVERING",
+        "CANDIDATES_READY",
+        "ROUTED",
+        "RUNNING",
+        "SUCCEEDED_UNVERIFIED",
+        "VERIFYING",
+        "VERIFIED",
+        "COMMITTED",
+        "FAILED"
+      ]
+    },
+    "route_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "external_invocation_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "certificate_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cost_event_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "learning_event_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cost_usd": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    }
+  }
+}

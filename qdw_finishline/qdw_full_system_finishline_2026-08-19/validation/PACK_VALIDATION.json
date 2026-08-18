@@ -1,0 +1,69 @@
+{
+  "schema": "qdw.finishline-pack-validation.v2",
+  "checks": {
+    "python_syntax": {
+      "files": 81,
+      "failures": []
+    },
+    "json": {
+      "files": 26,
+      "failures": []
+    },
+    "shell_syntax": {
+      "files": 15,
+      "failures": []
+    },
+    "acceptance_hashes": {
+      "files": 14,
+      "failures": []
+    },
+    "test_integrity": {
+      "findings": []
+    },
+    "unfinished_code": {
+      "findings": []
+    },
+    "qdw_migration": {
+      "error": null,
+      "retired_fake_lease_table": true,
+      "fixed_cost_column": true,
+      "attempt_table": true
+    },
+    "forge_migration": {
+      "error": null,
+      "verification_applications": true,
+      "client_id": true,
+      "billable_cost": true
+    },
+    "reference_tests": {
+      "collect_exit": 0,
+      "test_exit": 0,
+      "collected": 61,
+      "collect_stdout_sha256": "3bb6a38eab9037069028163ea29e05b045f9e1b50d27ae7c15e8c9fcb02c7ce0",
+      "test_stdout_sha256": "77b0baf6dfe1e0ed2d65b9e1fb458637360151d9c38dbbade12824dc92de222d"
+    }
+  },
+  "source_transport": {
+    "native_git_exit": 128,
+    "stderr": "fatal: unable to access 'https://github.com/prx0r/qdw.git/': Could not resolve host: github.com",
+    "fallback_used_for_review": "GitHub connector exact-SHA source inspection"
+  },
+  "status": "PASS",
+  "proven_here": [
+    "pack Python syntax",
+    "pack JSON parse",
+    "shell syntax",
+    "acceptance hash integrity",
+    "test-tree anti-cheat scan",
+    "QDW 0011 synthetic migration",
+    "Forge 0001 synthetic migration",
+    "independent semantic reference suite"
+  ],
+  "not_proven_here": [
+    "native clone/install of the five GitHub repositories",
+    "post-overlay native repository suites",
+    "real sibling HTTP V11",
+    "QDW process-restart V11",
+    "remote GitHub CI/branch protection"
+  ]
+}

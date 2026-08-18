@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_system",
+    "source_revision",
+    "cursor",
+    "generated_at",
+    "observations",
+    "opportunity_proposals",
+    "batch_digest"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "qdw-federation-observation/1"
+    },
+    "source_system": {
+      "const": "gitgoblin"
+    },
+    "source_revision": {
+      "type": "string"
+    },
+    "cursor": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "opportunity_proposals": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "batch_digest": {
+      "type": "string",
+      "pattern": "^sha256:"
+    }
+  }
+}

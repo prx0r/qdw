@@ -1,0 +1,57 @@
+{
+  "method": "GitHub connector exact-SHA inspection; native git clone unavailable in this execution container because github.com DNS resolution failed",
+  "reviewed_at": "2026-08-19",
+  "repositories": {
+    "qdw": {
+      "sha": "46920f2547e552b7f1c0e019169a350fe44cb4c1",
+      "evidence_files": {
+        "src/qdw/system.py": "143539b8617365a35dae372d3cb2abe5bbe1cf82",
+        "src/qdw/federation/service.py": "current HEAD inspected",
+        "src/qdw/federation/forge_client.py": "current HEAD inspected; explicit simulator",
+        "src/qdw/federation/forge_adapter.py": "current HEAD inspected",
+        "src/qdw/federation/dell_adapter.py": "b6e7a1b522e7277ef899cf8ba975590e71484839",
+        "src/qdw/federation/gitgoblin_adapter.py": "17ca4adfd5a9bbf63ab0e15a255ff9f7efd474",
+        "src/qdw/federation/route_bindings.py": "ad68133c6e9cea15278bfe52d8a2a76187d2fba7",
+        "src/qdw/federation/store.py": "2b26f641d0e908fe23b7baed835f60cbb198b749",
+        "src/qdw/hotswap/persistent.py": "247c4f93c595bffdcbf15bfc7bd0669b46f652aa",
+        "tests/integration/test_estate_forge_integration.py": "current HEAD inspected",
+        "tests/integration/test_dell_integration.py": "current HEAD inspected",
+        "tests/integration/test_gitgoblin_integration.py": "current HEAD inspected",
+        "migrations/0010_federation.sql": "current HEAD inspected"
+      }
+    },
+    "qdw-forge": {
+      "sha": "2037cdb93458278bdc4807be8e84111cce72fb10",
+      "evidence_files": {
+        "src/qdw_forge/api.py": "48756dd335dbea6f6f46c192a8ef961088266080",
+        "src/qdw_forge/invocation.py": "aa54540a102fbdadd2738b59970383053d63522e",
+        "src/qdw_forge/store.py": "current HEAD inspected",
+        "src/qdw_forge/db.py": "ed6f1809d279c2d1024c3563e13d32e291656005",
+        "src/qdw_forge/tokens.py": "cc58298871d6f1c3f3b1d6c944c711164b2a3523",
+        "src/qdw_forge/routing.py": "f6977da11a1898721521d913729b78c61cc5e0b8",
+        "src/qdw_forge/forgejo.py": "current HEAD inspected",
+        "src/qdw_forge/invokers.py": "4e3b81a14321feebc17fd572e43b1624890192fd"
+      }
+    },
+    "gitgoblin": {
+      "sha": "c129f801b601af8e088d6fe908f01f769a62b0ee",
+      "evidence_files": {
+        "gitgoblin/api.py": "current HEAD inspected; legacy export only"
+      }
+    },
+    "dell": {
+      "sha": "f29ed2a9621d307d301c628aa6f00de9d356d5ce",
+      "evidence_files": {
+        "app/services/decision.py": "476405f02a7fc541c6cd81f83a022322e85e1e0c at earlier compatible content; current HEAD inspected",
+        "app/api_canonical.py": "current HEAD inspected"
+      }
+    },
+    "qdw-sandbox": {
+      "sha": "5e4278c8eeed008bcf11deff288b19110379ece0",
+      "evidence_files": {
+        "src/sandbox/estate/routing/service.py": "b7dbd1d0634097d345ce106bea80965f4e14719a",
+        "src/sandbox/estate/verification/service.py": "2b435c97dc844451638b60129a6562639e1ffd5b"
+      }
+    }
+  }
+}
