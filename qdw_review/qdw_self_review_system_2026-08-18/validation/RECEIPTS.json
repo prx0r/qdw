@@ -1,0 +1,135 @@
+[
+  {
+    "receipt_id": "review_receipt_6dcbf3c8335c4c9abc1d03fcc52486ad",
+    "module_id": "PACK-SELF-REVIEW",
+    "argv": [
+      "env",
+      "PYTHONPATH=/mnt/data/qdw_self_review_system_2026-08-18/reference/src",
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "compileall",
+      "-q",
+      "reference/src",
+      "reference/tests",
+      "integration/overlay",
+      "overlay/tests"
+    ],
+    "cwd": "/mnt/data/qdw_self_review_system_2026-08-18",
+    "started_at": "2026-08-18T16:44:52.234363Z",
+    "finished_at": "2026-08-18T16:44:57.088326Z",
+    "duration_ms": 4854,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_6dcbf3c8335c4c9abc1d03fcc52486ad/stdout.log",
+    "stderr_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_6dcbf3c8335c4c9abc1d03fcc52486ad/stderr.log",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+  },
+  {
+    "receipt_id": "review_receipt_a36934185ac646f1bb8f481a38f4d7a4",
+    "module_id": "PACK-SELF-REVIEW",
+    "argv": [
+      "env",
+      "PYTHONPATH=/mnt/data/qdw_self_review_system_2026-08-18/reference/src",
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "pytest",
+      "reference/tests",
+      "-q"
+    ],
+    "cwd": "/mnt/data/qdw_self_review_system_2026-08-18",
+    "started_at": "2026-08-18T16:44:57.089462Z",
+    "finished_at": "2026-08-18T16:45:31.957903Z",
+    "duration_ms": 34868,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_a36934185ac646f1bb8f481a38f4d7a4/stdout.log",
+    "stderr_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_a36934185ac646f1bb8f481a38f4d7a4/stderr.log",
+    "stdout_sha256": "dc0f4e89c94b2fa3a791236b282192ec8f78f16d3a8d6524679e8b45cf1a031b",
+    "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+  },
+  {
+    "receipt_id": "review_receipt_33157300cc934a789a40281602bcab7f",
+    "module_id": "PACK-SELF-REVIEW",
+    "argv": [
+      "env",
+      "PYTHONPATH=/mnt/data/qdw_self_review_system_2026-08-18/reference/src",
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "pytest",
+      "reference/tests",
+      "--collect-only",
+      "-q"
+    ],
+    "cwd": "/mnt/data/qdw_self_review_system_2026-08-18",
+    "started_at": "2026-08-18T16:45:31.959564Z",
+    "finished_at": "2026-08-18T16:45:38.374953Z",
+    "duration_ms": 6415,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_33157300cc934a789a40281602bcab7f/stdout.log",
+    "stderr_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_33157300cc934a789a40281602bcab7f/stderr.log",
+    "stdout_sha256": "310aa5753d6f17bc99784558b0dd977268b7fdb5fad34697337b711793fef4ff",
+    "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+  },
+  {
+    "receipt_id": "review_receipt_ad7a74cf29ab4477b74f2b67f659fc8b",
+    "module_id": "PACK-SELF-REVIEW",
+    "argv": [
+      "env",
+      "PYTHONPATH=/mnt/data/qdw_self_review_system_2026-08-18/reference/src",
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "qdw_review.cli",
+      "modules"
+    ],
+    "cwd": "/mnt/data/qdw_self_review_system_2026-08-18",
+    "started_at": "2026-08-18T16:45:38.376233Z",
+    "finished_at": "2026-08-18T16:45:42.984673Z",
+    "duration_ms": 4608,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_ad7a74cf29ab4477b74f2b67f659fc8b/stdout.log",
+    "stderr_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_ad7a74cf29ab4477b74f2b67f659fc8b/stderr.log",
+    "stdout_sha256": "48c314f711b06b8f1ce2b337a226293c31365269597b0e66a436bd91bc98ad80",
+    "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+  },
+  {
+    "receipt_id": "review_receipt_bbe079908a7d4eb4a519a8e156a8b30e",
+    "module_id": "PACK-SELF-REVIEW",
+    "argv": [
+      "bash",
+      "-n",
+      "scripts/bootstrap_into_qdw.sh"
+    ],
+    "cwd": "/mnt/data/qdw_self_review_system_2026-08-18",
+    "started_at": "2026-08-18T16:45:42.985520Z",
+    "finished_at": "2026-08-18T16:45:43.013096Z",
+    "duration_ms": 27,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_bbe079908a7d4eb4a519a8e156a8b30e/stdout.log",
+    "stderr_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_bbe079908a7d4eb4a519a8e156a8b30e/stderr.log",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "receipt_id": "review_receipt_b6af027973d84113ad1b16b01d6194e6",
+    "module_id": "PACK-SELF-REVIEW",
+    "argv": [
+      "bash",
+      "-n",
+      "scripts/run_standalone_review.sh"
+    ],
+    "cwd": "/mnt/data/qdw_self_review_system_2026-08-18",
+    "started_at": "2026-08-18T16:45:43.013543Z",
+    "finished_at": "2026-08-18T16:45:43.041010Z",
+    "duration_ms": 27,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_b6af027973d84113ad1b16b01d6194e6/stdout.log",
+    "stderr_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_b6af027973d84113ad1b16b01d6194e6/stderr.log",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

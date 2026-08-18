@@ -1,0 +1,12 @@
+{
+  "policy_id": "qdw.quick-review.v1",
+  "block_at": "CRITICAL",
+  "required_modules": [
+    "review.proof",
+    "review.trust-boundary",
+    "review.architecture",
+    "review.claim-consistency"
+  ],
+  "minimum_passing_receipts": 0,
+  "allowed_rule_ids": []
+}

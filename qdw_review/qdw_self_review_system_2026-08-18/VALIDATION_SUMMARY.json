@@ -1,0 +1,110 @@
+{
+  "status": "PACK_VALIDATED",
+  "reviewed_qdw_head": "c1ab1e46c41587c85253278ed5e012b0f757a551",
+  "reference_tests_collected": 26,
+  "reference_pytest_returncode": 0,
+  "python_files_checked": 49,
+  "python_syntax_failures": 0,
+  "json_files_checked": 44,
+  "json_failures": 0,
+  "anti_cheat_findings": [],
+  "acceptance_specs": [
+    {
+      "path": "acceptance/QDW-PROVENANCE-ATOMIC.json",
+      "ok": true,
+      "stored": "sha256:19b50efc0141ce820fa71785514a1ffcfb337935345b3357fa18988a96d0b783",
+      "actual": "sha256:19b50efc0141ce820fa71785514a1ffcfb337935345b3357fa18988a96d0b783"
+    },
+    {
+      "path": "acceptance/QDW-RELEASE-REVIEW.json",
+      "ok": true,
+      "stored": "sha256:e5727a80e7f6904834fea7e647c1a693c0d57e6e8b28e00fe27d2a093ff97a0e",
+      "actual": "sha256:e5727a80e7f6904834fea7e647c1a693c0d57e6e8b28e00fe27d2a093ff97a0e"
+    },
+    {
+      "path": "acceptance/QDW-TRUST-HARDEN.json",
+      "ok": true,
+      "stored": "sha256:43e38e6235f5dba02d8a71a64e8ac2bcc91c79e0d3027a6abe7d2cccec9fe706",
+      "actual": "sha256:43e38e6235f5dba02d8a71a64e8ac2bcc91c79e0d3027a6abe7d2cccec9fe706"
+    },
+    {
+      "path": "acceptance/SELFREVIEW-BOOT.json",
+      "ok": true,
+      "stored": "sha256:d3a982192b7124ac94354872a63ab9348f0b262bd97b6dc4cf5f3fc3a1e40f78",
+      "actual": "sha256:d3a982192b7124ac94354872a63ab9348f0b262bd97b6dc4cf5f3fc3a1e40f78"
+    }
+  ],
+  "reviewer_manifests": 18,
+  "reviewer_ids_unique": true,
+  "missing_prompts": [],
+  "formula_reference_errors": [],
+  "attack_count": 37,
+  "attack_ids_unique": true,
+  "current_peer_review_findings": 29,
+  "current_rule_ids_unique": true,
+  "current_counts": {
+    "CRITICAL": 5,
+    "HIGH": 12,
+    "MEDIUM": 11,
+    "LOW": 0,
+    "INFO": 1
+  },
+  "shell_checks": [
+    {
+      "path": "scripts/bootstrap_into_qdw.sh",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "path": "scripts/run_standalone_review.sh",
+      "ok": true,
+      "stderr": ""
+    }
+  ],
+  "validation_receipts": [
+    {
+      "receipt_id": "review_receipt_6dcbf3c8335c4c9abc1d03fcc52486ad",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    },
+    {
+      "receipt_id": "review_receipt_a36934185ac646f1bb8f481a38f4d7a4",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    },
+    {
+      "receipt_id": "review_receipt_33157300cc934a789a40281602bcab7f",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    },
+    {
+      "receipt_id": "review_receipt_ad7a74cf29ab4477b74f2b67f659fc8b",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    },
+    {
+      "receipt_id": "review_receipt_bbe079908a7d4eb4a519a8e156a8b30e",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    },
+    {
+      "receipt_id": "review_receipt_b6af027973d84113ad1b16b01d6194e6",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    }
+  ],
+  "not_claimed_as_executed": [
+    "real QDW pytest suite at c1ab1e4 in this container",
+    "real QDW Docker build/runtime",
+    "real QDW MCP protocol session",
+    "real Hermes worker execution",
+    "remote GitHub Actions success for reviewed head",
+    "review-certificate certification of current QDW (current blockers intentionally prevent this)"
+  ]
+}

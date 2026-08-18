@@ -1,0 +1,18 @@
+{
+  "task_id": "QDW-PROVENANCE-ATOMIC",
+  "title": "Atomic state plus provenance",
+  "invariants": [
+    "state and semantic event commit together"
+  ],
+  "commands": [
+    [
+      "pytest",
+      "tests/review_adversarial/test_atomic_provenance.py",
+      "-q"
+    ]
+  ],
+  "negative_tests": [
+    "injected_ledger_failure"
+  ],
+  "spec_hash": "sha256:19b50efc0141ce820fa71785514a1ffcfb337935345b3357fa18988a96d0b783"
+}

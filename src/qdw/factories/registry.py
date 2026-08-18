@@ -1,7 +1,9 @@
 """Factory registry — immutable versions, CANDIDATE → ACTIVE lifecycle.
 
-Activation requires a valid fixture certificate, not a boolean assertion.
-The registry independently verifies the certificate exists and is accepted.
+Activation requires a valid fixture certificate that:
+- exists in gate_results
+- is accepted (passed=1)
+- belongs to the same factory_id and version
 """
 
 from __future__ import annotations
@@ -42,9 +44,10 @@ class FactoryRegistry:
         """Activate a factory. Requires a valid fixture certificate.
 
         The registry independently verifies:
-        - certificate exists
-        - certificate is accepted
-        - certificate artifact hashes match
+        - certificate exists in gate_results
+        - certificate is accepted (passed=1)
+        - certificate belongs to this factory (via detail_json.factory_id)
+        - certificate belongs to this version (via detail_json.factory_version)
         """
         with self.db.tx(immediate=True) as con:
             # Check factory exists
@@ -64,6 +67,23 @@ class FactoryRegistry:
                 raise ValueError(f"fixture certificate {fixture_certificate_id} not found")
             if not cert["passed"]:
                 raise ValueError(f"fixture certificate {fixture_certificate_id} is not accepted")
+
+            # Verify certificate belongs to this factory and version
+            detail = json.loads(cert["detail_json"]) if cert["detail_json"] else {}
+            cert_factory = detail.get("factory_id")
+            cert_version = detail.get("factory_version")
+            if not cert_factory:
+                raise ValueError(
+                    f"certificate {fixture_certificate_id} does not identify a factory"
+                )
+            if cert_factory != factory_id:
+                raise ValueError(
+                    f"certificate belongs to factory '{cert_factory}', not '{factory_id}'"
+                )
+            if cert_version and cert_version != version:
+                raise ValueError(
+                    f"certificate belongs to version '{cert_version}', not '{version}'"
+                )
 
             # Activate
             con.execute(

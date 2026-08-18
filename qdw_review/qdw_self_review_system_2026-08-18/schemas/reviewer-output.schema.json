@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "reviewer_id",
+    "version",
+    "status",
+    "findings"
+  ],
+  "properties": {
+    "reviewer_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNVERIFIED",
+        "BLOCKED"
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "finding.schema.json"
+      }
+    }
+  }
+}

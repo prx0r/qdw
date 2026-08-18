@@ -1,0 +1,151 @@
+{
+  "formula_id": "review.full",
+  "version": "1.0.0",
+  "description": "Full independent QDW peer review",
+  "nodes": [
+    {
+      "id": "inventory",
+      "kind": "deterministic",
+      "action": "qdw-review scan --profile quick"
+    },
+    {
+      "id": "architecture",
+      "contractor": "review.architecture@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "trust",
+      "contractor": "review.trust-boundary@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "proof",
+      "contractor": "review.proof@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "database",
+      "contractor": "review.database@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "workgraph",
+      "contractor": "review.workgraph@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "hotswap",
+      "contractor": "review.hotswap@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "factory",
+      "contractor": "review.factory@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "contractor",
+      "contractor": "review.contractor@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "world",
+      "contractor": "review.world@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "ideas",
+      "contractor": "review.ideas@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "products",
+      "contractor": "review.products@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "interfaces",
+      "contractor": "review.interfaces@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "ci",
+      "contractor": "review.ci@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "security",
+      "contractor": "review.security@1.0.0",
+      "depends_on": [
+        "inventory"
+      ]
+    },
+    {
+      "id": "claims",
+      "contractor": "review.claim-consistency@1.0.0",
+      "depends_on": [
+        "architecture",
+        "trust",
+        "proof",
+        "database",
+        "workgraph",
+        "hotswap",
+        "factory",
+        "contractor",
+        "world",
+        "ideas",
+        "products",
+        "interfaces",
+        "ci"
+      ]
+    },
+    {
+      "id": "redteam",
+      "contractor": "review.redteam@1.0.0",
+      "depends_on": [
+        "trust",
+        "proof",
+        "database",
+        "workgraph",
+        "hotswap",
+        "factory",
+        "products"
+      ]
+    },
+    {
+      "id": "certify",
+      "contractor": "review.release-certifier@1.0.0",
+      "depends_on": [
+        "claims",
+        "redteam",
+        "security"
+      ]
+    }
+  ]
+}

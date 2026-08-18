@@ -1,0 +1,22 @@
+{
+  "task_id": "SELFREVIEW-BOOT",
+  "title": "Install deterministic self-review",
+  "invariants": [
+    "Scanner runs without network/LLM",
+    "Stable finding fingerprints",
+    "JSON and HTML reports deterministic modulo timestamps"
+  ],
+  "commands": [
+    [
+      "python",
+      "-m",
+      "pytest",
+      "reference/tests",
+      "-q"
+    ]
+  ],
+  "negative_tests": [
+    "synthetic broken repo triggers trust/proof/migration findings"
+  ],
+  "spec_hash": "sha256:d3a982192b7124ac94354872a63ab9348f0b262bd97b6dc4cf5f3fc3a1e40f78"
+}

@@ -1,0 +1,122 @@
+{
+  "formula_id": "review.change-aware",
+  "version": "1.0.0",
+  "routing": [
+    {
+      "paths": [
+        "migrations/**",
+        "src/qdw/core/db.py",
+        "src/qdw/core/migrations.py"
+      ],
+      "reviewers": [
+        "review.database",
+        "review.proof",
+        "review.redteam"
+      ]
+    },
+    {
+      "paths": [
+        "src/qdw/core/graph/**"
+      ],
+      "reviewers": [
+        "review.workgraph",
+        "review.database",
+        "review.redteam"
+      ]
+    },
+    {
+      "paths": [
+        "src/qdw/hotswap/**"
+      ],
+      "reviewers": [
+        "review.hotswap",
+        "review.redteam"
+      ]
+    },
+    {
+      "paths": [
+        "src/qdw/factories/**",
+        "manifests/factories/**"
+      ],
+      "reviewers": [
+        "review.factory",
+        "review.trust-boundary",
+        "review.redteam"
+      ]
+    },
+    {
+      "paths": [
+        "src/qdw/contractors/**",
+        "manifests/contractors/**"
+      ],
+      "reviewers": [
+        "review.contractor",
+        "review.trust-boundary"
+      ]
+    },
+    {
+      "paths": [
+        "src/qdw/world/**",
+        "src/qdw/sources/**"
+      ],
+      "reviewers": [
+        "review.world",
+        "review.proof"
+      ]
+    },
+    {
+      "paths": [
+        "src/qdw/ideas/**",
+        "src/qdw/intelligence/**"
+      ],
+      "reviewers": [
+        "review.ideas",
+        "review.world"
+      ]
+    },
+    {
+      "paths": [
+        "src/qdw/products/**",
+        "src/qdw/publishing/**"
+      ],
+      "reviewers": [
+        "review.products",
+        "review.trust-boundary",
+        "review.redteam"
+      ]
+    },
+    {
+      "paths": [
+        "src/qdw/interfaces/**"
+      ],
+      "reviewers": [
+        "review.interfaces",
+        "review.security",
+        "review.redteam"
+      ]
+    },
+    {
+      "paths": [
+        ".github/**",
+        "Dockerfile",
+        "pyproject.toml"
+      ],
+      "reviewers": [
+        "review.ci",
+        "review.security"
+      ]
+    },
+    {
+      "paths": [
+        "**"
+      ],
+      "reviewers": [
+        "review.architecture",
+        "review.claim-consistency"
+      ]
+    }
+  ],
+  "always": [
+    "review.release-certifier"
+  ]
+}

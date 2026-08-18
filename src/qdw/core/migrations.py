@@ -1,7 +1,12 @@
-"""Migration runner — numbered, idempotent, transactional."""
+"""Migration runner — numbered, idempotent, content-hashed.
+
+Each migration records its content SHA-256. If a migration file changes
+after being applied, the runner detects the drift and refuses to proceed.
+"""
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 
 from qdw.core.db import Database
@@ -9,10 +14,8 @@ from qdw.core.db import Database
 _MIGRATIONS_DIR = Path(__file__).parent.parent.parent.parent / "migrations"
 
 
-def _list_migrations() -> list[Path]:
-    if not _MIGRATIONS_DIR.exists():
-        return []
-    return sorted(_MIGRATIONS_DIR.glob("*.sql"))
+def _hash_file(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def applied_versions(db: Database) -> set[int]:
@@ -22,6 +25,20 @@ def applied_versions(db: Database) -> set[int]:
             return {r["version"] for r in rows}
         except Exception:
             return set()
+
+
+def _check_drift(db: Database, version: int, content_hash: str) -> None:
+    """Check if a migration file changed after being applied."""
+    with db.connect() as con:
+        row = con.execute(
+            "SELECT content_hash FROM schema_versions WHERE version=?", (version,)
+        ).fetchone()
+        if row and row["content_hash"] and row["content_hash"] != content_hash:
+            raise ValueError(
+                f"MIGRATION_DRIFT: migration {version} changed after being applied. "
+                f"Expected {row['content_hash']}, got {content_hash}. "
+                f"Create a new migration instead of modifying applied ones."
+            )
 
 
 def migrate(db: Database, migrations_dir: str | Path | None = None) -> list[int]:
@@ -41,16 +58,20 @@ def migrate(db: Database, migrations_dir: str | Path | None = None) -> list[int]
         except (ValueError, IndexError):
             continue
 
+        content_hash = _hash_file(f)
+
+        # Check for drift on already-applied migrations
         if version in applied:
+            _check_drift(db, version, content_hash)
             continue
 
         sql = f.read_text(encoding="utf-8")
         with db.connect() as con:
-            # executescript runs in its own implicit transaction
             con.executescript(sql)
             con.execute(
-                "INSERT OR IGNORE INTO schema_versions(version, applied_at) VALUES(?, datetime('now'))",
-                (version,),
+                """INSERT INTO schema_versions(version, applied_at, content_hash)
+                VALUES(?, datetime('now'), ?)""",
+                (version, content_hash),
             )
 
         newly_applied.append(version)
@@ -59,12 +80,13 @@ def migrate(db: Database, migrations_dir: str | Path | None = None) -> list[int]
 
 
 def migrate_all(db: Database) -> None:
-    """Ensure schema_versions exists, then apply all pending migrations."""
+    """Ensure schema_versions exists with content_hash column, then apply pending."""
     with db.connect() as con:
         con.executescript("""
             CREATE TABLE IF NOT EXISTS schema_versions (
                 version INTEGER PRIMARY KEY,
-                applied_at TEXT NOT NULL
+                applied_at TEXT NOT NULL,
+                content_hash TEXT
             );
         """)
     migrate(db)

@@ -1,0 +1,19 @@
+{
+  "receipt_id": "review_receipt_bbe079908a7d4eb4a519a8e156a8b30e",
+  "module_id": "PACK-SELF-REVIEW",
+  "argv": [
+    "bash",
+    "-n",
+    "scripts/bootstrap_into_qdw.sh"
+  ],
+  "cwd": "/mnt/data/qdw_self_review_system_2026-08-18",
+  "started_at": "2026-08-18T16:45:42.985520Z",
+  "finished_at": "2026-08-18T16:45:43.013096Z",
+  "duration_ms": 27,
+  "exit_code": 0,
+  "status": "PASS",
+  "stdout_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_bbe079908a7d4eb4a519a8e156a8b30e/stdout.log",
+  "stderr_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_bbe079908a7d4eb4a519a8e156a8b30e/stderr.log",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

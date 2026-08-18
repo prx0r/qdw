@@ -213,13 +213,12 @@ class WorkGraphStore:
         for r in rows:
             nv = r["expected_value"]
             nc = r["expected_cost"]
-            # UNKNOWN cost is not infinite cost — it's unknown.
-            # UNKNOWN value is not zero value — it's unvalued.
-            # Both remain eligible for claiming.
+            # UNKNOWN values remain unknown in the candidate.
+            # The scheduler handles None-aware ranking.
             candidate = Candidate(
                 node_id=r["node_id"],
-                expected_value=nv if nv is not None else 1.0,
-                expected_cost=nc if nc is not None else 0.0,
+                expected_value=nv,
+                expected_cost=nc,
                 confidence=1.0,
                 urgency=0.0,
                 risk=0.0,

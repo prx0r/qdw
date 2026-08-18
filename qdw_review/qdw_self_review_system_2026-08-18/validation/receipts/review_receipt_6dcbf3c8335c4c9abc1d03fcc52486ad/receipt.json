@@ -1,0 +1,26 @@
+{
+  "receipt_id": "review_receipt_6dcbf3c8335c4c9abc1d03fcc52486ad",
+  "module_id": "PACK-SELF-REVIEW",
+  "argv": [
+    "env",
+    "PYTHONPATH=/mnt/data/qdw_self_review_system_2026-08-18/reference/src",
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "compileall",
+    "-q",
+    "reference/src",
+    "reference/tests",
+    "integration/overlay",
+    "overlay/tests"
+  ],
+  "cwd": "/mnt/data/qdw_self_review_system_2026-08-18",
+  "started_at": "2026-08-18T16:44:52.234363Z",
+  "finished_at": "2026-08-18T16:44:57.088326Z",
+  "duration_ms": 4854,
+  "exit_code": 0,
+  "status": "PASS",
+  "stdout_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_6dcbf3c8335c4c9abc1d03fcc52486ad/stdout.log",
+  "stderr_path": "/mnt/data/qdw_self_review_system_2026-08-18/validation/receipts/review_receipt_6dcbf3c8335c4c9abc1d03fcc52486ad/stderr.log",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+}

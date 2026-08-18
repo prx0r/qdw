@@ -1,0 +1,34 @@
+{
+  "task_id": "QDW-RELEASE-REVIEW",
+  "title": "Independent release review certificate",
+  "invariants": [
+    "exact SHA bound",
+    "required reviewers complete",
+    "zero blockers",
+    "required attacks have receipts",
+    "producer != certifier"
+  ],
+  "commands": [
+    [
+      "qdw-review",
+      "scan",
+      ".",
+      "--profile",
+      "release"
+    ],
+    [
+      "qdw-review",
+      "gate",
+      ".qdw/review/latest.json",
+      "--policy",
+      "policies/release.json"
+    ]
+  ],
+  "negative_tests": [
+    "artifact_mutation",
+    "certificate_substitution",
+    "migration_drift",
+    "concurrent_claim"
+  ],
+  "spec_hash": "sha256:e5727a80e7f6904834fea7e647c1a693c0d57e6e8b28e00fe27d2a093ff97a0e"
+}

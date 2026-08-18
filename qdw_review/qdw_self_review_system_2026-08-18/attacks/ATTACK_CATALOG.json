@@ -1,0 +1,261 @@
+[
+  {
+    "attack_id": "A01",
+    "category": "evidence_substitution",
+    "action": "Use unrelated passing gate to activate factory",
+    "expected": "Factory activation rejects wrong subject/version/fixture",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "A02",
+    "category": "evidence_substitution",
+    "action": "Use certificate from run A to release product B",
+    "expected": "Product release rejects certificate subject mismatch",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "A03",
+    "category": "evidence_substitution",
+    "action": "Use factory v1 certificate for factory v2",
+    "expected": "Version mismatch rejected",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "A04",
+    "category": "human",
+    "action": "Reuse approval after domain/price payload changes",
+    "expected": "Approval digest mismatch rejected",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "B01",
+    "category": "crash_consistency",
+    "action": "Fail ledger write during state transition",
+    "expected": "State mutation rolls back or durable outbox remains",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "B02",
+    "category": "crash_consistency",
+    "action": "Crash after claim before start",
+    "expected": "Lease recovery is deterministic and evented",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "B03",
+    "category": "crash_consistency",
+    "action": "Crash in VERIFYING",
+    "expected": "No self-certified success; recovery policy explicit",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "C01",
+    "category": "concurrency",
+    "action": "32 workers race for one READY node",
+    "expected": "Exactly one winner",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "C02",
+    "category": "graph",
+    "action": "Create A\u2192B\u2192C\u2192A cycle",
+    "expected": "Graph cannot enter executable state",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "C03",
+    "category": "retry",
+    "action": "Expire lease at retry ceiling",
+    "expected": "Terminal state matches documented max-attempt semantics",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "C04",
+    "category": "idempotency",
+    "action": "Concurrent duplicate idempotency insert",
+    "expected": "One durable logical action",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "C05",
+    "category": "concurrency",
+    "action": "Complete and fail same node concurrently",
+    "expected": "Only one legal terminal transition",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "D01",
+    "category": "economics",
+    "action": "Unknown cost competes with known positive candidate",
+    "expected": "Unknown is explicit; never silently zero",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "D02",
+    "category": "economics",
+    "action": "Unknown value competes with known candidate",
+    "expected": "Unknown is explicit; never optimistic constant",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "D03",
+    "category": "bandit",
+    "action": "Synchronized concurrent posterior successes",
+    "expected": "No lost updates",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "D04",
+    "category": "restart",
+    "action": "Restart after registering routes",
+    "expected": "Route definitions survive restart",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "D05",
+    "category": "quota",
+    "action": "Restart after quota reservation",
+    "expected": "Durable quota semantics preserved or explicitly refreshed",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "E01",
+    "category": "proof",
+    "action": "Only trivial receipt then request release certificate",
+    "expected": "Certification rejected",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "E02",
+    "category": "proof",
+    "action": "Delete mandatory receipt",
+    "expected": "Verification rejected",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "E03",
+    "category": "proof",
+    "action": "Mutate certified artifact",
+    "expected": "Verification rejected",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "E04",
+    "category": "proof",
+    "action": "Mutate frozen acceptance spec",
+    "expected": "Verification rejected",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "E05",
+    "category": "proof",
+    "action": "Rehash tampered certificate envelope",
+    "expected": "Full verification still rejects",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "E06",
+    "category": "migration",
+    "action": "Modify applied migration bytes",
+    "expected": "Migration drift rejected",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "E07",
+    "category": "ledger",
+    "action": "Mutate ledger payload",
+    "expected": "Chain verification fails",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "E08",
+    "category": "merkle",
+    "action": "Mutate event under sealed epoch",
+    "expected": "Merkle/inclusion verification fails",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "F01",
+    "category": "contractor",
+    "action": "Activate contractor without fixture",
+    "expected": "Activation rejected",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "F02",
+    "category": "contractor",
+    "action": "Change contractor gates without bump",
+    "expected": "Registration rejected",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "F03",
+    "category": "factory",
+    "action": "API fixture feeds ok=True without actual HTTP",
+    "expected": "Fixture cannot certify",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "F04",
+    "category": "product",
+    "action": "Factory product created without run lineage",
+    "expected": "Factory-mode creation rejected",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "F05",
+    "category": "learning",
+    "action": "Fixture outcome enters production learning",
+    "expected": "Learning rejects ineligible outcome",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "G01",
+    "category": "source",
+    "action": "Source timeout returned as []",
+    "expected": "Typed source failure retained",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "G02",
+    "category": "api",
+    "action": "Broken DB queried as empty result",
+    "expected": "503/degraded typed error",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "G03",
+    "category": "mcp",
+    "action": "Direct function works but protocol registration broken",
+    "expected": "Actual MCP client test fails",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "G04",
+    "category": "docker",
+    "action": "Image builds but CMD/import/health broken",
+    "expected": "Container health gate fails",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "G05",
+    "category": "config",
+    "action": "Missing required configuration",
+    "expected": "Explicit BLOCKED/ERROR, no silent default",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "H01",
+    "category": "security",
+    "action": "Agent output includes certified/released=true",
+    "expected": "Result cannot directly transition trust boundary",
+    "required_for_release": true
+  },
+  {
+    "attack_id": "H02",
+    "category": "lineage",
+    "action": "Product certificate ID exists but belongs to another run",
+    "expected": "Binding check rejects",
+    "required_for_release": true
+  }
+]

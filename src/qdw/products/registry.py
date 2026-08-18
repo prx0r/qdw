@@ -30,14 +30,50 @@ class ProductRegistry:
         return pid
 
     def release(self, product_id: str, certificate_id: str) -> None:
+        """Release a product. Validates the certificate independently.
+
+        The certificate must:
+        - exist in gate_results
+        - be accepted (passed=1)
+        - be associated with the same product (via detail_json.product_id)
+        """
         with self.db.tx(immediate=True) as con:
-            changed = con.execute(
+            # Check product exists
+            product = con.execute(
+                "SELECT * FROM products WHERE product_id=?", (product_id,)
+            ).fetchone()
+            if not product:
+                raise KeyError(product_id)
+            if product["status"] == "RELEASED":
+                raise ValueError("product already released")
+
+            # Validate certificate
+            cert = con.execute(
+                "SELECT * FROM gate_results WHERE gate_result_id=?",
+                (certificate_id,),
+            ).fetchone()
+            if not cert:
+                raise ValueError(f"certificate {certificate_id} not found")
+            if not cert["passed"]:
+                raise ValueError(f"certificate {certificate_id} is not accepted")
+
+            # Verify certificate belongs to this product
+            detail = json.loads(cert["detail_json"]) if cert["detail_json"] else {}
+            cert_product = detail.get("product_id")
+            if not cert_product:
+                raise ValueError(
+                    f"certificate {certificate_id} does not identify a product"
+                )
+            if cert_product != product_id:
+                raise ValueError(
+                    f"certificate belongs to product '{cert_product}', not '{product_id}'"
+                )
+
+            con.execute(
                 """UPDATE products SET status='RELEASED',certificate_id=?,released_at=?,updated_at=?
                 WHERE product_id=? AND status!='RELEASED'""",
                 (certificate_id, utc_now(), utc_now(), product_id),
-            ).rowcount
-            if changed != 1:
-                raise ValueError("product missing or already released")
+            )
         self.ledger.append("product.released", "product", product_id, {"certificate_id": certificate_id})
 
     def passport(self, product_id: str) -> dict[str, Any]:

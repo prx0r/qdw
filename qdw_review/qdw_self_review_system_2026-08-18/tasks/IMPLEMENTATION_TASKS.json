@@ -1,0 +1,251 @@
+[
+  {
+    "id": "R00-BASE",
+    "phase": "R0",
+    "title": "Freeze current review baseline",
+    "depends_on": [],
+    "acceptance": [
+      "SHA/dirty state recorded",
+      "migration hashes captured",
+      "current tests/claims inventoried"
+    ]
+  },
+  {
+    "id": "R01-MIGLOCK",
+    "phase": "R1",
+    "title": "Migration digest lock and repair",
+    "depends_on": [
+      "R00-BASE"
+    ],
+    "acceptance": [
+      "applied migration drift rejected",
+      "fresh/upgrade schema parity",
+      "custom migration dir honored",
+      "half-failure atomic"
+    ]
+  },
+  {
+    "id": "R02-PROOF",
+    "phase": "R2",
+    "title": "Harden BuildCertificate",
+    "depends_on": [
+      "R00-BASE"
+    ],
+    "acceptance": [
+      "empty required commands rejected",
+      "artifact/spec/receipt mutation detected"
+    ]
+  },
+  {
+    "id": "R03-FACTORYBIND",
+    "phase": "R3",
+    "title": "Bind factory activation evidence",
+    "depends_on": [
+      "R02-PROOF"
+    ],
+    "acceptance": [
+      "unrelated gate/cert rejected",
+      "version/fixture/artifact binding proven"
+    ]
+  },
+  {
+    "id": "R04-PRODUCTBIND",
+    "phase": "R3",
+    "title": "Bind product release certificate",
+    "depends_on": [
+      "R02-PROOF"
+    ],
+    "acceptance": [
+      "unknown/unrelated certificate rejected"
+    ]
+  },
+  {
+    "id": "R05-CONTRACTOR",
+    "phase": "R3",
+    "title": "Immutable certified contractors",
+    "depends_on": [
+      "R02-PROOF"
+    ],
+    "acceptance": [
+      "same-version mutation rejected",
+      "activation requires fixture cert"
+    ]
+  },
+  {
+    "id": "R06-ATOMIC",
+    "phase": "R4",
+    "title": "Atomic state/provenance",
+    "depends_on": [
+      "R02-PROOF"
+    ],
+    "acceptance": [
+      "injected event failure rolls back state or durable outbox exists"
+    ]
+  },
+  {
+    "id": "R07-GRAPH",
+    "phase": "R5",
+    "title": "Freeze/validate WorkGraphs and retry policy",
+    "depends_on": [
+      "R06-ATOMIC"
+    ],
+    "acceptance": [
+      "cyclic graph not executable",
+      "retry boundaries consistent",
+      "attempts durable"
+    ]
+  },
+  {
+    "id": "R08-UNKNOWN",
+    "phase": "R5",
+    "title": "Remove unknown economic fabrication",
+    "depends_on": [
+      "R07-GRAPH"
+    ],
+    "acceptance": [
+      "None cost/value not replaced by 0/1"
+    ]
+  },
+  {
+    "id": "R09-ROUTES",
+    "phase": "R6",
+    "title": "Persistent RouteRegistry",
+    "depends_on": [
+      "R01-MIGLOCK"
+    ],
+    "acceptance": [
+      "route survives restart"
+    ]
+  },
+  {
+    "id": "R10-BANDIT",
+    "phase": "R6",
+    "title": "Atomic persistent bandit updates",
+    "depends_on": [
+      "R01-MIGLOCK"
+    ],
+    "acceptance": [
+      "synchronized updates lose zero observations"
+    ]
+  },
+  {
+    "id": "R11-COMPOSE",
+    "phase": "R7",
+    "title": "Make QDWSystem complete composition root",
+    "depends_on": [
+      "R03-FACTORYBIND",
+      "R04-PRODUCTBIND",
+      "R05-CONTRACTOR",
+      "R09-ROUTES"
+    ],
+    "acceptance": [
+      "global services composed exactly once"
+    ]
+  },
+  {
+    "id": "R12-E2E",
+    "phase": "R8",
+    "title": "Real V10 factory exemplar",
+    "depends_on": [
+      "R07-GRAPH",
+      "R10-BANDIT",
+      "R11-COMPOSE"
+    ],
+    "acceptance": [
+      "executor produces real artifact",
+      "independent gate",
+      "certificate",
+      "release"
+    ]
+  },
+  {
+    "id": "R13-STATIC",
+    "phase": "R9",
+    "title": "Install qdw-review deterministic scanner",
+    "depends_on": [
+      "R01-MIGLOCK"
+    ],
+    "acceptance": [
+      "quick scan works offline",
+      "JSON/HTML/SARIF generated"
+    ]
+  },
+  {
+    "id": "R14-REVIEWDB",
+    "phase": "R10",
+    "title": "Add canonical review tables/service",
+    "depends_on": [
+      "R13-STATIC",
+      "R06-ATOMIC"
+    ],
+    "acceptance": [
+      "review runs/findings/evidence persist with FKs"
+    ]
+  },
+  {
+    "id": "R15-REVIEWERS",
+    "phase": "R11",
+    "title": "Register reviewer contractors",
+    "depends_on": [
+      "R14-REVIEWDB",
+      "R05-CONTRACTOR"
+    ],
+    "acceptance": [
+      "reviewer versions immutable",
+      "change-aware/full formulas expand"
+    ]
+  },
+  {
+    "id": "R16-REDTEAM",
+    "phase": "R12",
+    "title": "Execute adversarial attack catalog",
+    "depends_on": [
+      "R12-E2E",
+      "R15-REVIEWERS"
+    ],
+    "acceptance": [
+      "mandatory attacks have receipts"
+    ]
+  },
+  {
+    "id": "R17-CLAIMS",
+    "phase": "R13",
+    "title": "Claim consistency reviewer",
+    "depends_on": [
+      "R15-REVIEWERS"
+    ],
+    "acceptance": [
+      "strong claims map to executable evidence"
+    ]
+  },
+  {
+    "id": "R18-CI",
+    "phase": "R14",
+    "title": "Clean runtime/CI proof",
+    "depends_on": [
+      "R12-E2E",
+      "R16-REDTEAM"
+    ],
+    "acceptance": [
+      "pyright",
+      "wheel install",
+      "Docker run health",
+      "MCP protocol"
+    ]
+  },
+  {
+    "id": "R19-SELFCERT",
+    "phase": "R15",
+    "title": "QDW full self-review and certificate",
+    "depends_on": [
+      "R17-CLAIMS",
+      "R18-CI"
+    ],
+    "acceptance": [
+      "zero blockers",
+      "exact SHA",
+      "independent certifier",
+      "review certificate issued"
+    ]
+  }
+]

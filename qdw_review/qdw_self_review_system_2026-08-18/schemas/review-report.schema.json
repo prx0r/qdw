@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "repo_path",
+    "profile",
+    "modules",
+    "generated_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "qdw.review.v1"
+    },
+    "repo_path": {
+      "type": "string"
+    },
+    "git_sha": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profile": {
+      "type": "string"
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}
