@@ -80,8 +80,8 @@
 
 ## Known defects in donor
 
-1. **MCP false-green:** `mcp/server.py` has `global _system` after first use. CI check imported from installed `mcp` package, not from project.
-2. **DB migration not versioned:** `migrate()` applies `CREATE TABLE IF NOT EXISTS` but never inserts a version row.
-3. **API hides failure:** `/ideas` catches `OperationalError` and returns `"count": 0` instead of typed error.
-4. **No route registry:** `VentureLabSystem` defaults to empty routes.
-5. **sys.path hacks:** Every module uses `sys.path.insert(0, ...)` for imports.
+1. **MCP false-green:** `mcp/server.py` has `global _system` after first use. CI check imported from installed `mcp` package, not from project. **CAUGHT AND FIXED in QDW: `global` moved before first use.**
+2. **DB migration not versioned:** `migrate()` applies `CREATE TABLE IF NOT EXISTS` but never inserts a version row. **FIXED: QDW uses numbered migrations with `schema_versions` table.**
+3. **API hides failure:** `/ideas` catches `OperationalError` and returns `"count": 0` instead of typed error. **FIXED: QDW `/health` returns 503 on DB failure.**
+4. **No route registry:** `VentureLabSystem` defaults to empty routes. **FIXED: QDW `QDWSystem` injects real registries.**
+5. **sys.path hacks:** Every module uses `sys.path.insert(0, ...)` for imports. **FIXED: QDW uses `src/` layout, installed package.**
