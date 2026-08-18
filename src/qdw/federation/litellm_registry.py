@@ -45,7 +45,7 @@ class LiteLLMRegistry:
         if pricing_path is None:
             # Try to find LiteLLM's pricing data relative to project root
             project_root = Path(__file__).resolve().parents[3]
-            pricing_path = project_root / "worktrees" / "litellm" / "model_prices_and_context_window.json"
+            pricing_path = Path("/mnt/HC_Volume_106427611/litellm") / "model_prices_and_context_window.json"
         self.pricing_path = Path(pricing_path)
         self._models: dict[str, ModelPricing] = {}
         self._loaded = False
