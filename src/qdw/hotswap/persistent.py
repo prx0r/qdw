@@ -1,6 +1,7 @@
 """Persistent HotSwap state — route posteriors and quota state in SQLite.
 
 BanditStore now persists to the database. Learning survives restarts.
+Route definitions are persisted to the database so they survive restarts.
 """
 
 from __future__ import annotations
@@ -69,3 +70,54 @@ class PersistentBanditStore:
                 DO UPDATE SET alpha=excluded.alpha, beta=excluded.beta, updated_at=excluded.updated_at""",
                 (cell_id, route_id, posterior.alpha, posterior.beta, utc_now()),
             )
+
+    def save_route(self, route: Route) -> None:
+        """Persist a route definition so it survives restarts."""
+        with self.db.tx(immediate=True) as con:
+            con.execute(
+                """INSERT INTO route_definitions(
+                    route_id, model_id, provider_id, active, free,
+                    input_per_m, output_per_m, context_tokens,
+                    tools_supported, json_supported, reliability, latency_ms,
+                    cheapest_paid_replacement_cost, created_at, updated_at
+                ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                ON CONFLICT(route_id) DO UPDATE SET
+                    model_id=excluded.model_id, provider_id=excluded.provider_id,
+                    active=excluded.active, free=excluded.free,
+                    input_per_m=excluded.input_per_m, output_per_m=excluded.output_per_m,
+                    context_tokens=excluded.context_tokens,
+                    tools_supported=excluded.tools_supported, json_supported=excluded.json_supported,
+                    reliability=excluded.reliability, latency_ms=excluded.latency_ms,
+                    cheapest_paid_replacement_cost=excluded.cheapest_paid_replacement_cost,
+                    updated_at=excluded.updated_at""",
+                (route.route_id, route.model_id, route.provider_id,
+                 1 if route.active else 0, 1 if route.free else 0,
+                 route.input_per_m, route.output_per_m, route.context_tokens,
+                 1 if route.tools_supported else (0 if route.tools_supported is not None else None),
+                 1 if route.json_supported else (0 if route.json_supported is not None else None),
+                 route.reliability, route.latency_ms, route.cheapest_paid_replacement_cost,
+                 utc_now(), utc_now()),
+            )
+
+    def load_routes(self) -> list[Route]:
+        """Load persisted route definitions from the database."""
+        with self.db.connect() as con:
+            rows = con.execute("SELECT * FROM route_definitions ORDER BY route_id").fetchall()
+        return [
+            Route(
+                route_id=r["route_id"],
+                model_id=r["model_id"],
+                provider_id=r["provider_id"],
+                active=bool(r["active"]),
+                free=bool(r["free"]),
+                input_per_m=r["input_per_m"],
+                output_per_m=r["output_per_m"],
+                context_tokens=r["context_tokens"],
+                tools_supported=bool(r["tools_supported"]) if r["tools_supported"] is not None else None,
+                json_supported=bool(r["json_supported"]) if r["json_supported"] is not None else None,
+                reliability=r["reliability"],
+                latency_ms=r["latency_ms"],
+                cheapest_paid_replacement_cost=r["cheapest_paid_replacement_cost"] or 0.001,
+            )
+            for r in rows
+        ]

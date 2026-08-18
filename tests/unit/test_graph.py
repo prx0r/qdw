@@ -96,12 +96,26 @@ class TestWorkGraph:
     def test_fail_retryable(self, tmp_path: Path) -> None:
         store = self._make_store(tmp_path)
         gid = store.create_graph()
-        store.add_node(gid, "task", "A", {}, max_retries=2)
+        store.add_node(gid, "task", "A", {}, max_retries=3)
         store.refresh_ready(gid)
         claimed = store.claim_ready("w1")
         store.start(claimed["node_id"], "w1")
+        # First fail: attempt_count=1 < max_retries=3 → RETRY_WAIT
         state = store.fail(claimed["node_id"], {"error": "timeout"}, retryable=True)
         assert state == "RETRY_WAIT"
+        # Claim again (attempt_count becomes 2) and fail again
+        store.refresh_ready(gid)
+        claimed2 = store.claim_ready("w1")
+        store.start(claimed2["node_id"], "w1")
+        state2 = store.fail(claimed2["node_id"], {"error": "timeout"}, retryable=True)
+        assert state2 == "RETRY_WAIT"
+        # Claim again (attempt_count becomes 3) and fail again
+        store.refresh_ready(gid)
+        claimed3 = store.claim_ready("w1")
+        store.start(claimed3["node_id"], "w1")
+        state3 = store.fail(claimed3["node_id"], {"error": "timeout"}, retryable=True)
+        # attempt_count=3 >= max_retries=3 → FAILED
+        assert state3 == "FAILED"
 
     def test_fail_non_retryable(self, tmp_path: Path) -> None:
         store = self._make_store(tmp_path)

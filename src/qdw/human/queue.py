@@ -46,7 +46,8 @@ class HumanQueue:
                             "estimated_cost_usd": estimated_cost_usd})
         return aid
 
-    def _transition(self, action_id: str, new_status: str, payload: dict[str, Any] | None = None) -> None:
+    def _transition(self, action_id: str, new_status: str, payload: dict[str, Any] | None = None,
+                    *, actor_id: str) -> None:
         with self.db.tx(immediate=True) as con:
             r = con.execute("SELECT status FROM human_actions WHERE action_id=?", (action_id,)).fetchone()
             if not r:
@@ -63,19 +64,20 @@ class HumanQueue:
                     """UPDATE human_actions SET status=?,completed_at=?,result_json=? WHERE action_id=?""",
                     (new_status, utc_now(), canonical_json(payload or {}).decode(), action_id),
                 )
-        self.ledger.append(f"human.{new_status.lower()}", "human_action", action_id, payload or {})
+        self.ledger.append(f"human.{new_status.lower()}", "human_action", action_id,
+                           {"actor_id": actor_id, **(payload or {})})
 
-    def approve(self, action_id: str, decision: dict[str, Any] | None = None):
-        self._transition(action_id, "APPROVED", decision)
+    def approve(self, action_id: str, actor_id: str, decision: dict[str, Any] | None = None):
+        self._transition(action_id, "APPROVED", decision, actor_id=actor_id)
 
-    def decline(self, action_id: str, decision: dict[str, Any] | None = None):
-        self._transition(action_id, "DECLINED", decision)
+    def decline(self, action_id: str, actor_id: str, decision: dict[str, Any] | None = None):
+        self._transition(action_id, "DECLINED", decision, actor_id=actor_id)
 
-    def complete(self, action_id: str, result: dict[str, Any] | None = None):
-        self._transition(action_id, "COMPLETED", result)
+    def complete(self, action_id: str, actor_id: str, result: dict[str, Any] | None = None):
+        self._transition(action_id, "COMPLETED", result, actor_id=actor_id)
 
-    def cancel(self, action_id: str, reason: dict[str, Any] | None = None):
-        self._transition(action_id, "CANCELLED", reason)
+    def cancel(self, action_id: str, actor_id: str, reason: dict[str, Any] | None = None):
+        self._transition(action_id, "CANCELLED", reason, actor_id=actor_id)
 
     def pending(self) -> list[dict]:
         with self.db.connect() as con:

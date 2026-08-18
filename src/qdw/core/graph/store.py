@@ -68,6 +68,9 @@ class WorkGraphStore:
                 "INSERT OR IGNORE INTO work_edges(graph_id, from_node, to_node, relation) VALUES(?,?,?,?)",
                 (graph_id, from_node, to_node, relation),
             )
+        cycles = self.validate_dag(graph_id)
+        if cycles:
+            raise ValueError(f"adding edge creates cycle: {cycles[0]}")
         self.ledger.append(
             "edge.created", "work_graph", graph_id,
             {"from_node": from_node, "to_node": to_node, "relation": relation},
@@ -192,6 +195,8 @@ class WorkGraphStore:
         lease_until = (now + timedelta(seconds=lease_seconds)).isoformat().replace("+00:00", "Z")
         now_s = now.isoformat().replace("+00:00", "Z")
 
+        # Collect inside a single transaction, then ledger after commit
+
         # 1. Fetch all READY nodes
         with self.db.connect() as con:
             params: list[Any] = []
@@ -243,6 +248,7 @@ class WorkGraphStore:
             claimed = dict(con.execute(
                 "SELECT * FROM work_nodes WHERE node_id=?", (chosen.node_id,)
             ).fetchone())
+        # Ledger append happens AFTER the state transaction commits
         self.ledger.append(
             "node.claimed", "work_node", claimed["node_id"],
             {"worker_id": worker_id, "lease_until": lease_until},
@@ -292,7 +298,7 @@ class WorkGraphStore:
             ).fetchone()
             if not n:
                 raise KeyError(node_id)
-            state = "RETRY_WAIT" if retryable and n["attempt_count"] <= n["max_retries"] else "FAILED"
+            state = "FAILED" if n["attempt_count"] >= n["max_retries"] else ("RETRY_WAIT" if retryable else "FAILED")
             con.execute(
                 """UPDATE work_nodes SET state=?, result_json=?, lease_owner=NULL, lease_until=NULL, updated_at=?
                 WHERE node_id=?""",

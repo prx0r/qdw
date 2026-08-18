@@ -3,11 +3,21 @@
 from __future__ import annotations
 
 import json
+from enum import StrEnum
 from typing import Any
 
 from qdw.core import canonical_json, new_id, utc_now
 from qdw.core.db import Database
 from qdw.core.ledger.events import Ledger
+
+
+class OutcomeSource(StrEnum):
+    """Valid sources for outcome events."""
+    MANUAL = "manual"
+    ANALYTICS = "analytics"
+    API = "api"
+    OBSERVATION = "observation"
+    EXPERIMENT = "experiment"
 
 
 class ProductRegistry:
@@ -18,6 +28,8 @@ class ProductRegistry:
     def create(self, name: str, slug: str, product_type: str, *, idea_id: str | None = None,
                factory_id: str | None = None, factory_version: str | None = None,
                build_run_id: str | None = None) -> str:
+        """Create a product. factory_id/version are optional — products can exist
+        without factory lineage (e.g. manually created products)."""
         pid = new_id("prod")
         now = utc_now()
         with self.db.tx(immediate=True) as con:
@@ -101,6 +113,12 @@ class ProductRegistry:
                 evidence: dict[str, Any] | None = None, occurred_at: str | None = None) -> str:
         if value is None and text_value is None:
             raise ValueError("outcome requires value or text")
+        # Validate source against known OutcomeSource values
+        try:
+            OutcomeSource(source)
+        except ValueError:
+            valid = [s.value for s in OutcomeSource]
+            raise ValueError(f"invalid source '{source}'; must be one of {valid}") from None
         oid = new_id("outcomeevent")
         with self.db.tx(immediate=True) as con:
             con.execute(

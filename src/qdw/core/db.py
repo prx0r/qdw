@@ -23,7 +23,7 @@ class Database:
     def migrate(self, migrations_dir: str | Path | None = None) -> None:
         """Apply all pending numbered migrations."""
         from qdw.core.migrations import migrate_all
-        migrate_all(self)
+        migrate_all(self, migrations_dir=migrations_dir)
 
     @contextmanager
     def tx(self, immediate: bool = False) -> Iterator[sqlite3.Connection]:

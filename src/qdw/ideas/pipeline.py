@@ -50,6 +50,13 @@ class IdeaReviewPipeline:
 
     def review(self, idea_id: str, stage: str, *, passed: bool, score: dict[str, Any],
                reason_codes: list[str], snapshot: dict[str, Any]) -> ReviewDecision:
+        """Record a review decision for an idea.
+
+        API contract: the ``passed`` parameter is the verdict from the reviewer
+        (human or agent). The pipeline enforces stage ordering and status
+        transitions — it does not verify the truth of the verdict itself.
+        This is by design: the reviewer is the authority on pass/fail.
+        """
         expected = self.next_stage(idea_id)
         if stage != expected:
             raise ValueError(f"expected stage {expected}, got {stage}")

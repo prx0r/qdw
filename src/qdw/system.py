@@ -34,7 +34,7 @@ class QDWSystem:
         self.bandits = PersistentBanditStore(self.db)
         self.quotas = QuotaLedger()
         self.router = HotSwapRouter(bandits=self.bandits, quotas=self.quotas)
-        self.routes: list[Route] = []
+        self.routes: list[Route] = self.bandits.load_routes()
 
         # Factories
         self.factories = FactoryRegistry(self.db)
@@ -44,8 +44,9 @@ class QDWSystem:
         self.learning = FactoryLearning(self.db)
 
     def register_route(self, route: Route) -> None:
-        """Register a route for HotSwap routing."""
+        """Register a route for HotSwap routing. Persists to database."""
         self.routes.append(route)
+        self.bandits.save_route(route)
 
     def route_task(self, task_kind: str, requirements: dict[str, Any] | None = None) -> dict[str, Any]:
         """Route a task through HotSwap using registered routes."""

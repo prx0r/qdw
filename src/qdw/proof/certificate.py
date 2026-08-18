@@ -98,8 +98,21 @@ class BuildCertificateBuilder:
             Path(output_path).write_text(json.dumps(cert, indent=2), encoding="utf-8")
         return cert
 
-    def verify_certificate(self, cert_path: str | Path) -> tuple[bool, str]:
-        """Verify a certificate's integrity. Returns (ok, reason)."""
+    def verify_certificate(
+        self,
+        cert_path: str | Path,
+        *,
+        revalidate: bool = True,
+        timeout: int = 300,
+    ) -> tuple[bool, str]:
+        """Verify a certificate's integrity and optionally revalidate evidence.
+
+        When revalidate=True, re-runs all required commands and required_negative_tests
+        from the certificate, then verifies that:
+        - commands still pass (exit_code == 0)
+        - negative tests still fail (exit_code != 0)
+        - artifact hashes still match
+        """
         cert = json.loads(Path(cert_path).read_text(encoding="utf-8"))
         stored_hash = cert.pop("certificate_hash", None)
         recomputed = hash_object(cert)
@@ -107,4 +120,45 @@ class BuildCertificateBuilder:
             return False, "certificate_hash mismatch"
         if cert.get("status") != "PROVEN":
             return False, f"status is {cert.get('status')}, not PROVEN"
+
+        if not revalidate:
+            return True, "ok"
+
+        # Re-run required commands
+        required_commands = cert.get("required_commands", [])
+        required_negative_tests = cert.get("required_negative_tests", [])
+        cwd = cert.get("cwd", ".")
+
+        for cmd in required_commands:
+            receipt = self.runner.run(
+                task_id=cert.get("task_id", "revalidation"),
+                argv=cmd,
+                cwd=cwd,
+                timeout=timeout,
+            )
+            if receipt.exit_code != 0:
+                return False, f"revalidation failed: command {cmd} returned {receipt.exit_code}"
+
+        for cmd in required_negative_tests:
+            receipt = self.runner.run(
+                task_id=cert.get("task_id", "revalidation"),
+                argv=cmd,
+                cwd=cwd,
+                timeout=timeout,
+            )
+            if receipt.exit_code == 0:
+                return False, f"revalidation failed: negative test {cmd} passed (expected failure)"
+
+        # Verify artifact hashes still match
+        for art in cert.get("artifacts", []):
+            path = Path(art["path"])
+            if not path.exists():
+                return False, f"revalidation failed: artifact {path} no longer exists"
+            current_hash = hashlib.sha256(path.read_bytes()).hexdigest()
+            if current_hash != art["sha256"]:
+                return False, (
+                    f"revalidation failed: artifact {path} hash changed "
+                    f"(expected {art['sha256']}, got {current_hash})"
+                )
+
         return True, "ok"

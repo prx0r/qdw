@@ -23,6 +23,9 @@ jobs:
       - name: Lint
         run: ruff check src/qdw tests
 
+      - name: Type check
+        run: pyright src/qdw
+
       - name: Test guard (anti-cheat scan)
         run: python -c "from qdw.proof.test_guard import scan_test_tree; findings=scan_test_tree('tests'); print(f'{len(findings)} findings'); [print(f'  {f.path}:{f.line} {f.code}') for f in findings]; exit(1 if findings else 0)"
 

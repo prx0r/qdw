@@ -98,14 +98,16 @@ class IdeaService:
              revisit_triggers: list[dict[str, Any]], next_review_at: str | None = None) -> str:
         cid = new_id("grave")
         with self.db.tx(immediate=True) as con:
+            existing = con.execute(
+                "SELECT cemetery_id FROM cemetery_entries WHERE idea_id=?", (idea_id,)
+            ).fetchone()
+            if existing:
+                raise ValueError(f"idea {idea_id} is already buried (cemetery_id={existing['cemetery_id']})")
             if not con.execute("SELECT 1 FROM ideas WHERE idea_id=?", (idea_id,)).fetchone():
                 raise KeyError(idea_id)
             con.execute(
                 """INSERT INTO cemetery_entries(cemetery_id,idea_id,reason_code,assumptions_json,
-                revisit_triggers_json,buried_at,next_review_at,status) VALUES(?,?,?,?,?,?,?,'DORMANT')
-                ON CONFLICT(idea_id) DO UPDATE SET reason_code=excluded.reason_code,
-                assumptions_json=excluded.assumptions_json,revisit_triggers_json=excluded.revisit_triggers_json,
-                buried_at=excluded.buried_at,next_review_at=excluded.next_review_at,status='DORMANT',revived_at=NULL""",
+                revisit_triggers_json,buried_at,next_review_at,status) VALUES(?,?,?,?,?,?,?,'DORMANT')""",
                 (cid, idea_id, reason_code, canonical_json(assumptions).decode(),
                  canonical_json(revisit_triggers).decode(), utc_now(), next_review_at),
             )

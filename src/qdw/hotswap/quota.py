@@ -26,6 +26,10 @@ class Quota:
 
 
 class QuotaLedger:
+    # Quota state is process-local (in-memory dict) by design.
+    # Quota tracking is per-session: each routing session has its own quota reservations
+    # that reset when the session ends. Persisting quota across restarts would cause
+    # stale reservations to block legitimate requests. For v1, process-local is correct.
     def __init__(self):
         self.by_route: dict[str, list[Quota]] = {}
 

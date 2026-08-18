@@ -79,7 +79,7 @@ def migrate(db: Database, migrations_dir: str | Path | None = None) -> list[int]
     return newly_applied
 
 
-def migrate_all(db: Database) -> None:
+def migrate_all(db: Database, migrations_dir: str | Path | None = None) -> None:
     """Ensure schema_versions exists with content_hash column, then apply pending."""
     with db.connect() as con:
         con.executescript("""
@@ -89,4 +89,4 @@ def migrate_all(db: Database) -> None:
                 content_hash TEXT
             );
         """)
-    migrate(db)
+    migrate(db, migrations_dir=migrations_dir)

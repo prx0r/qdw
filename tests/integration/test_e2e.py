@@ -107,7 +107,7 @@ class TestE2EFlow:
         assert product_id.startswith("prod")
 
         # 7. Record outcome
-        outcome_id = products.outcome(product_id, "users", value=42.0, source="test")
+        outcome_id = products.outcome(product_id, "users", value=42.0, source="manual")
         assert outcome_id.startswith("outcomeevent")
 
         # 8. Verify ledger chain
@@ -152,8 +152,8 @@ class TestE2EFlow:
         )
         assert action_id.startswith("human")
 
-        hq.approve(action_id, {"approved_by": "admin"})
-        hq.complete(action_id, {"purchased": True})
+        hq.approve(action_id, actor_id="admin", decision={"approved_by": "admin"})
+        hq.complete(action_id, actor_id="admin", result={"purchased": True})
 
         pending = hq.pending()
         assert len(pending) == 0
