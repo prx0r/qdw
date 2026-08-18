@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import shlex
 import sys
 from pathlib import Path
 
@@ -23,7 +24,7 @@ def cmd_verify(args: list[str]) -> int:
 
     if commands:
         for cmd in commands:
-            argv = cmd.split()
+            argv = shlex.split(cmd)
             receipt = runner.run_command(argv)
             print(f"  {'PASS' if receipt.status == 'PASS' else 'FAIL'}: {cmd}")
             if receipt.status == "FAIL":
