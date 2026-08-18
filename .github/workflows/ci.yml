@@ -23,14 +23,23 @@ jobs:
       - name: Lint
         run: ruff check src/qdw tests
 
+      - name: Test guard (anti-cheat scan)
+        run: python -c "from qdw.proof.test_guard import scan_test_tree; findings=scan_test_tree('tests'); print(f'{len(findings)} findings'); [print(f'  {f.path}:{f.line} {f.code}') for f in findings]; exit(1 if findings else 0)"
+
       - name: Unit tests
-        run: pytest tests/unit tests/contract -q --junitxml=.qdw/ci/unit.xml
+        run: pytest tests/unit -q --tb=short
+
+      - name: Contract tests
+        run: pytest tests/contract -q --tb=short
 
       - name: Factory fixtures
-        run: pytest tests/factories -q --junitxml=.qdw/ci/factories.xml
+        run: pytest tests/factories -q --tb=short
 
       - name: Property/adversarial tests
-        run: pytest tests/adversarial -q --junitxml=.qdw/ci/adversarial.xml
+        run: pytest tests/adversarial -q --tb=short
+
+      - name: Integration E2E
+        run: pytest tests/integration -q --tb=short
 
       - name: CLI smoke
         run: python -m qdw.cli verify CI-SMOKE "python3 -c 'print(\"ok\")'"
@@ -41,7 +50,34 @@ jobs:
           python -c "from qdw.interfaces.api import app"
           python -c "from qdw.interfaces.mcp_server import mcp"
           python -c "from qdw.hotswap.router import HotSwapRouter"
+          python -c "from qdw.hotswap.persistent import PersistentBanditStore"
           python -c "from qdw.agenthub.resolver import resolve_architecture"
+          python -c "from qdw.world.store import WorldStore"
+          python -c "from qdw.intelligence.painfinder import PainFinder"
+          python -c "from qdw.ideas.service import IdeaService"
+          python -c "from qdw.human.queue import HumanQueue"
+          python -c "from qdw.products.registry import ProductRegistry"
+          python -c "from qdw.proof.certificate import BuildCertificateBuilder"
+
+      - name: Migration test
+        run: |
+          python -c "
+          from qdw.core.db import Database
+          from qdw.core.migrations import applied_versions
+          import tempfile, os
+          db = Database(os.path.join(tempfile.mkdtemp(), 'test.db'))
+          db.migrate()
+          v = applied_versions(db)
+          assert 1 in v, 'migration 1 not applied'
+          assert 2 in v, 'migration 2 not applied'
+          db.migrate()
+          v2 = applied_versions(db)
+          assert v == v2, 'migrations not idempotent'
+          print(f'migrations OK: {sorted(v2)}')
+          "
 
       - name: Build certificate
         run: python scripts/build_certificate.py
+
+      - name: Docker build
+        run: docker build -t qdw:test .

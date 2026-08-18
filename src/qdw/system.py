@@ -15,7 +15,7 @@ from qdw.core.ledger.events import Ledger
 from qdw.core.portfolio.costs import CostLedger
 from qdw.core.portfolio.learning import FactoryLearning
 from qdw.factories.registry import FactoryRegistry
-from qdw.hotswap.bandit import BanditStore
+from qdw.hotswap.persistent import PersistentBanditStore
 from qdw.hotswap.quota import QuotaLedger
 from qdw.hotswap.router import HotSwapRouter
 from qdw.hotswap.types import Route
@@ -30,8 +30,8 @@ class QDWSystem:
         self.ledger = Ledger(self.db)
         self.graphs = WorkGraphStore(self.db, self.ledger)
 
-        # HotSwap (persistent state)
-        self.bandits = BanditStore()
+        # HotSwap (persistent state — survives restarts)
+        self.bandits = PersistentBanditStore(self.db)
         self.quotas = QuotaLedger()
         self.router = HotSwapRouter(bandits=self.bandits, quotas=self.quotas)
         self.routes: list[Route] = []
