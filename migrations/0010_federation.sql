@@ -164,3 +164,22 @@ CREATE TABLE IF NOT EXISTS deal_routes (
     source TEXT NOT NULL,
     created_at TEXT NOT NULL
 );
+
+-- Forge leases and invocations
+CREATE TABLE IF NOT EXISTS forge_leases (
+    lease_id TEXT PRIMARY KEY,
+    asset_id TEXT NOT NULL,
+    version TEXT NOT NULL,
+    capability TEXT NOT NULL,
+    token TEXT NOT NULL UNIQUE,
+    max_spend_usd REAL,
+    created_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS forge_invocation_certs (
+    invocation_id TEXT NOT NULL,
+    certificate_id TEXT NOT NULL,
+    certificate_hash TEXT NOT NULL,
+    status TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
