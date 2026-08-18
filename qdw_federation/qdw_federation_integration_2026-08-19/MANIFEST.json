@@ -1,0 +1,860 @@
+{
+  "name": "qdw_federation_integration_2026-08-19",
+  "status": "PACK_VALIDATED",
+  "files_excluding_manifest": 165,
+  "reference_tests": 25,
+  "source_pins": {
+    "qdw": {
+      "repo": "prx0r/qdw",
+      "sha": "cccf6e3ca5f4704eb1c047965d3a3716dec8870b",
+      "role": "canonical economic/orchestration authority"
+    },
+    "qdw-forge": {
+      "repo": "prx0r/qdw-forge",
+      "sha": "2037cdb93458278bdc4807be8e84111cce72fb10",
+      "role": "capability registry, leases and invocation execution exchange"
+    },
+    "qdw-sandbox": {
+      "repo": "prx0r/qdw-sandbox",
+      "sha": "5e4278c8eeed008bcf11deff288b19110379ece0",
+      "role": "incubator/donor for Estate, LifeGit, human, data-rights and experimental policies"
+    },
+    "gitgoblin": {
+      "repo": "prx0r/gitgoblin",
+      "sha": "f7bf8963ee2600d9377a196ff0fd2f32ce5905b3",
+      "role": "frontier technical intelligence oracle"
+    },
+    "dell": {
+      "repo": "prx0r/dell",
+      "sha": "8aacd297fff0f0c7f48b36ac85ac415deaa7bd68",
+      "role": "model/provider/deal evidence and resource-intelligence oracle"
+    }
+  },
+  "files": [
+    {
+      "path": "JSON_CHECK.json",
+      "bytes": 3708,
+      "sha256": "e059a9c721d7ca8dd9f13429e88ceb9614f0b5047228199559ce9c13275e47d9"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1958,
+      "sha256": "d87bbf746abbea674881d968ed664e65ba97ff3168078e11133c7448fcd6ada9"
+    },
+    {
+      "path": "SYNTAX_CHECK.json",
+      "bytes": 4718,
+      "sha256": "e9eb650a049abdc46cac173267d1a499fc7711d0be961549fefae197a4897f23"
+    },
+    {
+      "path": "VALIDATION_SUMMARY.json",
+      "bytes": 3292,
+      "sha256": "bdfd352a0224a39a7e03f058efd041dede204eead0d1bd780fe871abe8ef7f5b"
+    },
+    {
+      "path": "acceptance/FED-000-PINS.json",
+      "bytes": 389,
+      "sha256": "a1179e7fb783ee12902dfd68f23dc36b7726603948ce3ea7b0bf4432886f54a2"
+    },
+    {
+      "path": "acceptance/FED-001-AUTHORITY.json",
+      "bytes": 605,
+      "sha256": "9a5fe8c468728ebe4ac77be4f0c3c7252ec528c08615251b63438bf062f297bc"
+    },
+    {
+      "path": "acceptance/FED-002-GITGOBLIN.json",
+      "bytes": 485,
+      "sha256": "da6a5896452579c840955c27af1213df2405eadc1958326dddd7f7ae01f7fbaf"
+    },
+    {
+      "path": "acceptance/FED-003-DELL.json",
+      "bytes": 486,
+      "sha256": "37db919d06e8d7dfe26c2c9ae1082e02c104f45da5db73f565ada16b3cd82b9c"
+    },
+    {
+      "path": "acceptance/FED-004-FORGE.json",
+      "bytes": 512,
+      "sha256": "ddc9c6977dc965d81b132fe13b3c59661d277f4971004403b3eab71a267b5068"
+    },
+    {
+      "path": "acceptance/FED-005-KERNEL.json",
+      "bytes": 535,
+      "sha256": "84e98ef07ec29d4ec8aaa6f8d1c626f8d57a0368ab4dbabf85c384b5ae81c4d5"
+    },
+    {
+      "path": "acceptance/FED-006-REPOS.json",
+      "bytes": 545,
+      "sha256": "e92243c690f0483e3edacc458651b5f18eec01dab42d2e1c109dc9ccc6cebd6e"
+    },
+    {
+      "path": "acceptance/FED-007-V10.json",
+      "bytes": 482,
+      "sha256": "b316949c9e31a0a8e43798e161d72147e9b2af7c15c4530db1f9018d36719a37"
+    },
+    {
+      "path": "acceptance/FED-008-UPGRADE.json",
+      "bytes": 520,
+      "sha256": "0723ae3ac8e143c8a3aeee01f97bf39072088e654dee37419d5df73d1015dc60"
+    },
+    {
+      "path": "acceptance/INTEGRATION_EXIT_GATE.json",
+      "bytes": 1447,
+      "sha256": "706cf82ea7372223f545e7267f8c5f0d0760b6628fd69d0824dd4311467b5254"
+    },
+    {
+      "path": "agent/MASTER_RECONCILIATION_PROMPT.md",
+      "bytes": 16003,
+      "sha256": "67fb104d5db98a5b604fab2ecb8f0df6a86d5b7091a632aff15f04f5be1dd157"
+    },
+    {
+      "path": "cross_repo_patches/dell/INTEGRATE.md",
+      "bytes": 1474,
+      "sha256": "b8459a614ba19edfbd7103019d4b6c979efe316fb182b2dadaee6265bee71857"
+    },
+    {
+      "path": "cross_repo_patches/dell/app/federation.py",
+      "bytes": 3082,
+      "sha256": "1cbe515067379a13ea16b221d3c809f6b2f0c9ec38ef208307ee23a3903590bc"
+    },
+    {
+      "path": "cross_repo_patches/dell/tests/test_federation_contract.py",
+      "bytes": 584,
+      "sha256": "050d3387952d0a635db6c4a52cc56463269a57619b0e64839663bc91134a2c35"
+    },
+    {
+      "path": "cross_repo_patches/dell/tests/test_unknown_output_price.py",
+      "bytes": 420,
+      "sha256": "06692547efd575fca7d5c1f6343d9aef5219b36d93138c84798185e340e237fb"
+    },
+    {
+      "path": "cross_repo_patches/gitgoblin/INTEGRATE.md",
+      "bytes": 495,
+      "sha256": "cb61086b6dec34cde046803f21fc479e32190734d892fe2defe61b6e980a4fab"
+    },
+    {
+      "path": "cross_repo_patches/gitgoblin/gitgoblin/integrations/qdw.py",
+      "bytes": 2671,
+      "sha256": "27a5ee2247161b972561a4c0a2f0a1d68339f29cab2f447fa01e98d0f31fc335"
+    },
+    {
+      "path": "cross_repo_patches/gitgoblin/tests/test_qdw_federation_export.py",
+      "bytes": 117,
+      "sha256": "a4337eaec7b8077d558c328748600d38ad473e26cbf496e81528c18ecfecd3de"
+    },
+    {
+      "path": "cross_repo_patches/qdw-forge/INTEGRATE.md",
+      "bytes": 731,
+      "sha256": "34568e3ab1b524a7606e7134857faaaec3aa69577532cc99ff91ead8e5592a7c"
+    },
+    {
+      "path": "cross_repo_patches/qdw-forge/src/qdw_forge/federation.py",
+      "bytes": 2074,
+      "sha256": "06bca53bbd52d110b3581ba6d6192042beb5233cb2fbff5eeef331209d20a0cf"
+    },
+    {
+      "path": "cross_repo_patches/qdw-forge/src/qdw_forge/verification_v2.py",
+      "bytes": 1619,
+      "sha256": "3a6f39151237130a15752d57e559813e0bd2de2258023375c56197e8df9b8d47"
+    },
+    {
+      "path": "cross_repo_patches/qdw-forge/tests/test_federation_contract.py",
+      "bytes": 1018,
+      "sha256": "fcd586bfbca272aea3ed621ba795cb91ea4b30c34b6fda30ef5378a1d929264f"
+    },
+    {
+      "path": "cross_repo_patches/qdw-sandbox/INTEGRATE.md",
+      "bytes": 676,
+      "sha256": "b4fa63b3bd8fda57a45c16cd018b10cd16ceac9481cb11db6f0ee9629c987be6"
+    },
+    {
+      "path": "cross_repo_patches/qdw-sandbox/src/sandbox/estate/federation/graduation.py",
+      "bytes": 1047,
+      "sha256": "f117deb705bf64145db77b7085ba0f1ce53f02d3c81075e8241dd68b65e2aa6d"
+    },
+    {
+      "path": "cross_repo_patches/qdw-sandbox/tests/test_federation_graduation.py",
+      "bytes": 322,
+      "sha256": "1aef8ece1a78827457c155739dce1614ea43ae6784168bbe120a40307c125e1f"
+    },
+    {
+      "path": "docs/00_FEDERATED_ARCHITECTURE.md",
+      "bytes": 3997,
+      "sha256": "221426378588970e11ca52aff2e8487df20b2e90fa2396b2e05bbd12ad379970"
+    },
+    {
+      "path": "docs/01_AUTHORITY_MATRIX.md",
+      "bytes": 2834,
+      "sha256": "72b45d2d609b4f6e3307f812be86317964bd95e4e7727c4ceb7eb5f225b0b1e9"
+    },
+    {
+      "path": "docs/02_REUSE_GRADUATE_RETIRE_MATRIX.md",
+      "bytes": 3128,
+      "sha256": "4e7625e53593b315639a4ab01435000a280ad05a386fc019e299f31149738d6c"
+    },
+    {
+      "path": "docs/03_SHARED_PROTOCOL.md",
+      "bytes": 1521,
+      "sha256": "d6ce8d9e149d6f05ce6b42039460118653f9506e66a552610340a28999a8bbd2"
+    },
+    {
+      "path": "docs/04_ROUTING_RECONCILIATION.md",
+      "bytes": 2365,
+      "sha256": "145548e5981e9b0abdefa4eaeb52e37f2565f9412594cac0bf0d9ae143c761a4"
+    },
+    {
+      "path": "docs/05_VERIFICATION_TRUST.md",
+      "bytes": 1293,
+      "sha256": "caff38a8d84fa56b15854a72fc65cb943f2304381467b91cb3ff0ea92f0eeca6"
+    },
+    {
+      "path": "docs/06_GITGOBLIN_INTELLIGENCE.md",
+      "bytes": 1040,
+      "sha256": "cd23548fd975f6e1a8643c9eed580c3de92b9f87da7ff4ca9d03ac95ab6692bd"
+    },
+    {
+      "path": "docs/07_DELL_RESOURCE_ORACLE.md",
+      "bytes": 1084,
+      "sha256": "8dc140a131263f9cc9972df398a623ebb534c1169f80b4eb1f624abf10722ed2"
+    },
+    {
+      "path": "docs/08_FORGE_EXECUTION_EXCHANGE.md",
+      "bytes": 1363,
+      "sha256": "3ecdb6c3563476152b823567e8d3d89bed51a54b55c45dcec91816fc99bbbdf5"
+    },
+    {
+      "path": "docs/09_SANDBOX_GRADUATION.md",
+      "bytes": 1656,
+      "sha256": "ce415250cbe5b3d7eaec44583e2a03c81e9ff5c8f6943485cb9ac00d692de496"
+    },
+    {
+      "path": "docs/10_MULTI_REPO_CI.md",
+      "bytes": 1014,
+      "sha256": "9d0b3075dd788d983b328bee54e474eeac627f6131db2be681c8ad81a640f5e9"
+    },
+    {
+      "path": "docs/11_FAILURE_SEMANTICS.md",
+      "bytes": 470,
+      "sha256": "60e790fef81e1b23477af4a39114522ef9b20434ad16bb41fd399c87a3237b31"
+    },
+    {
+      "path": "docs/12_IDENTITY_AND_PROVENANCE.md",
+      "bytes": 637,
+      "sha256": "ecf9ab1922b1a0ae54b8d542197e02fdedd9fac58be7747f5ffcb7c6ed1f05f6"
+    },
+    {
+      "path": "docs/13_SECURITY_BOUNDARIES.md",
+      "bytes": 752,
+      "sha256": "b2e9c66686f5362573a1623062f4a0bf37cf3b25cc88edca29aef30ab90e1110"
+    },
+    {
+      "path": "docs/14_FUTURE_REPOS.md",
+      "bytes": 638,
+      "sha256": "366cfbf87ce4e8cee69fdecd29165fc312be8450e5310b52ae5c89d9f8ccce34"
+    },
+    {
+      "path": "docs/15_SOURCE_PEER_REVIEW.md",
+      "bytes": 3636,
+      "sha256": "367ab0a7eda8cbf486caef611576fb5e9d813a65e6e66e3763769398ae11c7e1"
+    },
+    {
+      "path": "integration/API_CONTRACTS.md",
+      "bytes": 959,
+      "sha256": "0bbc29b7288cc7ae47d5e2b9d28b5b2edd82f658728d241f8774bc4326397dbb"
+    },
+    {
+      "path": "integration/CONFIG.md",
+      "bytes": 594,
+      "sha256": "3ba8c8c84c4866d8fff329f0db18423cd3be8a2c586bf9d76c7b66a0e5ed946e"
+    },
+    {
+      "path": "integration/PHASES.md",
+      "bytes": 1582,
+      "sha256": "9840c7fdfa741454e9292e689bb055d140e7d4b0e2ae5f9e2d589faa6cfe08f7"
+    },
+    {
+      "path": "integration/TEST_MATRIX.json",
+      "bytes": 1723,
+      "sha256": "e987dc380c35c75d250cb3ca9c57f7e31ddcccd1a54709977b12ff5a8a41a828"
+    },
+    {
+      "path": "manifests/contractors/README.md",
+      "bytes": 237,
+      "sha256": "f067fd2eda21ac08c745a41b51b67f32563542cd5a63a5800ec65b95609c912b"
+    },
+    {
+      "path": "manifests/contractors/federation.authority-auditor.json",
+      "bytes": 270,
+      "sha256": "eb6d5ef83229a4f5d797d29943562c4c7b937d05a91e593568de732b3f8f6594"
+    },
+    {
+      "path": "manifests/contractors/federation.integrator.json",
+      "bytes": 336,
+      "sha256": "1ed6d026bd1d6b2bc402353f077f7cb0cc48895e1ae87135e5e8ae9c0a437baf"
+    },
+    {
+      "path": "manifests/contractors/federation.pin-upgrader.json",
+      "bytes": 286,
+      "sha256": "a427872322dd92d6cd520818f6875b1adcf0c50021a48d8d48130cc2337e6503"
+    },
+    {
+      "path": "manifests/contractors/federation.protocol-auditor.json",
+      "bytes": 284,
+      "sha256": "3cd8e297c1da3158baa65967cabfb22080eacd60e85ccca68b4dfac3e2cfc1ed"
+    },
+    {
+      "path": "manifests/contractors/federation.trust-redteam.json",
+      "bytes": 326,
+      "sha256": "258a568d7201b157a566d1e595e2891f74c9864ac2f522df73c4b1a445076204"
+    },
+    {
+      "path": "native/qdw/PATCH_HOTSWAP_ROUTE.md",
+      "bytes": 1311,
+      "sha256": "0d6d9fc3a0454559d97b4f8dc2cc061cad42bc44f78620e2d4faaa94c737de75"
+    },
+    {
+      "path": "native/qdw/PATCH_QDWSYSTEM.md",
+      "bytes": 1437,
+      "sha256": "59c5791dc9daf6aee1627fa32c07ca23b270564421222391bd3cc30f85902249"
+    },
+    {
+      "path": "native/qdw/migrations/0010_federation.sql",
+      "bytes": 6038,
+      "sha256": "4623bac68737108d07a0c90df0b00c1be68e26b323ceadc631756fb1e86b8fa4"
+    },
+    {
+      "path": "native/qdw/src/qdw/federation/candidates.py",
+      "bytes": 3935,
+      "sha256": "d2ada1e558ea38f9c9a47ff95b28b276d561e2940c488fe451d3b4d1911ce359"
+    },
+    {
+      "path": "native/qdw/src/qdw/federation/clients.py",
+      "bytes": 1895,
+      "sha256": "e2504698cdb4b0c14e0be787f01af1bc37f0f4ab1e4f61fbcc28a445341f4fdc"
+    },
+    {
+      "path": "native/qdw/src/qdw/federation/contracts.py",
+      "bytes": 2162,
+      "sha256": "2510bab48b8a2b575712ea24151614860aea51c226a0565631fd5a2507ed4496"
+    },
+    {
+      "path": "native/qdw/src/qdw/federation/dell_adapter.py",
+      "bytes": 2348,
+      "sha256": "0d6eb7e05013967ba96c1c23f5c94201ede78f27a9adc2a6805f6fc0e0fafac2"
+    },
+    {
+      "path": "native/qdw/src/qdw/federation/forge_adapter.py",
+      "bytes": 2426,
+      "sha256": "7481038db9e4100c0afff95322d2cc62ae93e9a8241733797ad3866671afafcc"
+    },
+    {
+      "path": "native/qdw/src/qdw/federation/gitgoblin_adapter.py",
+      "bytes": 3163,
+      "sha256": "cb704da6af208c130840ebcf318db80e745b7cb8db8fe3b2c4c6650c26cca07f"
+    },
+    {
+      "path": "native/qdw/src/qdw/federation/route_bindings.py",
+      "bytes": 2441,
+      "sha256": "d11e8ecfee0d0ff268d1453fbc7023ce1affb5d7c2559e478671476cfb7ac577"
+    },
+    {
+      "path": "native/qdw/src/qdw/federation/service.py",
+      "bytes": 2745,
+      "sha256": "fffb4901acd98d0adb8292be888b68c1e4833951f1ef2c9dc7f4c3b8ce24950e"
+    },
+    {
+      "path": "native/qdw/src/qdw/federation/store.py",
+      "bytes": 4333,
+      "sha256": "4145d49776531d16eaad866fb9b465e4b2b56bf7a1bb0294d04939d584630e6a"
+    },
+    {
+      "path": "native/qdw/tests/federation/test_authority.py",
+      "bytes": 531,
+      "sha256": "c54ee24dbf200606c3366f5ea8341425e31f4549de165bdd1bb9c5eff9e82c58"
+    },
+    {
+      "path": "native/qdw/tests/federation/test_certificate_subject.py",
+      "bytes": 603,
+      "sha256": "93ac8bac2935bb0811b4dd482e69884f343865836e5514d1053e07928797366a"
+    },
+    {
+      "path": "native/qdw/tests/federation/test_dell_semantics.py",
+      "bytes": 937,
+      "sha256": "61dd360055cb823b2bcbc5a465b761df3629371b1b227d20f6ac8d36c8e93030"
+    },
+    {
+      "path": "native/qdw/tests/federation/test_failure_semantics.py",
+      "bytes": 795,
+      "sha256": "3a128adc32c1da1b786a181d27749d3fd97ef139c1008ffd8d3f16a80d18139b"
+    },
+    {
+      "path": "native/qdw/tests/federation/test_learning_boundary.py",
+      "bytes": 636,
+      "sha256": "36b6a886182eb8191566cfd0cfade44a38fe04b2242ad5b4505d9ef466e2a0ee"
+    },
+    {
+      "path": "native/qdw/tests/federation/test_route_bridge.py",
+      "bytes": 471,
+      "sha256": "d81ff8fcd44eea289ac8e39ffd361ecd4a72e905c2db15f9a0fa9b5bcc521d57"
+    },
+    {
+      "path": "pins/REPOS.json",
+      "bytes": 882,
+      "sha256": "0a9e0fdfba6c335ef75c51c8eea34f9ec665ebddb3a0d56c3fc8ba923467775c"
+    },
+    {
+      "path": "qdw_review_extensions/formula.json",
+      "bytes": 469,
+      "sha256": "9f0e0eefdc6ee90805598df21e707d616dcc1aeb445aa02a9b322a2efd48b851"
+    },
+    {
+      "path": "qdw_review_extensions/manifests/review.cost-lineage.json",
+      "bytes": 451,
+      "sha256": "83619f85efdb07f3ab08d41cecc6738030d9dad4fa77b66c7d337684f95aa3d3"
+    },
+    {
+      "path": "qdw_review_extensions/manifests/review.external-freshness.json",
+      "bytes": 435,
+      "sha256": "b24dc45e46acef0542ba822cebfad96493b5d53c8f53179ce3f71047d1a58dd8"
+    },
+    {
+      "path": "qdw_review_extensions/manifests/review.external-trust.json",
+      "bytes": 466,
+      "sha256": "5a8b64a997f9073e26c0352f4f0de4571349e71ad87f8f0b908d7b89504c5490"
+    },
+    {
+      "path": "qdw_review_extensions/manifests/review.federation-authority.json",
+      "bytes": 475,
+      "sha256": "ac1a11e7caea37df2da64c1b8078044e6eb37a0490f69e374445901e13356e31"
+    },
+    {
+      "path": "qdw_review_extensions/manifests/review.learning-boundaries.json",
+      "bytes": 501,
+      "sha256": "edf9adbb8e6402f9fcf1409e7fe494f01e442cb3bdd82b83ca2487c36b7ae1e8"
+    },
+    {
+      "path": "qdw_review_extensions/manifests/review.protocol-compatibility.json",
+      "bytes": 479,
+      "sha256": "84e8982c8d9df33f42e235bfa34ce1b0e31388478e274191b487ebae9235856e"
+    },
+    {
+      "path": "qdw_review_extensions/manifests/review.sandbox-graduation.json",
+      "bytes": 478,
+      "sha256": "5f8ae140060b33b30104af780ce959818399aab65112df66668fb7eecc809b8e"
+    },
+    {
+      "path": "qdw_review_extensions/prompts/review.cost-lineage.md",
+      "bytes": 706,
+      "sha256": "8ad023b50785208965a4c12e7e7e6f334c07d9c795d42f8d23ab874b7ab66ce3"
+    },
+    {
+      "path": "qdw_review_extensions/prompts/review.external-freshness.md",
+      "bytes": 690,
+      "sha256": "e5edfdac2099ee07522ff5211e349f25fb3a6de8543610b43f13058e7da1b6bd"
+    },
+    {
+      "path": "qdw_review_extensions/prompts/review.external-trust.md",
+      "bytes": 721,
+      "sha256": "56103438a0c7e44fefe61a2a637aef3abf29d17f5dcadd0562dc4d0f945559a0"
+    },
+    {
+      "path": "qdw_review_extensions/prompts/review.federation-authority.md",
+      "bytes": 735,
+      "sha256": "a1c0385033a1b1b26bcddf8b11f6250d0261ae2843a1b698d2caa77295737f2c"
+    },
+    {
+      "path": "qdw_review_extensions/prompts/review.learning-boundaries.md",
+      "bytes": 756,
+      "sha256": "96a1ac855668cbc7538aad331ceb0438f4dfc1bac9ca287bce60c86bb037ea2c"
+    },
+    {
+      "path": "qdw_review_extensions/prompts/review.protocol-compatibility.md",
+      "bytes": 734,
+      "sha256": "ed398d9d613ec5fbdc52ad2dfff4d676c31183246e7d8b35ede5040f094101e8"
+    },
+    {
+      "path": "qdw_review_extensions/prompts/review.sandbox-graduation.md",
+      "bytes": 733,
+      "sha256": "463f312b6c01982d4dd898e962b99bc8b404e14baa5a855cbd8ad5d4c2a37ba5"
+    },
+    {
+      "path": "reference/pyproject.toml",
+      "bytes": 510,
+      "sha256": "0317720df7665d7e6a23901d7bc276e5f02e31e713f43f5262329d66432edd72"
+    },
+    {
+      "path": "reference/src/qdw_federation/__init__.py",
+      "bytes": 659,
+      "sha256": "929d54991eec03790a8bfaad0a3780b8d5a3c94574fca2cb487f77175cfd3b2d"
+    },
+    {
+      "path": "reference/src/qdw_federation/adapters/__init__.py",
+      "bytes": 225,
+      "sha256": "3002bc653400670ddb5adf39fbe0b4935fd66575584b2d07d21224c5ff33a2cb"
+    },
+    {
+      "path": "reference/src/qdw_federation/adapters/dell.py",
+      "bytes": 4066,
+      "sha256": "529cd23d64f84ed0fdf84d18d11a5fd37cad01131fe89555b70134b90f88c1d7"
+    },
+    {
+      "path": "reference/src/qdw_federation/adapters/forge.py",
+      "bytes": 4913,
+      "sha256": "f142a5fe12454e50811f183d442ea771ea3c0fcae1300b064f25fc8cdb4439ac"
+    },
+    {
+      "path": "reference/src/qdw_federation/adapters/gitgoblin.py",
+      "bytes": 2626,
+      "sha256": "6acfa60bfa64312c230cfb68b3f830ce18e5731ce7666ef7bae5a9c7485e8f88"
+    },
+    {
+      "path": "reference/src/qdw_federation/adapters/sandbox.py",
+      "bytes": 2431,
+      "sha256": "97f790d8b64bf4497e4ff7dc8efce7fcde7779597c8f24dedd6e980d2e38ce8d"
+    },
+    {
+      "path": "reference/src/qdw_federation/authority.py",
+      "bytes": 1505,
+      "sha256": "559714ffe46eb4c08b4320278e0cac2c6ff10c25daab14be2dcfb4c44fa908ed"
+    },
+    {
+      "path": "reference/src/qdw_federation/cli.py",
+      "bytes": 523,
+      "sha256": "973f4c47a298c443945b25a0aec4110ab59769facc36310b9b27636a52dd5b84"
+    },
+    {
+      "path": "reference/src/qdw_federation/doctor.py",
+      "bytes": 726,
+      "sha256": "dc4bb7740380156a7bb4edfea4d8110c9a9215a26d0633fec50ef57412a151be"
+    },
+    {
+      "path": "reference/src/qdw_federation/fakes.py",
+      "bytes": 2434,
+      "sha256": "bdc134ef4709c00636d83681800d1cb0e0214dec72ac31a2eb81146d573f1b53"
+    },
+    {
+      "path": "reference/src/qdw_federation/hashing.py",
+      "bytes": 719,
+      "sha256": "894867ea9a419b2c51aca650d809d9986633bf273b7343531bc590d578ecff8b"
+    },
+    {
+      "path": "reference/src/qdw_federation/interfaces.py",
+      "bytes": 767,
+      "sha256": "8e87ec0fdc0ec0971134a4593d3e7fe2f9957d63af68f887ea32177a5fab0403"
+    },
+    {
+      "path": "reference/src/qdw_federation/kernel.py",
+      "bytes": 2657,
+      "sha256": "e94bba2f3ecfbc18923dbde6992ca063ec70a1022aad85947f81acf1ee176019"
+    },
+    {
+      "path": "reference/src/qdw_federation/models.py",
+      "bytes": 6120,
+      "sha256": "b7db2a6346be1efa159857a472ef404cbff2d8bf08567eee0fc924ca1d649c80"
+    },
+    {
+      "path": "reference/src/qdw_federation/router.py",
+      "bytes": 2494,
+      "sha256": "c4b34abbd0526b452eccbd0f9b45ccde4f19338785a0d50c919e9762a92dfa9c"
+    },
+    {
+      "path": "reference/src/qdw_federation/store.py",
+      "bytes": 2517,
+      "sha256": "a9dc1f481f90cd95c501238a844f343d96db575c627a63603b729e627027e45a"
+    },
+    {
+      "path": "reference/src/qdw_federation/verifier.py",
+      "bytes": 1338,
+      "sha256": "2578d819340572963b5d064fc2592bd7e523418acff0793a2612b2ac8e7719c8"
+    },
+    {
+      "path": "reference/tests/test_dell_adapter.py",
+      "bytes": 1597,
+      "sha256": "72dc44702336542c41769159e82a5409ecf6f76307cca5e4f6d3c7076889d23d"
+    },
+    {
+      "path": "reference/tests/test_failure_and_learning_boundaries.py",
+      "bytes": 851,
+      "sha256": "eb45951209d0ab2631dd69a63eaebb2950ad4f19e48d1eacae2c23fe8fae379d"
+    },
+    {
+      "path": "reference/tests/test_forge_adapter.py",
+      "bytes": 2543,
+      "sha256": "8fa6cea0706d1afabf49d73f5a7c7b082fb33dc5d07ced6accf74ee4fa46d24f"
+    },
+    {
+      "path": "reference/tests/test_gitgoblin_adapter.py",
+      "bytes": 1614,
+      "sha256": "9259af922a71dc80271529a121cff18b43b1dc6b0ec88e6cac5f7174cf9808aa"
+    },
+    {
+      "path": "reference/tests/test_kernel.py",
+      "bytes": 2192,
+      "sha256": "8c0074fd268d0eb0424d025f2b22720608c2562a5b0847125e097ef386c4bccc"
+    },
+    {
+      "path": "reference/tests/test_models_authority.py",
+      "bytes": 1693,
+      "sha256": "ef7227e43d898998eef0f5fdac93ebcf4f365c4165b1fbfde52bab1a3ef519ae"
+    },
+    {
+      "path": "reference/tests/test_sandbox_graduation.py",
+      "bytes": 864,
+      "sha256": "92af73a352a068e8091b3c83e6a813c9afafde3a74b1cfe12086172b6b0df327"
+    },
+    {
+      "path": "repo_contracts/dell.json",
+      "bytes": 345,
+      "sha256": "2d1901ab98f1796fc46a51b06a7feb7abac8913731bb1b30499ae9de30058286"
+    },
+    {
+      "path": "repo_contracts/gitgoblin.json",
+      "bytes": 338,
+      "sha256": "65b056720efa8e647770752471bc5c0c94cf6161d89ae5dc543b6b93095abb85"
+    },
+    {
+      "path": "repo_contracts/qdw-forge.json",
+      "bytes": 519,
+      "sha256": "774d3163dc38c35f4ec49a7644872135e90a71966fb9ced5b17617f44b7f9b64"
+    },
+    {
+      "path": "repo_contracts/qdw-sandbox.json",
+      "bytes": 435,
+      "sha256": "2ff34d43be3a75456bb57ca25b273b00006e76e2063dbf3252f13f7fbd7478bb"
+    },
+    {
+      "path": "repo_contracts/qdw.json",
+      "bytes": 580,
+      "sha256": "218bdb8b5da762fb256f5566774c2dd0c3afa369bba57c7ead3a1cec7f3b2de4"
+    },
+    {
+      "path": "schemas/capability-execution.schema.json",
+      "bytes": 708,
+      "sha256": "de1510a25f05d106c0e5626be961946f32351d1160ed437260e73829490026ec"
+    },
+    {
+      "path": "schemas/certificate-ref.schema.json",
+      "bytes": 898,
+      "sha256": "f95848719be4da75dbbb4829934b05791c27c10a29707c06dc00c8cdd16ff965"
+    },
+    {
+      "path": "schemas/federated-ref.schema.json",
+      "bytes": 698,
+      "sha256": "2ead6b53cafd91b7f290a0c6840e03d66e1609a56ba1430b44279aece0032283"
+    },
+    {
+      "path": "schemas/observation-batch.schema.json",
+      "bytes": 688,
+      "sha256": "1b839ea810898e9a770618120b1b47935c1b5a7353397b53150f127eea43de37"
+    },
+    {
+      "path": "schemas/resource-snapshot.schema.json",
+      "bytes": 853,
+      "sha256": "1f9cdda766d4f116913651c327abc53c21ace798f726844d2377da39bcad3285"
+    },
+    {
+      "path": "scripts/apply_overlays.py",
+      "bytes": 1532,
+      "sha256": "b33266b1b250bf2c4be531c37e16eae7fcba18c68f6b86f3d2722f46900ca4dd"
+    },
+    {
+      "path": "scripts/clone_pinned.sh",
+      "bytes": 856,
+      "sha256": "0c7648ba0280033156bb9996588a7f888a36aee9ab8f063a14f2697466226686"
+    },
+    {
+      "path": "scripts/create_integration_branch.sh",
+      "bytes": 222,
+      "sha256": "2103c9b2e1fe76666cd3b162e2062a29429bd026c442d4954df6b28f15e3946d"
+    },
+    {
+      "path": "scripts/export_federation_evidence.py",
+      "bytes": 1404,
+      "sha256": "e7630a6b74dbc52ab6a981a17e4c5509ce65566656618859ab9af8ad98239d40"
+    },
+    {
+      "path": "scripts/federation_inventory.py",
+      "bytes": 1094,
+      "sha256": "b133e78c82852c22d4ce6d54c0311a5306eaf8b50f85fb5c1c44257d41cff4e1"
+    },
+    {
+      "path": "scripts/local_reference_demo.py",
+      "bytes": 1843,
+      "sha256": "000d108f4f7042561b4b9e0f31a9545817207b27f846f76ce2e88d14d35f53d2"
+    },
+    {
+      "path": "scripts/pin_upgrade_report.py",
+      "bytes": 1580,
+      "sha256": "e8be0df03dc080d80a3da3801c237e5f21bb48dff18f7a2025d2f09f94aa17e8"
+    },
+    {
+      "path": "scripts/protocol_surface.py",
+      "bytes": 1625,
+      "sha256": "f70f8be617e7e8496f06a929af54246c97f518c04c5ad9f46f22f7dfeafb312f"
+    },
+    {
+      "path": "scripts/run_all_repo_tests.sh",
+      "bytes": 920,
+      "sha256": "c618755e7ac32ed4946b98c5785669051fe7bb7f6ad69df22b00def0162bf441"
+    },
+    {
+      "path": "scripts/run_real_contracts.sh",
+      "bytes": 623,
+      "sha256": "181dc3a090f3499429e4a9884ba1a76213808905b7c53537fd9879da2a44f46f"
+    },
+    {
+      "path": "scripts/verify_pins.py",
+      "bytes": 1096,
+      "sha256": "4dabdc3aa6a04d4b5308c682623e41f9850a5b5f7f28762ab9226d511964de80"
+    },
+    {
+      "path": "skills/qdw-external-verification/SKILL.md",
+      "bytes": 602,
+      "sha256": "c1c154899d69882d7d4c9a12af1c904f9e9b512fdfd29eb7aa9e40609b19831c"
+    },
+    {
+      "path": "skills/qdw-federation/SKILL.md",
+      "bytes": 685,
+      "sha256": "2b2ae8dc6387f4bf353525d113cd434cee5fa7e4a1ba3240b8d5ec66f50b9758"
+    },
+    {
+      "path": "skills/qdw-pin-upgrade/SKILL.md",
+      "bytes": 487,
+      "sha256": "aa59079af9b858b63daa60b4bc6fa0d43bc9806020c1e0ec6c9137b7485e4384"
+    },
+    {
+      "path": "skills/qdw-sandbox-graduation/SKILL.md",
+      "bytes": 482,
+      "sha256": "08253c311fcc2dd45ffed2450a35d70f0422a55b08e102b211dfbb6b70428690"
+    },
+    {
+      "path": "source_review/INTEGRATION_FINDINGS.json",
+      "bytes": 2674,
+      "sha256": "26976e2ef3b4fb73c294df295c872d9fd514d867da36ef1ef3e455a1f2469e58"
+    },
+    {
+      "path": "source_review/INTEGRATION_REVIEW.html",
+      "bytes": 5963,
+      "sha256": "5f13aec4875192f95e122a5c80ba4dba57c677d10316bae5ffa642511d4d12a6"
+    },
+    {
+      "path": "source_review/INTEGRATION_REVIEW.json",
+      "bytes": 4386,
+      "sha256": "cc3d1800ef3b0a448572064cdbcebb9bb993be06b63ee2fde8e3301703b48613"
+    },
+    {
+      "path": "source_review/SOURCE_EVIDENCE.json",
+      "bytes": 2320,
+      "sha256": "4c6af8bc6dcddced7ff322629f4890d5e880768cdb27059fe9aa1977c153f870"
+    },
+    {
+      "path": "tasks/IMPLEMENTATION_TASKS.json",
+      "bytes": 7790,
+      "sha256": "77eddebdc06e4eccbbdd775eb47d34245a4d5f04cb2a2ee140906ce2a36bd399"
+    },
+    {
+      "path": "validation/RECEIPTS.json",
+      "bytes": 4660,
+      "sha256": "92fa689b25c0bda78c855d831c774bd0de0ed090d3072c32159bf5e12d288fba"
+    },
+    {
+      "path": "validation/runs/receipt_01_compile/receipt.json",
+      "bytes": 776,
+      "sha256": "1b949791a0ec0537fb4565db68d2d62f0da8a74357dd601f6e657dff91512a58"
+    },
+    {
+      "path": "validation/runs/receipt_01_compile/stderr.log",
+      "bytes": 1076,
+      "sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+    },
+    {
+      "path": "validation/runs/receipt_01_compile/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/runs/receipt_02_pytest-reference/receipt.json",
+      "bytes": 732,
+      "sha256": "13bf16b62fde4581503ff6eb6479ef096ace47f36e54b0a9919430908fc20461"
+    },
+    {
+      "path": "validation/runs/receipt_02_pytest-reference/stderr.log",
+      "bytes": 1076,
+      "sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+    },
+    {
+      "path": "validation/runs/receipt_02_pytest-reference/stdout.log",
+      "bytes": 314,
+      "sha256": "32f32015094b4eec8067213d6469e4360a592545a15a160ede6fe484fdaa1417"
+    },
+    {
+      "path": "validation/runs/receipt_03_collect-reference/receipt.json",
+      "bytes": 758,
+      "sha256": "3414bdcfeb50baa0f04d6a6265d2a83929a3b53679798d56a0daa26921bb6597"
+    },
+    {
+      "path": "validation/runs/receipt_03_collect-reference/stderr.log",
+      "bytes": 1076,
+      "sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+    },
+    {
+      "path": "validation/runs/receipt_03_collect-reference/stdout.log",
+      "bytes": 240,
+      "sha256": "24a60365c1b24025432d24597507adf6a60da39c2983c384a410e4d631e5e992"
+    },
+    {
+      "path": "validation/runs/receipt_04_reference-demo/receipt.json",
+      "bytes": 706,
+      "sha256": "ea721a47fa3bcf6215aefaeab31da4ce229df7c7048c4a2e9c1580764be09ae4"
+    },
+    {
+      "path": "validation/runs/receipt_04_reference-demo/stderr.log",
+      "bytes": 1076,
+      "sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+    },
+    {
+      "path": "validation/runs/receipt_04_reference-demo/stdout.log",
+      "bytes": 610,
+      "sha256": "cf422af7aa3613dc95f0b0ccf4c218a6236fad1e6613ee0af5f0aa75923f11f5"
+    },
+    {
+      "path": "validation/runs/receipt_05_shell-syntax/receipt.json",
+      "bytes": 714,
+      "sha256": "b5ffa90795bd5a6d0326182178412be1566b22f23a02ca4377c02a89ac5b184e"
+    },
+    {
+      "path": "validation/runs/receipt_05_shell-syntax/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/runs/receipt_05_shell-syntax/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validation/runs/receipt_06_doctor/receipt.json",
+      "bytes": 708,
+      "sha256": "f9c3bb3c641ca539e2ddd8ced5f1d082c1b2b9c3c76325483bc44c75bea42ec1"
+    },
+    {
+      "path": "validation/runs/receipt_06_doctor/stderr.log",
+      "bytes": 1076,
+      "sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+    },
+    {
+      "path": "validation/runs/receipt_06_doctor/stdout.log",
+      "bytes": 1793,
+      "sha256": "52c120123cba147cc605b9dbcb5314d19be2745c35927e8d9b1746ff1c2b0e22"
+    },
+    {
+      "path": "workspace/AGENT_START.md",
+      "bytes": 1065,
+      "sha256": "23cb0315f1c9a5b9a6fb7941aa922dae0309e44a3082458f3c54d6b0fb4ee6d6"
+    },
+    {
+      "path": "workspace/EXPECTED_LAYOUT.md",
+      "bytes": 535,
+      "sha256": "8755521d4b230c3fe146e76a322062525b64918f4ec288d9a509c7dc844c9ba4"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "repo": "prx0r/qdw-sandbox",
+  "role": "INCUBATOR",
+  "owns": [
+    "experimental_state"
+  ],
+  "must_not_own": [
+    "production_workgraph",
+    "production_final_route",
+    "production_qdw_verification"
+  ],
+  "graduates": [
+    "CapabilityRequest",
+    "ExecutionConstraints",
+    "ResourceDescriptor",
+    "ResourceProfile",
+    "ContextPack",
+    "routing_policy_math",
+    "DataRights",
+    "HumanOracle",
+    "Bounty"
+  ]
+}

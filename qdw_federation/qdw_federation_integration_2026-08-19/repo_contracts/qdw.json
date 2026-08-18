@@ -1,0 +1,29 @@
+{
+  "repo": "prx0r/qdw",
+  "role": "ORCHESTRATOR",
+  "owns": [
+    "portfolio",
+    "workgraph",
+    "scheduler",
+    "final_route",
+    "qdw_verification",
+    "product_release",
+    "business_outcomes"
+  ],
+  "must_not_own": [
+    "raw_gitgoblin_collection",
+    "raw_dell_provider_truth",
+    "forge_lease_state"
+  ],
+  "consumes": [
+    "gitgoblin.observation_batch",
+    "dell.resource_snapshot",
+    "forge.capability_assets",
+    "forge.invocation_outcome"
+  ],
+  "produces": [
+    "qdw.execution_choice",
+    "qdw.verification_certificate",
+    "qdw.product_outcome"
+  ]
+}

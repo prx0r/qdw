@@ -1,0 +1,20 @@
+{
+  "reviewer_id": "review.external-trust",
+  "version": "1.0.0",
+  "description": "Certificate, lease, invocation, advisory and external object subject binding.",
+  "inputs": [
+    "qdw_subject_sha",
+    "federation_pins",
+    "changed_paths",
+    "repo_contracts"
+  ],
+  "outputs": [
+    "qdw.review-output.v1"
+  ],
+  "independent": true,
+  "requirements": [
+    "valid-unrelated evidence attacks",
+    "no passed=true trust boundary",
+    "issuer allowlist"
+  ]
+}

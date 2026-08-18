@@ -1,0 +1,17 @@
+{
+  "task_id": "FED-000-PINS",
+  "title": "Pinned source checkouts",
+  "invariants": [
+    "all five checkouts equal pins/REPOS.json",
+    "working trees recorded before changes"
+  ],
+  "commands": [
+    [
+      "python",
+      "scripts/verify_pins.py",
+      "--root",
+      "worktrees"
+    ]
+  ],
+  "spec_hash": "sha256:dce5432879bf48f360367aac9617f841a5a26c3735f3f9d37ce6bf30d0c459a0"
+}

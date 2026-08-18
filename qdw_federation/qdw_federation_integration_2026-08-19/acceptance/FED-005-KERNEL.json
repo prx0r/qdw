@@ -1,0 +1,21 @@
+{
+  "task_id": "FED-005-KERNEL",
+  "title": "Federated execution flow",
+  "invariants": [
+    "QDW combines oracles/capabilities",
+    "unavailable source not empty",
+    "unknown cost obeys hard policy",
+    "Forge output independently verified"
+  ],
+  "commands": [
+    [
+      "python",
+      "-m",
+      "pytest",
+      "reference/tests/test_kernel.py",
+      "reference/tests/test_failure_and_learning_boundaries.py",
+      "-q"
+    ]
+  ],
+  "spec_hash": "sha256:b27fc54e73e6fd67f1ee230e75301339e9f95299f59bd49631ade535e0b6a5ef"
+}

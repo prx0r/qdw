@@ -1,0 +1,19 @@
+{
+  "contractor_id": "federation.trust-redteam",
+  "version": "1.0.0",
+  "team": "red_team",
+  "specialization": "federation",
+  "inputs": [
+    "service_fixtures",
+    "certificates",
+    "leases"
+  ],
+  "outputs": [
+    "attack_results"
+  ],
+  "gates": [
+    "substitution",
+    "wrong_subject",
+    "outage_semantics"
+  ]
+}

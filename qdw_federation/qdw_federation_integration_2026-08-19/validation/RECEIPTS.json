@@ -1,0 +1,128 @@
+[
+  {
+    "receipt_id": "receipt_01_compile",
+    "step": "compile",
+    "argv": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "compileall",
+      "-q",
+      "reference/src",
+      "reference/tests",
+      "native",
+      "cross_repo_patches",
+      "scripts"
+    ],
+    "cwd": "/mnt/data/qdw_federation_integration_2026-08-19",
+    "started_at": "2026-08-18T20:53:03.446265+00:00",
+    "finished_at": "2026-08-18T20:53:07.634395+00:00",
+    "duration_ms": 4188,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "validation/runs/receipt_01_compile/stdout.log",
+    "stderr_path": "validation/runs/receipt_01_compile/stderr.log",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+  },
+  {
+    "receipt_id": "receipt_02_pytest-reference",
+    "step": "pytest-reference",
+    "argv": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "pytest",
+      "reference/tests",
+      "-q"
+    ],
+    "cwd": "/mnt/data/qdw_federation_integration_2026-08-19",
+    "started_at": "2026-08-18T20:53:07.636306+00:00",
+    "finished_at": "2026-08-18T20:53:13.198871+00:00",
+    "duration_ms": 5563,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "validation/runs/receipt_02_pytest-reference/stdout.log",
+    "stderr_path": "validation/runs/receipt_02_pytest-reference/stderr.log",
+    "stdout_sha256": "32f32015094b4eec8067213d6469e4360a592545a15a160ede6fe484fdaa1417",
+    "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+  },
+  {
+    "receipt_id": "receipt_03_collect-reference",
+    "step": "collect-reference",
+    "argv": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "pytest",
+      "reference/tests",
+      "--collect-only",
+      "-q"
+    ],
+    "cwd": "/mnt/data/qdw_federation_integration_2026-08-19",
+    "started_at": "2026-08-18T20:53:13.200825+00:00",
+    "finished_at": "2026-08-18T20:53:17.717508+00:00",
+    "duration_ms": 4516,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "validation/runs/receipt_03_collect-reference/stdout.log",
+    "stderr_path": "validation/runs/receipt_03_collect-reference/stderr.log",
+    "stdout_sha256": "24a60365c1b24025432d24597507adf6a60da39c2983c384a410e4d631e5e992",
+    "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+  },
+  {
+    "receipt_id": "receipt_04_reference-demo",
+    "step": "reference-demo",
+    "argv": [
+      "/opt/pyvenv/bin/python",
+      "scripts/local_reference_demo.py"
+    ],
+    "cwd": "/mnt/data/qdw_federation_integration_2026-08-19",
+    "started_at": "2026-08-18T20:53:17.718238+00:00",
+    "finished_at": "2026-08-18T20:53:21.840256+00:00",
+    "duration_ms": 4122,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "validation/runs/receipt_04_reference-demo/stdout.log",
+    "stderr_path": "validation/runs/receipt_04_reference-demo/stderr.log",
+    "stdout_sha256": "cf422af7aa3613dc95f0b0ccf4c218a6236fad1e6613ee0af5f0aa75923f11f5",
+    "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+  },
+  {
+    "receipt_id": "receipt_05_shell-syntax",
+    "step": "shell-syntax",
+    "argv": [
+      "bash",
+      "-lc",
+      "for f in scripts/*.sh; do bash -n \"$f\" || exit 1; done"
+    ],
+    "cwd": "/mnt/data/qdw_federation_integration_2026-08-19",
+    "started_at": "2026-08-18T20:53:21.845515+00:00",
+    "finished_at": "2026-08-18T20:53:21.937759+00:00",
+    "duration_ms": 92,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "validation/runs/receipt_05_shell-syntax/stdout.log",
+    "stderr_path": "validation/runs/receipt_05_shell-syntax/stderr.log",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "receipt_id": "receipt_06_doctor",
+    "step": "doctor",
+    "argv": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "qdw_federation.cli",
+      "--pins",
+      "pins/REPOS.json"
+    ],
+    "cwd": "/mnt/data/qdw_federation_integration_2026-08-19",
+    "started_at": "2026-08-18T20:53:21.938342+00:00",
+    "finished_at": "2026-08-18T20:53:25.690311+00:00",
+    "duration_ms": 3752,
+    "exit_code": 0,
+    "status": "PASS",
+    "stdout_path": "validation/runs/receipt_06_doctor/stdout.log",
+    "stderr_path": "validation/runs/receipt_06_doctor/stderr.log",
+    "stdout_sha256": "52c120123cba147cc605b9dbcb5314d19be2745c35927e8d9b1746ff1c2b0e22",
+    "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+  }
+]

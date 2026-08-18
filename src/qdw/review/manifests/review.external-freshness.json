@@ -1,0 +1,20 @@
+{
+  "reviewer_id": "review.external-freshness",
+  "version": "1.0.0",
+  "description": "External snapshot time/freshness/outage semantics.",
+  "inputs": [
+    "qdw_subject_sha",
+    "federation_pins",
+    "changed_paths",
+    "repo_contracts"
+  ],
+  "outputs": [
+    "qdw.review-output.v1"
+  ],
+  "independent": true,
+  "requirements": [
+    "ERROR != OK_EMPTY",
+    "stale policy explicit",
+    "cached response digest retained"
+  ]
+}

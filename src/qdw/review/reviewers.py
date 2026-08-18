@@ -23,6 +23,9 @@ class ReviewerCatalog:
                 }
         for path in sorted(self.manifest_dir.glob("review.*.json")):
             manifest=json.loads(path.read_text(encoding="utf-8"))
+            # Normalize key: some manifests use reviewer_id, others contractor_id
+            if "contractor_id" not in manifest and "reviewer_id" in manifest:
+                manifest["contractor_id"] = manifest["reviewer_id"]
             manifest["definition_hash"]=sha256(
                 json.dumps(manifest,sort_keys=True,separators=(",",":")).encode()
             ).hexdigest()

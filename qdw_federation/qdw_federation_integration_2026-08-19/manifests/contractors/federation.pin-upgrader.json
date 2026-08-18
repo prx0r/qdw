@@ -1,0 +1,17 @@
+{
+  "contractor_id": "federation.pin-upgrader",
+  "version": "1.0.0",
+  "team": "maintenance",
+  "specialization": "pins",
+  "inputs": [
+    "current_pins",
+    "candidate_heads"
+  ],
+  "outputs": [
+    "pin_proposal",
+    "compatibility_report"
+  ],
+  "gates": [
+    "full_suite"
+  ]
+}

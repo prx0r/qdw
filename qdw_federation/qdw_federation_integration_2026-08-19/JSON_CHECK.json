@@ -1,0 +1,186 @@
+[
+  {
+    "path": "acceptance/FED-000-PINS.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/FED-001-AUTHORITY.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/FED-002-GITGOBLIN.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/FED-003-DELL.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/FED-004-FORGE.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/FED-005-KERNEL.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/FED-006-REPOS.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/FED-007-V10.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/FED-008-UPGRADE.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/INTEGRATION_EXIT_GATE.json",
+    "ok": true
+  },
+  {
+    "path": "integration/TEST_MATRIX.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/federation.authority-auditor.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/federation.integrator.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/federation.pin-upgrader.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/federation.protocol-auditor.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/federation.trust-redteam.json",
+    "ok": true
+  },
+  {
+    "path": "pins/REPOS.json",
+    "ok": true
+  },
+  {
+    "path": "qdw_review_extensions/formula.json",
+    "ok": true
+  },
+  {
+    "path": "qdw_review_extensions/manifests/review.cost-lineage.json",
+    "ok": true
+  },
+  {
+    "path": "qdw_review_extensions/manifests/review.external-freshness.json",
+    "ok": true
+  },
+  {
+    "path": "qdw_review_extensions/manifests/review.external-trust.json",
+    "ok": true
+  },
+  {
+    "path": "qdw_review_extensions/manifests/review.federation-authority.json",
+    "ok": true
+  },
+  {
+    "path": "qdw_review_extensions/manifests/review.learning-boundaries.json",
+    "ok": true
+  },
+  {
+    "path": "qdw_review_extensions/manifests/review.protocol-compatibility.json",
+    "ok": true
+  },
+  {
+    "path": "qdw_review_extensions/manifests/review.sandbox-graduation.json",
+    "ok": true
+  },
+  {
+    "path": "repo_contracts/dell.json",
+    "ok": true
+  },
+  {
+    "path": "repo_contracts/gitgoblin.json",
+    "ok": true
+  },
+  {
+    "path": "repo_contracts/qdw-forge.json",
+    "ok": true
+  },
+  {
+    "path": "repo_contracts/qdw-sandbox.json",
+    "ok": true
+  },
+  {
+    "path": "repo_contracts/qdw.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/capability-execution.schema.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/certificate-ref.schema.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/federated-ref.schema.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/observation-batch.schema.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/resource-snapshot.schema.json",
+    "ok": true
+  },
+  {
+    "path": "source_review/INTEGRATION_FINDINGS.json",
+    "ok": true
+  },
+  {
+    "path": "source_review/INTEGRATION_REVIEW.json",
+    "ok": true
+  },
+  {
+    "path": "source_review/SOURCE_EVIDENCE.json",
+    "ok": true
+  },
+  {
+    "path": "tasks/IMPLEMENTATION_TASKS.json",
+    "ok": true
+  },
+  {
+    "path": "validation/RECEIPTS.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_01_compile/receipt.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_02_pytest-reference/receipt.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_03_collect-reference/receipt.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_04_reference-demo/receipt.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_05_shell-syntax/receipt.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_06_doctor/receipt.json",
+    "ok": true
+  }
+]

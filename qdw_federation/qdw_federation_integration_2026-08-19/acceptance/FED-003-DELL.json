@@ -1,0 +1,20 @@
+{
+  "task_id": "FED-003-DELL",
+  "title": "Dell resource oracle integration",
+  "invariants": [
+    "Dell score not copied as QDW p_success",
+    "unknown remains unknown",
+    "NO_CANDIDATES differs from outage",
+    "response frozen as external snapshot"
+  ],
+  "commands": [
+    [
+      "python",
+      "-m",
+      "pytest",
+      "reference/tests/test_dell_adapter.py",
+      "-q"
+    ]
+  ],
+  "spec_hash": "sha256:90694d4eb7a59c8ceb5ff90949bde344618b753145d7217ab5073920b8353143"
+}

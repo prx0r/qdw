@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "request_id",
+    "capability",
+    "selected_asset_ref",
+    "arguments",
+    "qdw_work_ref",
+    "qdw_route_digest"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string"
+    },
+    "capability": {
+      "type": "string"
+    },
+    "selected_asset_ref": {
+      "$ref": "federated-ref.schema.json"
+    },
+    "arguments": {
+      "type": "object"
+    },
+    "max_spend_usd": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "qdw_work_ref": {
+      "$ref": "federated-ref.schema.json"
+    },
+    "qdw_route_digest": {
+      "type": "string"
+    }
+  }
+}

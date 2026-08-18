@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "source_system",
+    "schema_version",
+    "request_digest",
+    "fetched_at",
+    "status",
+    "candidates",
+    "raw_response_digest"
+  ],
+  "properties": {
+    "source_system": {
+      "type": "string"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "request_digest": {
+      "type": "string"
+    },
+    "fetched_at": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "OK",
+        "OK_EMPTY",
+        "DEGRADED",
+        "STALE",
+        "UNAVAILABLE",
+        "INCOMPATIBLE_PROTOCOL",
+        "UNAUTHORIZED",
+        "BUDGET_BLOCKED",
+        "POLICY_BLOCKED",
+        "FAILED"
+      ]
+    },
+    "candidates": {
+      "type": "array"
+    },
+    "raw_response_digest": {
+      "type": "string"
+    }
+  }
+}

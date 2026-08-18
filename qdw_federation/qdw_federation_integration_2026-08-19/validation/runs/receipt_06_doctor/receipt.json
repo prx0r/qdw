@@ -1,0 +1,21 @@
+{
+  "receipt_id": "receipt_06_doctor",
+  "step": "doctor",
+  "argv": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "qdw_federation.cli",
+    "--pins",
+    "pins/REPOS.json"
+  ],
+  "cwd": "/mnt/data/qdw_federation_integration_2026-08-19",
+  "started_at": "2026-08-18T20:53:21.938342+00:00",
+  "finished_at": "2026-08-18T20:53:25.690311+00:00",
+  "duration_ms": 3752,
+  "exit_code": 0,
+  "status": "PASS",
+  "stdout_path": "validation/runs/receipt_06_doctor/stdout.log",
+  "stderr_path": "validation/runs/receipt_06_doctor/stderr.log",
+  "stdout_sha256": "52c120123cba147cc605b9dbcb5314d19be2745c35927e8d9b1746ff1c2b0e22",
+  "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+}

@@ -27,3 +27,4 @@ data/qdw.db
 qdw_autonomous_final/
 qdw_review/
 *.zip
+worktrees/

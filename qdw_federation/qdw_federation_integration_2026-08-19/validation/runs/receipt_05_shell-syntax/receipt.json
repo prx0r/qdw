@@ -1,0 +1,19 @@
+{
+  "receipt_id": "receipt_05_shell-syntax",
+  "step": "shell-syntax",
+  "argv": [
+    "bash",
+    "-lc",
+    "for f in scripts/*.sh; do bash -n \"$f\" || exit 1; done"
+  ],
+  "cwd": "/mnt/data/qdw_federation_integration_2026-08-19",
+  "started_at": "2026-08-18T20:53:21.845515+00:00",
+  "finished_at": "2026-08-18T20:53:21.937759+00:00",
+  "duration_ms": 92,
+  "exit_code": 0,
+  "status": "PASS",
+  "stdout_path": "validation/runs/receipt_05_shell-syntax/stdout.log",
+  "stderr_path": "validation/runs/receipt_05_shell-syntax/stderr.log",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

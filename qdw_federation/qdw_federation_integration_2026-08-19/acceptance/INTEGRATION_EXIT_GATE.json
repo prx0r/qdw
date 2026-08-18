@@ -1,0 +1,31 @@
+{
+  "gate_id": "QDW-FEDERATION-EXIT-v1",
+  "subject_pins": "pins/REPOS.json",
+  "required": [
+    "all pinned donor baseline tests executed",
+    "reference federation tests pass",
+    "real per-repo federation contract tests pass",
+    "QDW remains only canonical WorkGraph/scheduler/final cross-domain router",
+    "GitGoblin observations ingest idempotently with provenance",
+    "Dell outage differs from legitimate zero candidates",
+    "Dell advisory does not become QDW probability/authority",
+    "Forge QDW lease pins exact asset/version",
+    "Forge substitution attack rejected",
+    "Forge verification uses certificate reference, no caller passed boolean",
+    "valid certificate for wrong invocation/output rejected",
+    "Sandbox Estate production route/verifier authority disabled",
+    "unknown cost/freshness remain explicit",
+    "external invocation cost creates QDW CostEvent",
+    "V10 real federation flow passes",
+    "multi-repo integration receipts retained",
+    "QDW federation self-review has no unsuppressed HIGH/CRITICAL finding"
+  ],
+  "forbidden": [
+    "QDW reads Dell/GitGoblin/Forge SQLite file directly",
+    "external service writes QDW SQLite",
+    "Dell/Forge/Sandbox finalizes QDW WorkNode success",
+    "moving unpinned main branch used in release certificate",
+    "network/source failure represented as empty candidate list",
+    "external posterior copied into QDW as same statistical population"
+  ]
+}

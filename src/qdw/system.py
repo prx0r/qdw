@@ -97,6 +97,14 @@ class QDWSystem:
                 self,self.review.reviewers,self.repo_root
             )
 
+        # Federation (adapter layer — never replaces canonical services)
+        from qdw.federation.service import FederationService
+        from qdw.federation.store import FederationStore
+        self.federation_store=FederationStore(self.db,self.ledger)
+        self.federation=FederationService(
+            system=self,store=self.federation_store,
+        )
+
     @property
     def routes(self)->list[Route]:
         return self.route_registry.active()

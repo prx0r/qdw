@@ -1,0 +1,21 @@
+{
+  "task_id": "FED-001-AUTHORITY",
+  "title": "No duplicate canonical authority",
+  "invariants": [
+    "QDW owns WorkGraph/scheduling/final cross-domain route/QDW verification",
+    "Dell and GitGoblin are advisory/oracle",
+    "Forge cannot mutate QDW lifecycle",
+    "Sandbox Estate production authorities disabled"
+  ],
+  "commands": [
+    [
+      "python",
+      "-m",
+      "pytest",
+      "reference/tests/test_models_authority.py",
+      "reference/tests/test_sandbox_graduation.py",
+      "-q"
+    ]
+  ],
+  "spec_hash": "sha256:74571f8d2dd172408cddbf2c901cd30b05f8dfde7ee25df972cf6329564a7767"
+}

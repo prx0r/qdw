@@ -1,0 +1,53 @@
+{
+  "transport": {
+    "native_git_clone_attempt": "FAILED_DNS",
+    "fallback": "GitHub connector exact SHA/file/tree inspection"
+  },
+  "repositories": {
+    "qdw": {
+      "sha": "cccf6e3ca5f4704eb1c047965d3a3716dec8870b",
+      "files": {
+        "src/qdw/system.py": "143539b8617365a35dae372d3cb2abe5bbe1cf82",
+        "src/qdw/hotswap/types.py": "8be0772c650afed2a021e082e07c8720557ae772",
+        "src/qdw/hotswap/router.py": "402a36bc91ab2bd52fe1c430b7a434652a7606e7",
+        "src/qdw/hotswap/persistent.py": "247c4f93c595bffdcbf15bfc7bd0669b46f652aa",
+        "src/qdw/world/store.py": "c77428258a7b1f89b55b85184e28426d4c5cbe43",
+        "src/qdw/sources/protocol.py": "6c47f801d145124e798b090ab84900b357013fe2"
+      }
+    },
+    "qdw-forge": {
+      "sha": "2037cdb93458278bdc4807be8e84111cce72fb10",
+      "files": {
+        "src/qdw_forge/api.py": "48756dd335dbea6f6f46c192a8ef961088266080",
+        "src/qdw_forge/models.py": "8076261944051a53d201b6cbb8c8826db7c13b4d",
+        "src/qdw_forge/invocation.py": "aa54540a102fbdadd2738b59970383053d63522e",
+        "pyproject.toml": "4087e3fcf7ed4fa12d89395f9fd82891a198be40"
+      }
+    },
+    "qdw-sandbox": {
+      "sha": "5e4278c8eeed008bcf11deff288b19110379ece0",
+      "files": {
+        "src/sandbox/estate/contracts/capability.py": "00f0c0fd8197c0c729fed8302b0d2f56313ca4d4",
+        "src/sandbox/estate/contracts/resources.py": "739f448e5e644c5950c4dbbd45ed62b3e1f32022",
+        "src/sandbox/estate/routing/service.py": "b7dbd1d0634097d345ce106bea80965f4e14719a",
+        "src/sandbox/estate/verification/service.py": "2b435c97dc844451638b60129a6562639e1ffd5b",
+        "pyproject.toml": "d1bb88ce5343309400dad35a4484fa95a131196b"
+      }
+    },
+    "gitgoblin": {
+      "sha": "f7bf8963ee2600d9377a196ff0fd2f32ce5905b3",
+      "files": {
+        "gitgoblin/api.py": "f4c3324e9a8237880c0d1d717f805881d60550d3",
+        "gitgoblin/integrations/cuntgoblin.py": "62b48ce5ab6d7a702737eec2cf9b4130beb89ffa",
+        "pyproject.toml": "f169bf57e19a8d6b95c44c830e900390e899e0ba"
+      }
+    },
+    "dell": {
+      "sha": "8aacd297fff0f0c7f48b36ac85ac415deaa7bd68",
+      "files": {
+        "app/services/decision.py": "476405f02a7fc541c6cd81f83a022322e85e1e0c",
+        "app/api_canonical.py": "14b8da8b2469d9f034af377ae3f85a8c2df10cce"
+      }
+    }
+  }
+}

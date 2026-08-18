@@ -1,0 +1,93 @@
+{
+  "layers": [
+    {
+      "level": "F0",
+      "name": "syntax/schema",
+      "repos": [
+        "all"
+      ],
+      "mandatory": true
+    },
+    {
+      "level": "F1",
+      "name": "repo unit suites",
+      "repos": [
+        "all"
+      ],
+      "mandatory": true
+    },
+    {
+      "level": "F2",
+      "name": "adapter unit contracts",
+      "repos": [
+        "qdw",
+        "qdw-forge",
+        "gitgoblin",
+        "dell",
+        "qdw-sandbox"
+      ],
+      "mandatory": true
+    },
+    {
+      "level": "F3",
+      "name": "HTTP protocol contracts",
+      "repos": [
+        "qdw-forge",
+        "gitgoblin",
+        "dell"
+      ],
+      "mandatory": true
+    },
+    {
+      "level": "F4",
+      "name": "failure/freshness/adversarial",
+      "repos": [
+        "qdw"
+      ],
+      "mandatory": true
+    },
+    {
+      "level": "F5",
+      "name": "V10 local in-process federation",
+      "repos": [
+        "qdw"
+      ],
+      "mandatory": true
+    },
+    {
+      "level": "F6",
+      "name": "V11 sibling-service federation",
+      "repos": [
+        "all"
+      ],
+      "mandatory": true
+    },
+    {
+      "level": "F7",
+      "name": "remote multi-repo CI",
+      "repos": [
+        "all"
+      ],
+      "mandatory": false
+    },
+    {
+      "level": "F8",
+      "name": "QDW federation ReviewCertificate",
+      "repos": [
+        "qdw"
+      ],
+      "mandatory": true
+    }
+  ],
+  "mandatory_attacks": [
+    "forge_asset_substitution",
+    "certificate_wrong_invocation",
+    "certificate_wrong_output",
+    "dell_outage_as_empty",
+    "unknown_cost_as_zero",
+    "stale_snapshot_as_fresh",
+    "external_advisory_as_authority",
+    "sandbox_estate_final_route",
+    "foreign_posterior_copy"
+  ]
+}

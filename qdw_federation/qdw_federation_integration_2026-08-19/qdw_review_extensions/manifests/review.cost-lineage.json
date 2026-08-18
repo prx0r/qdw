@@ -1,0 +1,20 @@
+{
+  "reviewer_id": "review.cost-lineage",
+  "version": "1.0.0",
+  "description": "Expected/observed external costs and unknown pricing across QDW/Dell/Forge.",
+  "inputs": [
+    "qdw_subject_sha",
+    "federation_pins",
+    "changed_paths",
+    "repo_contracts"
+  ],
+  "outputs": [
+    "qdw.review-output.v1"
+  ],
+  "independent": true,
+  "requirements": [
+    "unknown != zero",
+    "observed cost attributed",
+    "double accounting prevented"
+  ]
+}

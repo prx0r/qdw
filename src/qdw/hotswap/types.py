@@ -52,6 +52,7 @@ class Route:
     account_id: str | None = None
     active: bool = True
     free: bool = False
+    fixed_request_cost_usd: float | None = None
     input_per_m: float | None = None
     output_per_m: float | None = None
     context_tokens: int | None = None
@@ -69,6 +70,8 @@ class Route:
     def request_cost(self, task: TaskSpec) -> float | None:
         if self.free:
             return 0.0
+        if self.fixed_request_cost_usd is not None:
+            return self.fixed_request_cost_usd
         if self.input_per_m is None:
             return None
         if task.estimated_output_tokens > 0 and self.output_per_m is None:

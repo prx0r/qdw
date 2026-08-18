@@ -1,0 +1,18 @@
+{
+  "receipt_id": "receipt_04_reference-demo",
+  "step": "reference-demo",
+  "argv": [
+    "/opt/pyvenv/bin/python",
+    "scripts/local_reference_demo.py"
+  ],
+  "cwd": "/mnt/data/qdw_federation_integration_2026-08-19",
+  "started_at": "2026-08-18T20:53:17.718238+00:00",
+  "finished_at": "2026-08-18T20:53:21.840256+00:00",
+  "duration_ms": 4122,
+  "exit_code": 0,
+  "status": "PASS",
+  "stdout_path": "validation/runs/receipt_04_reference-demo/stdout.log",
+  "stderr_path": "validation/runs/receipt_04_reference-demo/stderr.log",
+  "stdout_sha256": "cf422af7aa3613dc95f0b0ccf4c218a6236fad1e6613ee0af5f0aa75923f11f5",
+  "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+}

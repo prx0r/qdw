@@ -1,0 +1,20 @@
+{
+  "reviewer_id": "review.protocol-compatibility",
+  "version": "1.0.0",
+  "description": "Pinned protocol schemas/API changes and compatibility across GitGoblin/Dell/Forge/QDW.",
+  "inputs": [
+    "qdw_subject_sha",
+    "federation_pins",
+    "changed_paths",
+    "repo_contracts"
+  ],
+  "outputs": [
+    "qdw.review-output.v1"
+  ],
+  "independent": true,
+  "requirements": [
+    "protocol versions explicit",
+    "breaking drift fails closed",
+    "pin changes reviewed"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "status": "PACK_VALIDATED",
+  "generated_date": "2026-08-19",
+  "source_pins": {
+    "qdw": {
+      "repo": "prx0r/qdw",
+      "sha": "cccf6e3ca5f4704eb1c047965d3a3716dec8870b",
+      "role": "canonical economic/orchestration authority"
+    },
+    "qdw-forge": {
+      "repo": "prx0r/qdw-forge",
+      "sha": "2037cdb93458278bdc4807be8e84111cce72fb10",
+      "role": "capability registry, leases and invocation execution exchange"
+    },
+    "qdw-sandbox": {
+      "repo": "prx0r/qdw-sandbox",
+      "sha": "5e4278c8eeed008bcf11deff288b19110379ece0",
+      "role": "incubator/donor for Estate, LifeGit, human, data-rights and experimental policies"
+    },
+    "gitgoblin": {
+      "repo": "prx0r/gitgoblin",
+      "sha": "f7bf8963ee2600d9377a196ff0fd2f32ce5905b3",
+      "role": "frontier technical intelligence oracle"
+    },
+    "dell": {
+      "repo": "prx0r/dell",
+      "sha": "8aacd297fff0f0c7f48b36ac85ac415deaa7bd68",
+      "role": "model/provider/deal evidence and resource-intelligence oracle"
+    }
+  },
+  "reference_tests_collected": 25,
+  "reference_test_status": "PASS",
+  "reference_demo_status": "PASS",
+  "python_files_checked": 56,
+  "syntax_failures": 0,
+  "json_files_checked": 46,
+  "json_failures": 0,
+  "acceptance_specs_checked": 9,
+  "acceptance_hash_failures": 0,
+  "anti_cheat_findings": [],
+  "unfinished_marker_findings": [],
+  "reviewer_crossref_issues": [],
+  "validation_receipts": [
+    {
+      "receipt_id": "receipt_01_compile",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    },
+    {
+      "receipt_id": "receipt_02_pytest-reference",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    },
+    {
+      "receipt_id": "receipt_03_collect-reference",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    },
+    {
+      "receipt_id": "receipt_04_reference-demo",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    },
+    {
+      "receipt_id": "receipt_05_shell-syntax",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    },
+    {
+      "receipt_id": "receipt_06_doctor",
+      "status": "PASS",
+      "exit_code": 0,
+      "hashes_ok": true
+    }
+  ],
+  "source_inspection": {
+    "method": "GitHub connector at exact pinned SHAs",
+    "native_git_clone_attempt": "FAILED_DNS",
+    "source_evidence_file": "source_review/SOURCE_EVIDENCE.json"
+  },
+  "proven_locally": [
+    "reference federation authority contracts",
+    "GitGoblin normalization/idempotency model",
+    "Dell advisory/outage semantics model",
+    "Forge pinned lease/anti-substitution model",
+    "certificate subject/output binding model",
+    "Sandbox authority retirement model",
+    "QDW reference final-choice + independent verification flow",
+    "all pack Python syntax",
+    "all pack JSON parseability",
+    "shell script syntax",
+    "receipt hash integrity"
+  ],
+  "not_claimed": [
+    "native git clone of the five repositories in this container",
+    "execution of the five real repository test suites at their pins",
+    "execution of repository-specific overlays against real cloned source",
+    "live HTTP V10/V11 federation among the real services",
+    "remote GitHub Actions success/protection across all repositories",
+    "production deployment"
+  ]
+}

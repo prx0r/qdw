@@ -1,0 +1,16 @@
+{
+  "contractor_id": "federation.authority-auditor",
+  "version": "1.0.0",
+  "team": "review",
+  "specialization": "authority",
+  "inputs": [
+    "repo_contracts",
+    "code_inventory"
+  ],
+  "outputs": [
+    "authority_report"
+  ],
+  "gates": [
+    "single_owner"
+  ]
+}

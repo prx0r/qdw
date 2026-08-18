@@ -1,0 +1,17 @@
+{
+  "contractor_id": "federation.protocol-auditor",
+  "version": "1.0.0",
+  "team": "review",
+  "specialization": "protocol",
+  "inputs": [
+    "old_surface",
+    "new_surface",
+    "schemas"
+  ],
+  "outputs": [
+    "compatibility_report"
+  ],
+  "gates": [
+    "no_silent_break"
+  ]
+}

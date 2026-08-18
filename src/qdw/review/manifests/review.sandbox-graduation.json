@@ -1,0 +1,20 @@
+{
+  "reviewer_id": "review.sandbox-graduation",
+  "version": "1.0.0",
+  "description": "Ensure promoted Sandbox features have one production owner and donor authority is retired.",
+  "inputs": [
+    "qdw_subject_sha",
+    "federation_pins",
+    "changed_paths",
+    "repo_contracts"
+  ],
+  "outputs": [
+    "qdw.review-output.v1"
+  ],
+  "independent": true,
+  "requirements": [
+    "donor fixtures frozen",
+    "target equivalence tested",
+    "duplicate runtime disabled"
+  ]
+}

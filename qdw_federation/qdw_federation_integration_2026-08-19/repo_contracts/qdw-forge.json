@@ -1,0 +1,26 @@
+{
+  "repo": "prx0r/qdw-forge",
+  "role": "CAPABILITY_EXCHANGE",
+  "owns": [
+    "capability_assets",
+    "factory_capsules",
+    "leases",
+    "invocations",
+    "asset_profiles"
+  ],
+  "must_not_own": [
+    "qdw_workgraph",
+    "qdw_portfolio",
+    "qdw_final_route",
+    "qdw_product_release"
+  ],
+  "consumes": [
+    "qdw.capability_execution_request",
+    "qdw.verification_certificate_ref"
+  ],
+  "produces": [
+    "forge.capability_assets",
+    "forge.invocation_outcome",
+    "forge.asset_profile_snapshot"
+  ]
+}

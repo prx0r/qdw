@@ -1,0 +1,18 @@
+{
+  "repo": "prx0r/gitgoblin",
+  "role": "ORACLE",
+  "owns": [
+    "frontier_raw_observations",
+    "attention_graph",
+    "source_cursors",
+    "technical_signals"
+  ],
+  "must_not_own": [
+    "qdw_portfolio_decision",
+    "qdw_workgraph"
+  ],
+  "produces": [
+    "gitgoblin.observation_batch",
+    "gitgoblin.opportunity_proposal"
+  ]
+}

@@ -1,0 +1,414 @@
+[
+  {
+    "task_id": "INT-000",
+    "title": "Clone and prove exact pins",
+    "repo": "all",
+    "depends_on": [],
+    "required_outputs": [
+      "pin report",
+      "baseline dirty states"
+    ]
+  },
+  {
+    "task_id": "INT-001",
+    "title": "Run donor baseline tests",
+    "repo": "all",
+    "depends_on": [
+      "INT-000"
+    ],
+    "required_outputs": [
+      "per-repo receipts",
+      "collection counts"
+    ]
+  },
+  {
+    "task_id": "INT-002",
+    "title": "Freeze federation contracts and acceptance",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-001"
+    ],
+    "required_outputs": [
+      "acceptance hashes",
+      "failure receipts"
+    ]
+  },
+  {
+    "task_id": "INT-003",
+    "title": "Add QDW federation migration",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-002"
+    ],
+    "required_outputs": [
+      "migration",
+      "fresh/upgrade tests"
+    ]
+  },
+  {
+    "task_id": "INT-004",
+    "title": "Add FederatedRef/external snapshot store",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-003"
+    ],
+    "required_outputs": [
+      "contracts",
+      "store tests"
+    ]
+  },
+  {
+    "task_id": "INT-005",
+    "title": "GitGoblin QDW exporter",
+    "repo": "gitgoblin",
+    "depends_on": [
+      "INT-002"
+    ],
+    "required_outputs": [
+      "export module",
+      "endpoint",
+      "tests"
+    ]
+  },
+  {
+    "task_id": "INT-006",
+    "title": "QDW GitGoblin ingestion",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-004",
+      "INT-005"
+    ],
+    "required_outputs": [
+      "WorldStore adapter",
+      "idempotency tests"
+    ]
+  },
+  {
+    "task_id": "INT-007",
+    "title": "Dell federation advisory endpoint",
+    "repo": "dell",
+    "depends_on": [
+      "INT-002"
+    ],
+    "required_outputs": [
+      "federation endpoint",
+      "tests"
+    ]
+  },
+  {
+    "task_id": "INT-008",
+    "title": "QDW Dell adapter",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-004",
+      "INT-007"
+    ],
+    "required_outputs": [
+      "snapshot normalization",
+      "failure tests"
+    ]
+  },
+  {
+    "task_id": "INT-009",
+    "title": "Forge certificate reference",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "INT-002"
+    ],
+    "required_outputs": [
+      "contract model",
+      "resolver tests"
+    ]
+  },
+  {
+    "task_id": "INT-010",
+    "title": "Forge verification v2",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "INT-009"
+    ],
+    "required_outputs": [
+      "no-bool verification",
+      "subject binding"
+    ]
+  },
+  {
+    "task_id": "INT-011",
+    "title": "Forge pinned invocation enforcement",
+    "repo": "qdw-forge",
+    "depends_on": [
+      "INT-009"
+    ],
+    "required_outputs": [
+      "anti-substitution test"
+    ]
+  },
+  {
+    "task_id": "INT-012",
+    "title": "QDW Forge client/executor",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-004",
+      "INT-010",
+      "INT-011"
+    ],
+    "required_outputs": [
+      "lease/invoke adapter",
+      "CostEvent integration"
+    ]
+  },
+  {
+    "task_id": "INT-013",
+    "title": "Candidate collector",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-008",
+      "INT-012"
+    ],
+    "required_outputs": [
+      "Dell+Forge candidate set",
+      "snapshot digests"
+    ]
+  },
+  {
+    "task_id": "INT-014",
+    "title": "QDW HotSwap final route integration",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-013"
+    ],
+    "required_outputs": [
+      "single final route proof",
+      "reason codes"
+    ]
+  },
+  {
+    "task_id": "INT-015",
+    "title": "QDW external verification binding",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-012",
+      "INT-014"
+    ],
+    "required_outputs": [
+      "certificate ref",
+      "unrelated-cert attack"
+    ]
+  },
+  {
+    "task_id": "INT-016",
+    "title": "Sandbox donor fixture freeze",
+    "repo": "qdw-sandbox",
+    "depends_on": [
+      "INT-001"
+    ],
+    "required_outputs": [
+      "Estate behavior fixtures",
+      "component inventory"
+    ]
+  },
+  {
+    "task_id": "INT-017",
+    "title": "Graduate shared Estate contracts",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-004",
+      "INT-016"
+    ],
+    "required_outputs": [
+      "mapping tests",
+      "no duplicate runtime"
+    ]
+  },
+  {
+    "task_id": "INT-018",
+    "title": "Graduate Estate routing algorithms as QDW policies",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-016",
+      "INT-014"
+    ],
+    "required_outputs": [
+      "equivalence tests",
+      "policy plugins"
+    ]
+  },
+  {
+    "task_id": "INT-019",
+    "title": "Graduate ContextPack",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-016"
+    ],
+    "required_outputs": [
+      "context package contract",
+      "tests"
+    ]
+  },
+  {
+    "task_id": "INT-020",
+    "title": "Map HumanOracle/Bounty/DataRights",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-016"
+    ],
+    "required_outputs": [
+      "mapping decisions",
+      "tests"
+    ]
+  },
+  {
+    "task_id": "INT-021",
+    "title": "Disable Sandbox production authorities",
+    "repo": "qdw-sandbox",
+    "depends_on": [
+      "INT-017",
+      "INT-018",
+      "INT-019",
+      "INT-020"
+    ],
+    "required_outputs": [
+      "authority denial tests"
+    ]
+  },
+  {
+    "task_id": "INT-022",
+    "title": "FactoryCapsule federation",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-012",
+      "INT-015"
+    ],
+    "required_outputs": [
+      "external factory capability adapter",
+      "fixture"
+    ]
+  },
+  {
+    "task_id": "INT-023",
+    "title": "Failure/freshness health layer",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-006",
+      "INT-008",
+      "INT-012"
+    ],
+    "required_outputs": [
+      "doctor",
+      "degraded routing tests"
+    ]
+  },
+  {
+    "task_id": "INT-024",
+    "title": "Federated cost accounting",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-012",
+      "INT-014"
+    ],
+    "required_outputs": [
+      "CostEvents",
+      "unknown/observed distinction"
+    ]
+  },
+  {
+    "task_id": "INT-025",
+    "title": "Learning separation enforcement",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-014",
+      "INT-024"
+    ],
+    "required_outputs": [
+      "posterior provenance tests"
+    ]
+  },
+  {
+    "task_id": "INT-026",
+    "title": "Real HTTP contract suite",
+    "repo": "all",
+    "depends_on": [
+      "INT-006",
+      "INT-008",
+      "INT-012"
+    ],
+    "required_outputs": [
+      "protocol receipts"
+    ]
+  },
+  {
+    "task_id": "INT-027",
+    "title": "Gold V10 federation fixture",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-015",
+      "INT-023",
+      "INT-024"
+    ],
+    "required_outputs": [
+      "end-to-end certificate",
+      "lineage proof"
+    ]
+  },
+  {
+    "task_id": "INT-028",
+    "title": "V11 local services/container fixture",
+    "repo": "all",
+    "depends_on": [
+      "INT-026",
+      "INT-027"
+    ],
+    "required_outputs": [
+      "service receipts",
+      "health logs"
+    ]
+  },
+  {
+    "task_id": "INT-029",
+    "title": "Multi-repo CI",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-028"
+    ],
+    "required_outputs": [
+      "federation workflow",
+      "uploaded proof"
+    ]
+  },
+  {
+    "task_id": "INT-030",
+    "title": "Pin upgrade workflow",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-029"
+    ],
+    "required_outputs": [
+      "compatibility report generator",
+      "pin PR workflow"
+    ]
+  },
+  {
+    "task_id": "INT-031",
+    "title": "Native self-review federation modules",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-027"
+    ],
+    "required_outputs": [
+      "authority/trust/freshness reviewers"
+    ]
+  },
+  {
+    "task_id": "INT-032",
+    "title": "Final self-review + certificate",
+    "repo": "qdw",
+    "depends_on": [
+      "INT-029",
+      "INT-031"
+    ],
+    "required_outputs": [
+      "ReviewCertificate",
+      "zero blockers"
+    ]
+  }
+]

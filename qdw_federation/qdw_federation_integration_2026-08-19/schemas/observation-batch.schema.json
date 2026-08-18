@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "source_system",
+    "schema_version",
+    "cursor",
+    "observations"
+  ],
+  "properties": {
+    "source_system": {
+      "const": "gitgoblin"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "cursor": {
+      "type": "string"
+    },
+    "source_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "generated_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "batch_digest": {
+      "type": "string"
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

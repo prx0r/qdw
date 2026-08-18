@@ -1,0 +1,226 @@
+[
+  {
+    "path": "cross_repo_patches/dell/app/federation.py",
+    "ok": true
+  },
+  {
+    "path": "cross_repo_patches/dell/tests/test_federation_contract.py",
+    "ok": true
+  },
+  {
+    "path": "cross_repo_patches/dell/tests/test_unknown_output_price.py",
+    "ok": true
+  },
+  {
+    "path": "cross_repo_patches/gitgoblin/gitgoblin/integrations/qdw.py",
+    "ok": true
+  },
+  {
+    "path": "cross_repo_patches/gitgoblin/tests/test_qdw_federation_export.py",
+    "ok": true
+  },
+  {
+    "path": "cross_repo_patches/qdw-forge/src/qdw_forge/federation.py",
+    "ok": true
+  },
+  {
+    "path": "cross_repo_patches/qdw-forge/src/qdw_forge/verification_v2.py",
+    "ok": true
+  },
+  {
+    "path": "cross_repo_patches/qdw-forge/tests/test_federation_contract.py",
+    "ok": true
+  },
+  {
+    "path": "cross_repo_patches/qdw-sandbox/src/sandbox/estate/federation/graduation.py",
+    "ok": true
+  },
+  {
+    "path": "cross_repo_patches/qdw-sandbox/tests/test_federation_graduation.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/src/qdw/federation/candidates.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/src/qdw/federation/clients.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/src/qdw/federation/contracts.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/src/qdw/federation/dell_adapter.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/src/qdw/federation/forge_adapter.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/src/qdw/federation/gitgoblin_adapter.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/src/qdw/federation/route_bindings.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/src/qdw/federation/service.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/src/qdw/federation/store.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/tests/federation/test_authority.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/tests/federation/test_certificate_subject.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/tests/federation/test_dell_semantics.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/tests/federation/test_failure_semantics.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/tests/federation/test_learning_boundary.py",
+    "ok": true
+  },
+  {
+    "path": "native/qdw/tests/federation/test_route_bridge.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/adapters/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/adapters/dell.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/adapters/forge.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/adapters/gitgoblin.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/adapters/sandbox.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/authority.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/cli.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/doctor.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/fakes.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/hashing.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/interfaces.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/kernel.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/models.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/router.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/store.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_federation/verifier.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/test_dell_adapter.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/test_failure_and_learning_boundaries.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/test_forge_adapter.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/test_gitgoblin_adapter.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/test_kernel.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/test_models_authority.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/test_sandbox_graduation.py",
+    "ok": true
+  },
+  {
+    "path": "scripts/apply_overlays.py",
+    "ok": true
+  },
+  {
+    "path": "scripts/export_federation_evidence.py",
+    "ok": true
+  },
+  {
+    "path": "scripts/federation_inventory.py",
+    "ok": true
+  },
+  {
+    "path": "scripts/local_reference_demo.py",
+    "ok": true
+  },
+  {
+    "path": "scripts/pin_upgrade_report.py",
+    "ok": true
+  },
+  {
+    "path": "scripts/protocol_surface.py",
+    "ok": true
+  },
+  {
+    "path": "scripts/verify_pins.py",
+    "ok": true
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "formula_id": "review.federation",
+  "version": "1.0.0",
+  "reviewers": [
+    "review.federation-authority",
+    "review.external-trust",
+    "review.protocol-compatibility",
+    "review.external-freshness",
+    "review.cost-lineage",
+    "review.learning-boundaries",
+    "review.sandbox-graduation"
+  ],
+  "required_for_changes": [
+    "src/qdw/federation/**",
+    "src/qdw/hotswap/**",
+    "src/qdw/proof/**",
+    "pins/REPOS.json",
+    "repo_contracts/**"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "task_id": "FED-002-GITGOBLIN",
+  "title": "GitGoblin observation integration",
+  "invariants": [
+    "export is versioned/content-hashed",
+    "batch ingest idempotent",
+    "external decision remains advisory",
+    "source failure is not empty"
+  ],
+  "commands": [
+    [
+      "python",
+      "-m",
+      "pytest",
+      "reference/tests/test_gitgoblin_adapter.py",
+      "-q"
+    ]
+  ],
+  "spec_hash": "sha256:61c6fd319f2090fe816984d0c704ac01903713e6351363866350331e4ca50fb8"
+}

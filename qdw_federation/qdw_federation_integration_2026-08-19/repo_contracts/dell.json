@@ -1,0 +1,20 @@
+{
+  "repo": "prx0r/dell",
+  "role": "ORACLE",
+  "owns": [
+    "provider_model_evidence",
+    "claims",
+    "assertions",
+    "offers",
+    "source_health",
+    "resource_advisories"
+  ],
+  "must_not_own": [
+    "qdw_final_execution_route",
+    "qdw_workgraph"
+  ],
+  "produces": [
+    "dell.resource_snapshot",
+    "dell.decision_advisory"
+  ]
+}

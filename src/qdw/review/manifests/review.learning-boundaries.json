@@ -1,0 +1,20 @@
+{
+  "reviewer_id": "review.learning-boundaries",
+  "version": "1.0.0",
+  "description": "Prevent statistical state from different populations being treated as the same posterior.",
+  "inputs": [
+    "qdw_subject_sha",
+    "federation_pins",
+    "changed_paths",
+    "repo_contracts"
+  ],
+  "outputs": [
+    "qdw.review-output.v1"
+  ],
+  "independent": true,
+  "requirements": [
+    "Forge profile is source feature/prior",
+    "Dell score is advisory",
+    "QDW task posterior remains canonical"
+  ]
+}

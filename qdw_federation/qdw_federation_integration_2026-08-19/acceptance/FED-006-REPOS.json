@@ -1,0 +1,22 @@
+{
+  "task_id": "FED-006-REPOS",
+  "title": "Real cloned repo contract suites",
+  "invariants": [
+    "each donor repo own tests pass before patch",
+    "each patch-specific contract passes after patch",
+    "QDW integration tests use real HTTP/protocol clients"
+  ],
+  "commands": [
+    [
+      "bash",
+      "scripts/run_all_repo_tests.sh",
+      "worktrees"
+    ],
+    [
+      "bash",
+      "scripts/run_real_contracts.sh",
+      "worktrees"
+    ]
+  ],
+  "spec_hash": "sha256:701838083804697ef6c42e06ea6be7ad3a30bb4620ac48a48527006e6e0184f4"
+}

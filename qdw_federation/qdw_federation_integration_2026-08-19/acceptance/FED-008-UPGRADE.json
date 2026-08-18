@@ -1,0 +1,23 @@
+{
+  "task_id": "FED-008-UPGRADE",
+  "title": "Safe pin upgrade workflow",
+  "invariants": [
+    "pin changes are explicit",
+    "protocol diff is reviewed",
+    "full federation suite must pass before pin update"
+  ],
+  "commands": [
+    [
+      "python",
+      "scripts/verify_pins.py",
+      "--root",
+      "worktrees"
+    ],
+    [
+      "pytest",
+      "tests/federation/test_protocol_compatibility.py",
+      "-q"
+    ]
+  ],
+  "spec_hash": "sha256:e774e2ff5a2fa769c33c61b9ec18dcfc414627d54d0f73f42ea51027e75981a4"
+}

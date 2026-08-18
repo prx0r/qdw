@@ -1,0 +1,19 @@
+{
+  "reviewer_id": "review.federation-authority",
+  "version": "1.0.0",
+  "description": "Detect duplicate WorkGraph/scheduler/final-route/verifier ownership across connected repos.",
+  "inputs": [
+    "qdw_subject_sha",
+    "federation_pins",
+    "changed_paths",
+    "repo_contracts"
+  ],
+  "outputs": [
+    "qdw.review-output.v1"
+  ],
+  "independent": true,
+  "requirements": [
+    "authority matrix matches repo contracts",
+    "no external writer to QDW lifecycle"
+  ]
+}

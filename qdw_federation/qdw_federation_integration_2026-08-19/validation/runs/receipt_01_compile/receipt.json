@@ -1,0 +1,25 @@
+{
+  "receipt_id": "receipt_01_compile",
+  "step": "compile",
+  "argv": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "compileall",
+    "-q",
+    "reference/src",
+    "reference/tests",
+    "native",
+    "cross_repo_patches",
+    "scripts"
+  ],
+  "cwd": "/mnt/data/qdw_federation_integration_2026-08-19",
+  "started_at": "2026-08-18T20:53:03.446265+00:00",
+  "finished_at": "2026-08-18T20:53:07.634395+00:00",
+  "duration_ms": 4188,
+  "exit_code": 0,
+  "status": "PASS",
+  "stdout_path": "validation/runs/receipt_01_compile/stdout.log",
+  "stderr_path": "validation/runs/receipt_01_compile/stderr.log",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d"
+}

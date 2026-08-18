@@ -1,0 +1,19 @@
+{
+  "task_id": "FED-007-V10",
+  "title": "Real cross-repo V10/V11 fixture",
+  "invariants": [
+    "GitGoblin export reaches QDW World",
+    "Dell advisory reaches HotSwap",
+    "Forge pinned invocation executes",
+    "QDW cert binds output",
+    "cost/provenance recorded end-to-end"
+  ],
+  "commands": [
+    [
+      "pytest",
+      "tests/federation/test_real_v10.py",
+      "-q"
+    ]
+  ],
+  "spec_hash": "sha256:8bd0ead4934c3c1f1ebc7b0fada1903b18ba4c951e057edbead05a4af2d36c53"
+}

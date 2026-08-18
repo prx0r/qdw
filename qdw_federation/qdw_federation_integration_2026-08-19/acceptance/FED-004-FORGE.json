@@ -1,0 +1,20 @@
+{
+  "task_id": "FED-004-FORGE",
+  "title": "Forge execution exchange integration",
+  "invariants": [
+    "QDW selection pins asset/version",
+    "Forge cannot substitute asset",
+    "result unverified until QDW certificate",
+    "verification has no caller-authored passed boolean"
+  ],
+  "commands": [
+    [
+      "python",
+      "-m",
+      "pytest",
+      "reference/tests/test_forge_adapter.py",
+      "-q"
+    ]
+  ],
+  "spec_hash": "sha256:5432dbaa18f2e5ce895515ded707bfff5ee0b642f3a482ef6859544e726ce060"
+}
