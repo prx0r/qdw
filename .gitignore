@@ -23,3 +23,7 @@ coverage.xml
 
 # uv
 uv.lock
+data/qdw.db
+qdw_autonomous_final/
+qdw_review/
+*.zip
