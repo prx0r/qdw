@@ -92,7 +92,8 @@ class PainFinder:
                 return
             n = len(rows)
             families = len({r["source_family"] for r in rows})
-            avg = lambda k: sum(float(r[k]) for r in rows) / n
+            def avg(k):
+                return sum(float(r[k]) for r in rows) / n
             confidence = min(1.0, 0.15 * n + 0.15 * families)
             con.execute(
                 """UPDATE pain_clusters SET mention_count=?,source_family_count=?,recurrence=?,intensity=?,

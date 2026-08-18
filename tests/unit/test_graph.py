@@ -145,11 +145,14 @@ class TestWorkGraph:
         claimed = store.claim_ready("w1", lease_seconds=1)
         # Simulate lease expiry by backdating
         expired = datetime.now(UTC) - timedelta(seconds=10)
-        with store.db.tx(immediate=True) as con:
+        expired_s = expired.isoformat().replace("+00:00", "Z")
+        with store.db.connect() as con:
+            con.execute("BEGIN IMMEDIATE")
             con.execute(
                 "UPDATE work_nodes SET lease_until=? WHERE node_id=?",
-                (expired.isoformat().replace("+00:00", "Z"), claimed["node_id"]),
+                (expired_s, claimed["node_id"]),
             )
+            con.execute("COMMIT")
         reclaimed = store.reclaim_stale()
         assert reclaimed == 1
         # Node should be READY again

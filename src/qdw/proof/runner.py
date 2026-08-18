@@ -8,10 +8,10 @@ import os
 import subprocess
 import time
 import uuid
+from collections.abc import Sequence
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Sequence
 
 
 def _now() -> str:

@@ -4,9 +4,8 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
 
-from qdw.core import hash_object, new_id, utc_now
+from qdw.core import hash_object, utc_now
 from qdw.core.db import Database
 from qdw.core.ledger.events import Ledger
 

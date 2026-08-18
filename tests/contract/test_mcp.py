@@ -48,8 +48,11 @@ class TestMCPServer:
     def test_qdw_route_task_returns_dict(self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
         """Test qdw_route_task returns routing info."""
         import qdw.interfaces.mcp_server as mod
+        from qdw.system import QDWSystem
+        system = QDWSystem(str(tmp_path / "test.db"))
+        monkeypatch.setattr(mod, "_system", system)
         result = mod.qdw_route_task("coding", quality=0.5)
         assert isinstance(result, dict)
-        assert result["task_id"] == "mcp_preview"
+        assert result["task_id"] == "preview"
         assert "primary" in result
         assert "reason_codes" in result

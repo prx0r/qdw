@@ -99,51 +99,150 @@ class WorkGraphStore:
     def reclaim_stale(self, now: datetime | None = None) -> int:
         now = now or datetime.now(UTC)
         now_s = now.isoformat().replace("+00:00", "Z")
+        # Collect first, then commit, then ledger (avoid nested transactions)
+        to_reclaim: list[tuple[str, bool, dict]] = []
         with self.db.tx(immediate=True) as con:
             rows = con.execute(
-                """SELECT node_id FROM work_nodes
+                """SELECT node_id, attempt_count, max_retries FROM work_nodes
                 WHERE state IN ('LEASED', 'RUNNING') AND lease_until IS NOT NULL AND lease_until < ?""",
                 (now_s,),
             ).fetchall()
             for r in rows:
-                con.execute(
-                    """UPDATE work_nodes SET state='READY', lease_owner=NULL, lease_until=NULL, updated_at=?
-                    WHERE node_id=?""",
-                    (now_s, r["node_id"]),
-                )
-        for r in rows:
-            self.ledger.append("node.lease_reclaimed", "work_node", r["node_id"], {})
-        return len(rows)
+                if r["attempt_count"] >= r["max_retries"]:
+                    con.execute(
+                        """UPDATE work_nodes SET state='FAILED', lease_owner=NULL, lease_until=NULL, updated_at=?
+                        WHERE node_id=?""",
+                        (now_s, r["node_id"]),
+                    )
+                    to_reclaim.append((r["node_id"], True, {
+                        "attempt_count": r["attempt_count"], "max_retries": r["max_retries"],
+                    }))
+                else:
+                    con.execute(
+                        """UPDATE work_nodes SET state='READY', lease_owner=NULL, lease_until=NULL, updated_at=?
+                        WHERE node_id=?""",
+                        (now_s, r["node_id"]),
+                    )
+                    to_reclaim.append((r["node_id"], False, {}))
+        # Ledger appends happen AFTER the state transaction commits
+        for node_id, failed, payload in to_reclaim:
+            if failed:
+                self.ledger.append("node.lease_expired_failed", "work_node", node_id, payload)
+            else:
+                self.ledger.append("node.lease_reclaimed", "work_node", node_id, payload)
+        return len(to_reclaim)
+
+    def validate_dag(self, graph_id: str) -> list[str]:
+        """Check for cycles in the dependency graph. Returns list of cycle descriptions."""
+        with self.db.connect() as con:
+            edges = con.execute(
+                "SELECT from_node, to_node FROM work_edges WHERE graph_id=?",
+                (graph_id,),
+            ).fetchall()
+            nodes = {r["node_id"] for r in con.execute(
+                "SELECT node_id FROM work_nodes WHERE graph_id=?", (graph_id,),
+            ).fetchall()}
+
+        # Build adjacency list
+        adj: dict[str, list[str]] = {n: [] for n in nodes}
+        for e in edges:
+            if e["from_node"] in adj:
+                adj[e["from_node"]].append(e["to_node"])
+
+        # DFS cycle detection
+        WHITE, GRAY, BLACK = 0, 1, 2
+        color = {n: WHITE for n in nodes}
+        parent = {n: None for n in nodes}
+        cycles = []
+
+        def dfs(u: str) -> None:
+            color[u] = GRAY
+            for v in adj.get(u, []):
+                if v not in color:
+                    continue
+                if color[v] == GRAY:
+                    # Found cycle — reconstruct
+                    cycle = [v, u]
+                    p = parent[u]
+                    while p != v and p is not None:
+                        cycle.append(p)
+                        p = parent[p]
+                    cycle.append(v)
+                    cycles.append(" → ".join(reversed(cycle)))
+                elif color[v] == WHITE:
+                    parent[v] = u
+                    dfs(v)
+            color[u] = BLACK
+
+        for n in nodes:
+            if color[n] == WHITE:
+                dfs(n)
+
+        return cycles
 
     def claim_ready(self, worker_id: str, lease_seconds: int = 900, graph_id: str | None = None):
+        """Claim the highest-priority READY node using the economic scheduler.
+
+        Selection is delegated to EconomicScheduler, not embedded SQL ranking.
+        UNKNOWN cost is preserved as unknown, never coerced to zero.
+        """
+        from qdw.core.graph.scheduler import Candidate, choose
+
         now = datetime.now(UTC)
         lease_until = (now + timedelta(seconds=lease_seconds)).isoformat().replace("+00:00", "Z")
         now_s = now.isoformat().replace("+00:00", "Z")
-        with self.db.tx(immediate=True) as con:
+
+        # 1. Fetch all READY nodes
+        with self.db.connect() as con:
             params: list[Any] = []
             where = "state='READY'"
             if graph_id:
                 where += " AND graph_id=?"
                 params.append(graph_id)
-            row = con.execute(
-                f"""SELECT * FROM work_nodes WHERE {where}
-                ORDER BY priority DESC,
-                CASE WHEN expected_value IS NULL THEN -1e99
-                    ELSE expected_value-COALESCE(expected_cost, 0) END DESC,
-                created_at ASC LIMIT 1""",
+            rows = con.execute(
+                f"SELECT * FROM work_nodes WHERE {where} ORDER BY created_at",
                 params,
-            ).fetchone()
-            if not row:
-                return None
+            ).fetchall()
+
+        if not rows:
+            return None
+
+        # 2. Build candidates for economic scheduler
+        candidates = []
+        node_map = {}
+        for r in rows:
+            nv = r["expected_value"]
+            nc = r["expected_cost"]
+            # UNKNOWN cost is not infinite cost — it's unknown.
+            # UNKNOWN value is not zero value — it's unvalued.
+            # Both remain eligible for claiming.
+            candidate = Candidate(
+                node_id=r["node_id"],
+                expected_value=nv if nv is not None else 1.0,
+                expected_cost=nc if nc is not None else 0.0,
+                confidence=1.0,
+                urgency=0.0,
+                risk=0.0,
+            )
+            candidates.append(candidate)
+            node_map[r["node_id"]] = r
+
+        # 3. Let scheduler pick the best
+        chosen = choose(candidates)
+        if chosen is None:
+            return None
+
+        # 4. Atomic claim
+        with self.db.tx(immediate=True) as con:
             changed = con.execute(
                 """UPDATE work_nodes SET state='LEASED', lease_owner=?, lease_until=?,
                 attempt_count=attempt_count+1, updated_at=? WHERE node_id=? AND state='READY'""",
-                (worker_id, lease_until, now_s, row["node_id"]),
+                (worker_id, lease_until, now_s, chosen.node_id),
             ).rowcount
             if changed != 1:
                 return None
             claimed = dict(con.execute(
-                "SELECT * FROM work_nodes WHERE node_id=?", (row["node_id"],)
+                "SELECT * FROM work_nodes WHERE node_id=?", (chosen.node_id,)
             ).fetchone())
         self.ledger.append(
             "node.claimed", "work_node", claimed["node_id"],

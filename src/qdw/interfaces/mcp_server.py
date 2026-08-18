@@ -1,4 +1,4 @@
-"""QDW MCP server — official SDK v2, testable with in-process Client."""
+"""QDW MCP server — official SDK v2, delegates to QDWSystem."""
 
 from __future__ import annotations
 
@@ -36,24 +36,5 @@ def qdw_route_task(
     task_kind: str,
     quality: float = 0.8,
 ) -> dict[str, Any]:
-    """Route a task through HotSwap."""
-    from qdw.hotswap.router import HotSwapRouter
-    from qdw.hotswap.types import TaskSpec
-
-    task = TaskSpec(task_id="mcp_preview", task_kind=task_kind, quality_floor=quality)
-    plan = HotSwapRouter().plan(task, [])
-
-    def _c(x):
-        if x is None:
-            return None
-        return {
-            "route_id": x.route.route_id,
-            "model_id": x.route.model_id,
-            "p_success": x.p_success,
-        }
-
-    return {
-        "task_id": task.task_id,
-        "primary": _c(plan.primary),
-        "reason_codes": plan.reason_codes,
-    }
+    """Route a task through HotSwap using registered routes."""
+    return _get_system().route_task(task_kind, {"quality": quality})

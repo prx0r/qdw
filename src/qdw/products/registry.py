@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from qdw.core import canonical_json, hash_object, new_id, utc_now
+from qdw.core import canonical_json, new_id, utc_now
 from qdw.core.db import Database
 from qdw.core.ledger.events import Ledger
 

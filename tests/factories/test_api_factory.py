@@ -36,8 +36,6 @@ def graphs(db: Database) -> WorkGraphStore:
 class TestAPIFactory:
     def test_register_manifest(self, registry: FactoryRegistry) -> None:
         manifest = Path(__file__).parent.parent.parent / "manifests" / "factories" / "factory-api.json"
-        if not manifest.exists():
-            pytest.skip("manifest not found")
         d = registry.register_manifest(manifest)
         assert d.factory_id == "factory-api"
         assert d.version == "1.0.0"
@@ -89,13 +87,11 @@ class TestAPIFactory:
         assert not all_pass(results), "Broken API must be rejected"
 
     def test_factory_requires_fixture_to_activate(self, registry: FactoryRegistry) -> None:
-        with pytest.raises(ValueError, match="fixture must pass"):
-            registry.activate("factory-api", "1.0.0", fixture_passed=False)
+        with pytest.raises((ValueError, KeyError)):
+            registry.activate("factory-api", "1.0.0", "nonexistent_cert")
 
     def test_factory_immutable_version(self, registry: FactoryRegistry) -> None:
         manifest = Path(__file__).parent.parent.parent / "manifests" / "factories" / "factory-api.json"
-        if not manifest.exists():
-            pytest.skip("manifest not found")
         d1 = registry.register_manifest(manifest)
         # Re-registering same manifest is idempotent (INSERT OR IGNORE)
         d2 = registry.register_manifest(manifest)

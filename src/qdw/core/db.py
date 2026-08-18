@@ -1,4 +1,4 @@
-"""QDW database — SQLite WAL with transactions."""
+"""QDW database — SQLite WAL with numbered migrations."""
 
 from __future__ import annotations
 
@@ -20,11 +20,10 @@ class Database:
         con.execute("PRAGMA busy_timeout=5000")
         return con
 
-    def migrate(self, schema_path: str | Path | None = None) -> None:
-        schema_path = schema_path or Path(__file__).parent / "schema.sql"
-        sql = Path(schema_path).read_text(encoding="utf-8")
-        with self.connect() as con:
-            con.executescript(sql)
+    def migrate(self, migrations_dir: str | Path | None = None) -> None:
+        """Apply all pending numbered migrations."""
+        from qdw.core.migrations import migrate_all
+        migrate_all(self)
 
     @contextmanager
     def tx(self, immediate: bool = False) -> Iterator[sqlite3.Connection]:

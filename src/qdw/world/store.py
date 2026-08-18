@@ -49,9 +49,10 @@ class WorldStore:
             if entity_id is None:
                 entity_id = new_id("ent")
                 con.execute(
-                    """INSERT INTO entities(entity_id,kind,canonical_name,external_key,attributes_json,status,created_at,updated_at)
-                    VALUES(?,?,?,?,?,'ACTIVE',?,?)""",
-                    (entity_id, kind, canonical_name, external_key, canonical_json(attributes or {}).decode(), now, now),
+                    "INSERT INTO entities(entity_id,kind,canonical_name,external_key,"
+                    "attributes_json,status,created_at,updated_at) VALUES(?,?,?,?,?,'ACTIVE',?,?)",
+                    (entity_id, kind, canonical_name, external_key,
+                     canonical_json(attributes or {}).decode(), now, now),
                 )
             else:
                 con.execute(
