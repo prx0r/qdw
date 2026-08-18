@@ -1,0 +1,22 @@
+{
+  "formula_id": "review.self",
+  "version": "2.0.0",
+  "description": "Reviewer-system changes trigger strict dogfood review of the reviewer itself.",
+  "reviewers": [
+    "review.architecture",
+    "review.verification",
+    "review.trust",
+    "review.provenance",
+    "review.migrations",
+    "review.workgraph",
+    "review.concurrency",
+    "review.security",
+    "review.test-quality",
+    "review.claim-consistency",
+    "review.redteam",
+    "review.self-review"
+  ],
+  "policy": "policies/review/self-review.json",
+  "requires_reviewer_fixture_certificates": true,
+  "requires_independent_certifier": true
+}

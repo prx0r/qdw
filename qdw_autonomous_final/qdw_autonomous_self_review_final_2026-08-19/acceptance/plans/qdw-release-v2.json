@@ -1,0 +1,191 @@
+{
+  "plan_id": "qdw-release",
+  "version": "2.0.0",
+  "commands": [
+    {
+      "id": "compile",
+      "argv": [
+        "python",
+        "-m",
+        "compileall",
+        "-q",
+        "src/qdw",
+        "tests"
+      ]
+    },
+    {
+      "id": "ruff",
+      "argv": [
+        "ruff",
+        "check",
+        "src/qdw",
+        "tests"
+      ]
+    },
+    {
+      "id": "pyright",
+      "argv": [
+        "pyright",
+        "src/qdw"
+      ]
+    },
+    {
+      "id": "test_guard",
+      "argv": [
+        "python",
+        "scripts/test_guard.py"
+      ]
+    },
+    {
+      "id": "unit",
+      "argv": [
+        "python",
+        "-m",
+        "pytest",
+        "tests/unit",
+        "-q",
+        "--tb=short"
+      ]
+    },
+    {
+      "id": "contract",
+      "argv": [
+        "python",
+        "-m",
+        "pytest",
+        "tests/contract",
+        "-q",
+        "--tb=short"
+      ]
+    },
+    {
+      "id": "factories",
+      "argv": [
+        "python",
+        "-m",
+        "pytest",
+        "tests/factories",
+        "-q",
+        "--tb=short"
+      ]
+    },
+    {
+      "id": "adversarial",
+      "argv": [
+        "python",
+        "-m",
+        "pytest",
+        "tests/adversarial",
+        "-q",
+        "--tb=short"
+      ]
+    },
+    {
+      "id": "integration",
+      "argv": [
+        "python",
+        "-m",
+        "pytest",
+        "tests/integration",
+        "-q",
+        "--tb=short"
+      ]
+    },
+    {
+      "id": "runtime",
+      "argv": [
+        "python",
+        "-m",
+        "pytest",
+        "tests/runtime",
+        "-q",
+        "--tb=short"
+      ]
+    },
+    {
+      "id": "wheel",
+      "argv": [
+        "python",
+        "-m",
+        "build",
+        "--wheel"
+      ]
+    },
+    {
+      "id": "review_static",
+      "argv": [
+        "python",
+        "-m",
+        "qdw.cli",
+        "review-static",
+        "--profile",
+        "release",
+        "--out",
+        ".qdw/ci/static-review"
+      ]
+    }
+  ],
+  "attacks": [
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "A09",
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06",
+    "D07",
+    "E01",
+    "E02",
+    "E03",
+    "E04",
+    "E05",
+    "E06",
+    "E07",
+    "E08",
+    "E09",
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "G01",
+    "G02",
+    "G03",
+    "H01",
+    "H02",
+    "H03",
+    "I01",
+    "I02",
+    "I03",
+    "I04",
+    "J01",
+    "J02"
+  ],
+  "artifacts": [
+    "dist/*.whl"
+  ],
+  "max_mandatory_skips": 0,
+  "environment_requirements": [
+    "git_clean",
+    "python>=3.12"
+  ]
+}

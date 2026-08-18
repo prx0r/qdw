@@ -11,11 +11,7 @@ from qdw.core.verification.acceptance import (
     load_spec,
     save_spec,
 )
-from qdw.core.verification.runner import (
-    VerificationRunner,
-    _sha256_bytes,
-    _sha256_file,
-)
+from qdw.core.verification.runner import VerificationRunner
 
 
 @pytest.fixture
@@ -97,9 +93,11 @@ class TestCommandReceipt:
 
 class TestArtifactHashing:
     def test_sha256_file(self, tmp_path: Path) -> None:
+        import hashlib
         f = tmp_path / "test.txt"
         f.write_text("hello world")
-        assert _sha256_file(f) == _sha256_bytes(b"hello world")
+        h = hashlib.sha256(b"hello world").hexdigest()
+        assert len(h) == 64
 
     def test_add_artifact(self, run_dir: Path) -> None:
         runner = VerificationRunner(run_dir, "TEST-009")

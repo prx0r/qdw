@@ -1,0 +1,46 @@
+{
+  "contractor_id": "review.self-review",
+  "version": "2.0.0",
+  "team": "peer_review",
+  "specialization": "self_review",
+  "description": "Audit the reviewer itself: independence, rule drift, suppressions, acceptance immutability, convergence and pack export.",
+  "enabled": true,
+  "always": true,
+  "path_patterns": [
+    "src/qdw/review/**",
+    "manifests/reviewers/**",
+    "policies/review/**"
+  ],
+  "inputs": [
+    "subject_git_sha",
+    "changed_paths",
+    "review_policy",
+    "repo_snapshot"
+  ],
+  "outputs": [
+    "review_result"
+  ],
+  "gates": [
+    "typed_findings",
+    "evidence_required",
+    "acceptance_required_for_blockers"
+  ],
+  "default_budget_usd": 0.12,
+  "quality_floor": 0.8,
+  "timeout_seconds": 1200,
+  "required_capabilities": [
+    "repo_read",
+    "reasoning"
+  ],
+  "prompt_file": "review.self-review.md",
+  "independence": {
+    "may_self_certify": false,
+    "may_review_own_producer_run": false,
+    "release_certifier": false
+  },
+  "fixture": {
+    "fixture_id": "review.self-review.contract.v2",
+    "kind": "reviewer_contract",
+    "verifier": "scripts/verify_reviewer_manifest.py"
+  }
+}

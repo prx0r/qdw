@@ -1,0 +1,117 @@
+{
+  "status": "PACK_VALIDATED",
+  "reviewed_qdw_head": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+  "peer_review_counts": {
+    "CRITICAL": 9,
+    "HIGH": 12,
+    "MEDIUM": 8,
+    "LOW": 1,
+    "INFO": 0
+  },
+  "stats": {
+    "python_files": 88,
+    "syntax_failures": 0,
+    "json_files": 48,
+    "json_failures": 0,
+    "anti_cheat_findings": 0,
+    "production_placeholders": 0,
+    "reviewer_manifests": 31,
+    "formula_reviewer_refs": 45,
+    "attacks": 53,
+    "current_findings": 30,
+    "reference_tests_collected": 11,
+    "process_receipts": 5,
+    "process_receipts_passed": 5,
+    "sample_review_pack_integrity": "PASS"
+  },
+  "process_receipts": [
+    {
+      "step_id": "reference-tests",
+      "argv": [
+        "/opt/pyvenv/bin/python3",
+        "-m",
+        "pytest",
+        "reference/tests",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_path": "validation/reference-tests.stdout.log",
+      "stderr_path": "validation/reference-tests.stderr.log",
+      "stdout_sha256": "08faea39fd19189f6544839f505d91d76ecb1367e219f5db362cdf22916ef869",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step_id": "reference-collect",
+      "argv": [
+        "/opt/pyvenv/bin/python3",
+        "-m",
+        "pytest",
+        "reference/tests",
+        "--collect-only",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_path": "validation/reference-collect.stdout.log",
+      "stderr_path": "validation/reference-collect.stderr.log",
+      "stdout_sha256": "8bd9fddc691bbb2bc2fdd886d74241e57a216da5ea0a7a1b92447870559cb650",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step_id": "review-modules",
+      "argv": [
+        "/opt/pyvenv/bin/python3",
+        "-m",
+        "qdw_review.cli",
+        "modules"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_path": "validation/review-modules.stdout.log",
+      "stderr_path": "validation/review-modules.stderr.log",
+      "stdout_sha256": "1f6f114f3a23907b5cecffe016235465521873e24062d474aa83d67bb31e80d3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step_id": "installer-help",
+      "argv": [
+        "/opt/pyvenv/bin/python3",
+        "scripts/apply_native_overlay.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_path": "validation/installer-help.stdout.log",
+      "stderr_path": "validation/installer-help.stderr.log",
+      "stdout_sha256": "993a706680132b275d86a043c03661cc0da9e6ba8df19c35dbf33fe38a62c5bf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step_id": "review-pack",
+      "argv": [
+        "/opt/pyvenv/bin/python3",
+        "-m",
+        "qdw_review.cli",
+        "pack",
+        "current/CURRENT_REVIEW.json",
+        "--out",
+        "current/SAMPLE_GENERATED_REVIEW_PACK.zip"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_path": "validation/review-pack.stdout.log",
+      "stderr_path": "validation/review-pack.stderr.log",
+      "stdout_sha256": "8ac4118d1e3599bcbec757e9eb374bbeb467298d2e5ec7e9b9cea1b336accd5f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "errors": [],
+  "explicitly_not_proven_here": [
+    "the upstream QDW 132-test suite was independently executed in this artifact runtime",
+    "the upstream QDW Docker container was independently booted in this artifact runtime",
+    "a real Hermes worker was invoked here",
+    "a GitHub Actions run for the reviewed SHA was independently proven successful",
+    "the reviewed upstream SHA is REVIEW_CERTIFIED"
+  ]
+}

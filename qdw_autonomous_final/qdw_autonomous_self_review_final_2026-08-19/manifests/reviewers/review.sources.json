@@ -1,0 +1,44 @@
+{
+  "contractor_id": "review.sources",
+  "version": "2.0.0",
+  "team": "peer_review",
+  "specialization": "sources",
+  "description": "Audit typed source errors, freshness, auth/rate-limit behavior, parsing, successful empties and adapter contract tests.",
+  "enabled": true,
+  "always": false,
+  "path_patterns": [
+    "src/qdw/sources/**"
+  ],
+  "inputs": [
+    "subject_git_sha",
+    "changed_paths",
+    "review_policy",
+    "repo_snapshot"
+  ],
+  "outputs": [
+    "review_result"
+  ],
+  "gates": [
+    "typed_findings",
+    "evidence_required",
+    "acceptance_required_for_blockers"
+  ],
+  "default_budget_usd": 0.06,
+  "quality_floor": 0.75,
+  "timeout_seconds": 900,
+  "required_capabilities": [
+    "repo_read",
+    "reasoning"
+  ],
+  "prompt_file": "review.sources.md",
+  "independence": {
+    "may_self_certify": false,
+    "may_review_own_producer_run": false,
+    "release_certifier": false
+  },
+  "fixture": {
+    "fixture_id": "review.sources.contract.v2",
+    "kind": "reviewer_contract",
+    "verifier": "scripts/verify_reviewer_manifest.py"
+  }
+}

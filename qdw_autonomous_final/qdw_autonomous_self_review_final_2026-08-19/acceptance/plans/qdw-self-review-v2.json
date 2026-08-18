@@ -1,0 +1,77 @@
+{
+  "plan_id": "qdw-self-review",
+  "version": "2.0.0",
+  "commands": [
+    {
+      "id": "compile_review",
+      "argv": [
+        "python",
+        "-m",
+        "compileall",
+        "-q",
+        "src/qdw/review"
+      ]
+    },
+    {
+      "id": "review_unit",
+      "argv": [
+        "python",
+        "-m",
+        "pytest",
+        "tests/unit/review",
+        "-q"
+      ]
+    },
+    {
+      "id": "review_adversarial",
+      "argv": [
+        "python",
+        "-m",
+        "pytest",
+        "tests/adversarial/test_review_self_v2.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "static_scan",
+      "argv": [
+        "python",
+        "-m",
+        "qdw.cli",
+        "review",
+        "scan",
+        "--profile",
+        "self-review"
+      ]
+    }
+  ],
+  "attacks": [
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "E01",
+    "E02",
+    "E03",
+    "E04",
+    "E05",
+    "E06",
+    "E07",
+    "E08",
+    "E09",
+    "I01",
+    "I02",
+    "I03",
+    "I04"
+  ],
+  "artifacts": [],
+  "max_mandatory_skips": 0
+}

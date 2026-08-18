@@ -1,0 +1,16 @@
+{
+  "policy_id": "qdw.review.quick.v2",
+  "block_at": "CRITICAL",
+  "required_reviewers": [
+    "review.architecture",
+    "review.verification",
+    "review.trust",
+    "review.claim-consistency"
+  ],
+  "required_attacks": [],
+  "max_rounds": 2,
+  "max_cost_usd": 0.75,
+  "require_clean_subject": false,
+  "require_remote_ci": false,
+  "require_independent_certifier": true
+}

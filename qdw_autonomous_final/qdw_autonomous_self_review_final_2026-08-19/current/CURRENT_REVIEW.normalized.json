@@ -1,0 +1,884 @@
+{
+  "schema_version": "qdw.review.v2",
+  "repo": "prx0r/qdw",
+  "git_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+  "git_dirty": null,
+  "profile": "remote-structural-final-review",
+  "generated_at": "2026-08-19T00:39:00+07:00",
+  "counts": {
+    "CRITICAL": 9,
+    "HIGH": 12,
+    "MEDIUM": 8,
+    "LOW": 1,
+    "INFO": 0
+  },
+  "modules": [
+    {
+      "module_id": "review.architecture",
+      "version": "final-peer-review-2026-08-19",
+      "status": "PASS",
+      "findings": [
+        {
+          "finding_id": "finding_c99ce499dd80328f8ed5",
+          "rule_id": "QDW-FINAL-028",
+          "module_id": "review.architecture",
+          "severity": "MEDIUM",
+          "title": "QDWSystem still lacks execution/review registries needed for closed-loop autonomy",
+          "summary": "Global intelligence services are now composed, but ExecutorRegistry, canonical VerificationService, ReviewService and autonomous convergence controller are absent.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/system.py",
+              "detail": "Global intelligence services are now composed, but ExecutorRegistry, canonical VerificationService, ReviewService and autonomous convergence controller are absent."
+            }
+          ],
+          "remediation": "Compose these once in QDWSystem; interfaces delegate to them.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "architecture"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.ci",
+      "version": "final-peer-review-2026-08-19",
+      "status": "FAIL",
+      "findings": [
+        {
+          "finding_id": "finding_c44e3cf7b2445c81c3ff",
+          "rule_id": "QDW-FINAL-022",
+          "module_id": "review.ci",
+          "severity": "HIGH",
+          "title": "CI migration gate does not test the current migration set",
+          "summary": "The migration step only asserts versions 1 and 2; current repository has migrations 3 and 4.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": ".github/workflows/ci.yml",
+              "detail": "The migration step only asserts versions 1 and 2; current repository has migrations 3 and 4."
+            }
+          ],
+          "remediation": "Assert exact expected migration sequence/checksums and run fresh + populated upgrade + drift tests.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "ci"
+          ]
+        },
+        {
+          "finding_id": "finding_ac4da813b8f0782cf116",
+          "rule_id": "QDW-FINAL-023",
+          "module_id": "review.ci",
+          "severity": "MEDIUM",
+          "title": "Docker is built but never booted",
+          "summary": "V9 runtime health is not proven: no docker run, /health, import, database migration or shutdown smoke.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": ".github/workflows/ci.yml",
+              "detail": "V9 runtime health is not proven: no docker run, /health, import, database migration or shutdown smoke."
+            }
+          ],
+          "remediation": "Run the image, poll /health, validate doctor/ledger/schema, then stop it.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "ci"
+          ]
+        },
+        {
+          "finding_id": "finding_6c2ce4c5ebd27077e45a",
+          "rule_id": "QDW-FINAL-024",
+          "module_id": "review.ci",
+          "severity": "MEDIUM",
+          "title": "No remote CI/branch-protection evidence is bound to the current head",
+          "summary": "main is unprotected and no combined commit statuses were returned for the reviewed head.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "GitHub main branch metadata",
+              "detail": "main is unprotected and no combined commit statuses were returned for the reviewed head."
+            }
+          ],
+          "remediation": "Keep local proof separate from V12; add remote-evidence adapter and protect main once the release workflow is trustworthy.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "ci"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.claims",
+      "version": "final-peer-review-2026-08-19",
+      "status": "PASS",
+      "findings": [
+        {
+          "finding_id": "finding_0c3112e28dfe0b064a51",
+          "rule_id": "QDW-FINAL-030",
+          "module_id": "review.claims",
+          "severity": "MEDIUM",
+          "title": "Commit message '29/29 findings addressed' is not supported by the implementation",
+          "summary": "Several earlier invariants remain unresolved: atomic provenance, real API fixture, real execution E2E, exact certificate binding and append-only cemetery history.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "commit ab809c8 + current source",
+              "detail": "Several earlier invariants remain unresolved: atomic provenance, real API fixture, real execution E2E, exact certificate binding and append-only cemetery history."
+            }
+          ],
+          "remediation": "Let ClaimConsistency reviewer close findings only when frozen acceptance evidence passes on the exact new SHA.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "claims"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.e2e",
+      "version": "final-peer-review-2026-08-19",
+      "status": "FAIL",
+      "findings": [
+        {
+          "finding_id": "finding_1038c38c0a5deb70dad4",
+          "rule_id": "QDW-FINAL-020",
+          "module_id": "review.e2e",
+          "severity": "HIGH",
+          "title": "Integration E2E still bypasses execution/certification",
+          "summary": "The flow connects world/intelligence/ideas/product services but does not prove FactoryRun\u2192WorkGraph\u2192HotSwap\u2192Executor\u2192Artifact\u2192independent contractor\u2192BuildCertificate\u2192release.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "tests/integration/test_e2e.py",
+              "detail": "The flow connects world/intelligence/ideas/product services but does not prove FactoryRun\u2192WorkGraph\u2192HotSwap\u2192Executor\u2192Artifact\u2192independent contractor\u2192BuildCertificate\u2192release."
+            }
+          ],
+          "remediation": "Add one canonical V10 exemplar through the real execution spine.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "e2e"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.factory",
+      "version": "final-peer-review-2026-08-19",
+      "status": "FAIL",
+      "findings": [
+        {
+          "finding_id": "finding_ef66a2e6f604fd62739e",
+          "rule_id": "QDW-FINAL-019",
+          "module_id": "review.factory",
+          "severity": "HIGH",
+          "title": "The API factory fixture is still simulated, not an API fixture",
+          "summary": "The fixture never generates files or boots HTTP. It manually completes nodes with status_code=200 and feeds {'ok': True} into a lambda gate.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "tests/factories/test_api_factory.py",
+              "detail": "The fixture never generates files or boots HTTP. It manually completes nodes with status_code=200 and feeds {'ok': True} into a lambda gate."
+            }
+          ],
+          "remediation": "Generate a real temporary API artifact, boot it, call /health over HTTP, hash the artifact, and prove a broken variant fails the same verifier.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "factory"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.hotswap",
+      "version": "final-peer-review-2026-08-19",
+      "status": "FAIL",
+      "findings": [
+        {
+          "finding_id": "finding_94155577da2089c778a1",
+          "rule_id": "QDW-FINAL-016",
+          "module_id": "review.hotswap",
+          "severity": "HIGH",
+          "title": "Route persistence is lossy",
+          "summary": "save/load persists only a subset of Route: endpoint_id, account_id, prior_success, prior_confidence, breaker_open, quota_pressure and evidence_ids are lost on restart.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/hotswap/persistent.py + src/qdw/hotswap/types.py",
+              "detail": "save/load persists only a subset of Route: endpoint_id, account_id, prior_success, prior_confidence, breaker_open, quota_pressure and evidence_ids are lost on restart."
+            }
+          ],
+          "remediation": "Persist the complete route snapshot or split immutable RouteDefinition from evidenced dynamic RouteObservation.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "hotswap"
+          ]
+        },
+        {
+          "finding_id": "finding_9c995be3b77f625f63fc",
+          "rule_id": "QDW-FINAL-017",
+          "module_id": "review.hotswap",
+          "severity": "MEDIUM",
+          "title": "register_route can create duplicate in-memory routes",
+          "summary": "register_route always appends to self.routes while save_route upserts the DB. Re-registering a route_id can produce duplicate candidates until restart.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/system.py",
+              "detail": "register_route always appends to self.routes while save_route upserts the DB. Re-registering a route_id can produce duplicate candidates until restart."
+            }
+          ],
+          "remediation": "Use RouteRegistry keyed by route_id and replace/update in-memory projection transactionally.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "hotswap"
+          ]
+        },
+        {
+          "finding_id": "finding_3328b8ad83b9617bdb40",
+          "rule_id": "QDW-FINAL-018",
+          "module_id": "review.hotswap",
+          "severity": "HIGH",
+          "title": "First-use posterior initialization can overwrite concurrent learning",
+          "summary": "get() calls _upsert with ON CONFLICT DO UPDATE. A concurrent initializer can replace a posterior that another worker just updated.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/hotswap/persistent.py",
+              "detail": "get() calls _upsert with ON CONFLICT DO UPDATE. A concurrent initializer can replace a posterior that another worker just updated."
+            }
+          ],
+          "remediation": "Initialize with INSERT OR IGNORE; never overwrite an existing posterior from a prior-read path.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "hotswap"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.ideas",
+      "version": "final-peer-review-2026-08-19",
+      "status": "PASS",
+      "findings": [
+        {
+          "finding_id": "finding_d24ffa69ef156b1bf81b",
+          "rule_id": "QDW-FINAL-025",
+          "module_id": "review.ideas",
+          "severity": "MEDIUM",
+          "title": "Cemetery re-bury still deletes the previous structured episode",
+          "summary": "When an entry is REVIVED, bury deletes the old cemetery row before inserting the new one, so historical burial assumptions are not preserved in the structured table.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/ideas/service.py",
+              "detail": "When an entry is REVIVED, bury deletes the old cemetery row before inserting the new one, so historical burial assumptions are not preserved in the structured table."
+            }
+          ],
+          "remediation": "Make cemetery episodes append-only and derive current burial status separately.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "ideas"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.migration",
+      "version": "final-peer-review-2026-08-19",
+      "status": "FAIL",
+      "findings": [
+        {
+          "finding_id": "finding_8e3cc0edb5b89ea37583",
+          "rule_id": "QDW-FINAL-013",
+          "module_id": "review.migration",
+          "severity": "HIGH",
+          "title": "Migration application and version/hash recording are not atomic",
+          "summary": "executescript(sql) is followed by schema_versions INSERT without an explicit tested transaction covering both. A halfway failure can leave partial schema with no applied-version row.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/core/migrations.py",
+              "detail": "executescript(sql) is followed by schema_versions INSERT without an explicit tested transaction covering both. A halfway failure can leave partial schema with no applied-version row."
+            }
+          ],
+          "remediation": "Implement one all-or-nothing migration transaction strategy and test a deliberately failing multi-statement migration.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "migration"
+          ]
+        },
+        {
+          "finding_id": "finding_cf7c10bba73dab14111b",
+          "rule_id": "QDW-FINAL-014",
+          "module_id": "review.migration",
+          "severity": "HIGH",
+          "title": "Legacy applied migrations with NULL content_hash remain outside drift protection",
+          "summary": "_check_drift only rejects when stored content_hash is non-null; legacy version rows are not securely backfilled.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/core/migrations.py",
+              "detail": "_check_drift only rejects when stored content_hash is non-null; legacy version rows are not securely backfilled."
+            }
+          ],
+          "remediation": "Add an explicit migration baseline process: compare schema fingerprint, record accepted historical hashes once, then require non-null digest for every applied version.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "migration"
+          ]
+        },
+        {
+          "finding_id": "finding_cf2d992efb7f356cf125",
+          "rule_id": "QDW-FINAL-015",
+          "module_id": "review.migration",
+          "severity": "HIGH",
+          "title": "Migration 0004 is a destructive table-rebuild without upgrade/failure parity proof",
+          "summary": "It rebuilds and drops many global tables. CI only checks versions 1 and 2 and does not prove populated 1\u21922\u21923\u21924 upgrade parity, row preservation, indexes, or rollback on failure.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "migrations/0004_foreign_keys.sql",
+              "detail": "It rebuilds and drops many global tables. CI only checks versions 1 and 2 and does not prove populated 1\u21922\u21923\u21924 upgrade parity, row preservation, indexes, or rollback on failure."
+            }
+          ],
+          "remediation": "Add populated upgrade fixtures, row-count/content hashes, schema fingerprint parity, foreign_key_check and injected mid-migration failure.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "migration"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.products",
+      "version": "final-peer-review-2026-08-19",
+      "status": "PASS",
+      "findings": [
+        {
+          "finding_id": "finding_0840a5626d40980aa1fa",
+          "rule_id": "QDW-FINAL-026",
+          "module_id": "review.products",
+          "severity": "MEDIUM",
+          "title": "Outcome source enum is not outcome authority",
+          "summary": "manual/analytics/api/observation/experiment strings are validated, but fixture/test/estimated/measured authority and learning eligibility are not enforced.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/products/registry.py",
+              "detail": "manual/analytics/api/observation/experiment strings are validated, but fixture/test/estimated/measured authority and learning eligibility are not enforced."
+            }
+          ],
+          "remediation": "Add authority/evidence adapter/learning_eligible fields; production learning must reject fixture/manual estimates unless policy allows.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "products"
+          ]
+        },
+        {
+          "finding_id": "finding_be62d657f4716b834c07",
+          "rule_id": "QDW-FINAL-027",
+          "module_id": "review.products",
+          "severity": "MEDIUM",
+          "title": "Factory-created and manually imported products still share one permissive constructor",
+          "summary": "factory_id/version/build_run_id remain optional with only documentation saying manual products are allowed.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/products/registry.py",
+              "detail": "factory_id/version/build_run_id remain optional with only documentation saying manual products are allowed."
+            }
+          ],
+          "remediation": "Separate create_from_certified_factory_run from import_external_product.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "products"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.repository",
+      "version": "final-peer-review-2026-08-19",
+      "status": "PASS",
+      "findings": [
+        {
+          "finding_id": "finding_69bd22d710e73eddd2b3",
+          "rule_id": "QDW-FINAL-029",
+          "module_id": "review.repository",
+          "severity": "LOW",
+          "title": "Generated review pack/ZIP are committed as duplicate source artifacts",
+          "summary": "Keeping a nested old implementation pack in the source repo creates stale duplicate code and review confusion.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "qdw_review/ + qdw_self_review_system_2026-08-18.zip",
+              "detail": "Keeping a nested old implementation pack in the source repo creates stale duplicate code and review confusion."
+            }
+          ],
+          "remediation": "After native integration and provenance capture, remove the nested pack/ZIP from normal source history going forward.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "repository"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.self-review",
+      "version": "final-peer-review-2026-08-19",
+      "status": "FAIL",
+      "findings": [
+        {
+          "finding_id": "finding_14893ca1468a8aecf631",
+          "rule_id": "QDW-FINAL-021",
+          "module_id": "review.self-review",
+          "severity": "CRITICAL",
+          "title": "The self-review system is stored as an imported artifact, not integrated as QDW runtime",
+          "summary": "The previous review pack and ZIP are committed, but no native src/qdw/review service exists. QDW cannot autonomously invoke or persist review runs.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "qdw_review/qdw_self_review_system_2026-08-18 + missing src/qdw/review",
+              "detail": "The previous review pack and ZIP are committed, but no native src/qdw/review service exists. QDW cannot autonomously invoke or persist review runs."
+            }
+          ],
+          "remediation": "Integrate this final pack as native review tables/services/manifests and then remove/archive the stale nested artifact.",
+          "acceptance_tests": [],
+          "confidence": 0.99,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "self-review"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.trust",
+      "version": "final-peer-review-2026-08-19",
+      "status": "FAIL",
+      "findings": [
+        {
+          "finding_id": "finding_d52a0f42afae28686279",
+          "rule_id": "QDW-FINAL-007",
+          "module_id": "review.trust",
+          "severity": "CRITICAL",
+          "title": "Factory activation still uses a gate_result as a certificate",
+          "summary": "Activation checks passed + detail_json.factory_id and an optional factory_version. It does not bind fixture_id, factory definition hash, artifact digests, acceptance plan, build run or independent certifier.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/factories/registry.py",
+              "detail": "Activation checks passed + detail_json.factory_id and an optional factory_version. It does not bind fixture_id, factory definition hash, artifact digests, acceptance plan, build run or independent certifier."
+            }
+          ],
+          "remediation": "Use a dedicated FixtureCertificate subject tuple and require exact factory_id/version/definition_hash/fixture_id/artifacts/run/acceptance bindings.",
+          "acceptance_tests": [],
+          "confidence": 0.99,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "trust"
+          ]
+        },
+        {
+          "finding_id": "finding_f930f971e9b941b1c4a3",
+          "rule_id": "QDW-FINAL-008",
+          "module_id": "review.trust",
+          "severity": "CRITICAL",
+          "title": "Contractor activation still uses a gate_result as a certificate",
+          "summary": "Contractor activation mirrors the weak gate_result pattern and allows missing contractor_version.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/contractors/registry.py",
+              "detail": "Contractor activation mirrors the weak gate_result pattern and allows missing contractor_version."
+            }
+          ],
+          "remediation": "Use a dedicated ContractorFixtureCertificate bound to exact contractor definition hash/version/fixture and independent reviewer.",
+          "acceptance_tests": [],
+          "confidence": 0.99,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "trust"
+          ]
+        },
+        {
+          "finding_id": "finding_ac82f80453de164a24ce",
+          "rule_id": "QDW-FINAL-009",
+          "module_id": "review.trust",
+          "severity": "CRITICAL",
+          "title": "Product release still uses gate_results instead of a release certificate",
+          "summary": "Release checks detail_json.product_id but not build_run_id, certified artifact set, factory definition, build certificate, review certificate or release policy.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/products/registry.py",
+              "detail": "Release checks detail_json.product_id but not build_run_id, certified artifact set, factory definition, build certificate, review certificate or release policy."
+            }
+          ],
+          "remediation": "Require ReleaseAuthorization built from BuildCertificate + optional ReviewCertificate and exact product/build/artifact subject.",
+          "acceptance_tests": [],
+          "confidence": 0.99,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "trust"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.verification",
+      "version": "final-peer-review-2026-08-19",
+      "status": "FAIL",
+      "findings": [
+        {
+          "finding_id": "finding_011980b9209ebc99e8b0",
+          "rule_id": "QDW-FINAL-001",
+          "module_id": "review.verification",
+          "severity": "CRITICAL",
+          "title": "Two verification runners own incompatible receipt formats",
+          "summary": "CLI writes core VerificationRunner run directories; BuildCertificateBuilder reads proof/runner receipts.jsonl. They are separate sources of verification truth.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/core/verification/runner.py + src/qdw/proof/runner.py",
+              "detail": "CLI writes core VerificationRunner run directories; BuildCertificateBuilder reads proof/runner receipts.jsonl. They are separate sources of verification truth."
+            }
+          ],
+          "remediation": "Collapse to one canonical VerificationService and keep compatibility wrappers only.",
+          "acceptance_tests": [],
+          "confidence": 0.99,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "verification"
+          ]
+        },
+        {
+          "finding_id": "finding_4c0dc62906354947d552",
+          "rule_id": "QDW-FINAL-002",
+          "module_id": "review.verification",
+          "severity": "CRITICAL",
+          "title": "CI Build Certificate is not bound to the pytest/lint/type-check gates",
+          "summary": "CI executes pytest/ruff/pyright directly, then runs one CLI smoke through the other verification runner. build_certificate.py reads qdw.proof receipts, so the preceding gates are not the certificate's mandatory receipt set.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": ".github/workflows/ci.yml + scripts/build_certificate.py",
+              "detail": "CI executes pytest/ruff/pyright directly, then runs one CLI smoke through the other verification runner. build_certificate.py reads qdw.proof receipts, so the preceding gates are not the certificate's mandatory receipt set."
+            }
+          ],
+          "remediation": "Execute a frozen release VerificationPlan through one VerificationService and issue from that run ID.",
+          "acceptance_tests": [],
+          "confidence": 0.99,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "verification"
+          ]
+        },
+        {
+          "finding_id": "finding_74fe589cb11d0b20382c",
+          "rule_id": "QDW-FINAL-003",
+          "module_id": "review.verification",
+          "severity": "CRITICAL",
+          "title": "Build certificate derives its requirements from whatever receipts happened to exist",
+          "summary": "The script chooses the most common task_id, converts observed receipt argv into required_commands, and uses acceptance_spec_hash='ci_pipeline'. The acceptance criteria are therefore not frozen before execution.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "scripts/build_certificate.py",
+              "detail": "The script chooses the most common task_id, converts observed receipt argv into required_commands, and uses acceptance_spec_hash='ci_pipeline'. The acceptance criteria are therefore not frozen before execution."
+            }
+          ],
+          "remediation": "Require an explicit VerificationPlan/AcceptanceSpec path and content hash. Required commands come from the plan, never from observed receipts.",
+          "acceptance_tests": [],
+          "confidence": 0.99,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "verification"
+          ]
+        },
+        {
+          "finding_id": "finding_f4072323e52a95dd03ab",
+          "rule_id": "QDW-FINAL-004",
+          "module_id": "review.verification",
+          "severity": "HIGH",
+          "title": "Negative-test semantics are inverted",
+          "summary": "required_negative_tests are considered successful only when the process exits nonzero. A proper pytest adversarial test should exit 0 while asserting that malicious input was rejected.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/proof/certificate.py",
+              "detail": "required_negative_tests are considered successful only when the process exits nonzero. A proper pytest adversarial test should exit 0 while asserting that malicious input was rejected."
+            }
+          ],
+          "remediation": "Model attacks separately: the test command must PASS and the AttackResult records that the bad action was rejected for the expected reason.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "verification"
+          ]
+        },
+        {
+          "finding_id": "finding_932350e60cd34c1d4afa",
+          "rule_id": "QDW-FINAL-005",
+          "module_id": "review.verification",
+          "severity": "HIGH",
+          "title": "Certificate issuance does not enforce one clean exact Git subject across receipts",
+          "summary": "Receipt lookup is by argv/task_id; certificate git_sha comes from receipts[0]. It does not reject mixed SHAs, dirty receipts, or different working directories/environments.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/proof/certificate.py",
+              "detail": "Receipt lookup is by argv/task_id; certificate git_sha comes from receipts[0]. It does not reject mixed SHAs, dirty receipts, or different working directories/environments."
+            }
+          ],
+          "remediation": "Bind VerificationRun to one subject SHA/dirty=false; every mandatory receipt must match run_id, SHA, cwd and plan hash.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "verification"
+          ]
+        },
+        {
+          "finding_id": "finding_e03af36741741309a868",
+          "rule_id": "QDW-FINAL-006",
+          "module_id": "review.verification",
+          "severity": "HIGH",
+          "title": "Certificate revalidation reruns changed code instead of validating the original evidence set",
+          "summary": "verify_certificate re-executes commands in cert.get('cwd','.'), but cwd is not stored in the certificate. It does not validate the actual acceptance-spec file and can verify a later checkout rather than the certified subject.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/proof/certificate.py",
+              "detail": "verify_certificate re-executes commands in cert.get('cwd','.'), but cwd is not stored in the certificate. It does not validate the actual acceptance-spec file and can verify a later checkout rather than the certified subject."
+            }
+          ],
+          "remediation": "Separate evidence verification from optional replay. Verify immutable receipts/artifacts/spec/SHA first; replay only in a checkout proven to match the certified SHA.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "verification"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "module_id": "review.workgraph",
+      "version": "final-peer-review-2026-08-19",
+      "status": "FAIL",
+      "findings": [
+        {
+          "finding_id": "finding_fa4b528ba64b30c62094",
+          "rule_id": "QDW-FINAL-010",
+          "module_id": "review.workgraph",
+          "severity": "CRITICAL",
+          "title": "Atomic provenance was fixed only for create_graph",
+          "summary": "add_node, add_edge, refresh_ready, reclaim_stale, claim_ready, start, verifying, complete and fail still commit canonical state before ledger.append.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/core/graph/store.py",
+              "detail": "add_node, add_edge, refresh_ready, reclaim_stale, claim_ready, start, verifying, complete and fail still commit canonical state before ledger.append."
+            }
+          ],
+          "remediation": "Use ledger.append_in_tx for every transition or a transactional outbox. Add crash injection per transition.",
+          "acceptance_tests": [],
+          "confidence": 0.99,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "workgraph"
+          ]
+        },
+        {
+          "finding_id": "finding_164f774ff03005519590",
+          "rule_id": "QDW-FINAL-011",
+          "module_id": "review.workgraph",
+          "severity": "CRITICAL",
+          "title": "Cycle rejection occurs after the edge has already committed",
+          "summary": "add_edge inserts/commits an edge, then validate_dag raises if cyclic. The invalid cyclic edge remains in canonical state.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/core/graph/store.py",
+              "detail": "add_edge inserts/commits an edge, then validate_dag raises if cyclic. The invalid cyclic edge remains in canonical state."
+            }
+          ],
+          "remediation": "Validate the tentative edge inside one transaction before commit, or insert + validate + rollback on failure.",
+          "acceptance_tests": [],
+          "confidence": 0.99,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "workgraph"
+          ]
+        },
+        {
+          "finding_id": "finding_82be5be5743abc0b3b97",
+          "rule_id": "QDW-FINAL-012",
+          "module_id": "review.workgraph",
+          "severity": "HIGH",
+          "title": "WorkGraphs have no enforced freeze boundary",
+          "summary": "Nodes/edges can be modified while a graph is executable; DAG validation is not tied to a DRAFT\u2192FROZEN lifecycle/hash.",
+          "invariant": "The implementation must satisfy the stated trust/consistency property on the exact reviewed subject.",
+          "evidence": [
+            {
+              "kind": "github-source",
+              "path": "src/qdw/core/graph/store.py",
+              "detail": "Nodes/edges can be modified while a graph is executable; DAG validation is not tied to a DRAFT\u2192FROZEN lifecycle/hash."
+            }
+          ],
+          "remediation": "Add graph DRAFT\u2192FROZEN\u2192RUNNING\u2192terminal state, structure hash, and reject mutation after freeze.",
+          "acceptance_tests": [],
+          "confidence": 0.94,
+          "status": "OPEN",
+          "first_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "last_seen_sha": "ab809c8e6b829374199eb49dc71cd6f499e4f7fb",
+          "tags": [
+            "workgraph"
+          ]
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "remote_evidence": {
+    "main_protected": false,
+    "combined_status_count": 0,
+    "remote_ci_proven": false
+  }
+}

@@ -1,0 +1,354 @@
+[
+  {
+    "path": "native_overlay/replacements/scripts/build_certificate.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/scripts/ci_release.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/scripts/test_guard.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/scripts/verify_reviewer_manifest.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/cli.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/contractors/registry.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/core/graph/store.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/core/migrations.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/core/verification/runner.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/factories/registry.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/hotswap/persistent.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/human/queue.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/ideas/pipeline.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/ideas/service.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/products/registry.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/proof/runner.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/replacements/src/qdw/system.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/factories/fixtures/api.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/ideas/review_evidence.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/proof/certificate_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/proof/plan.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/proof/subject_certificates.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/proof/verification_service.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/acceptance.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/attacks.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/bootstrap.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/bootstrap_reviewers.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/certificate.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/cli_commands.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/closure.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/controller.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/execution.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/fix_planner.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/graph_runner.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/interface_tools.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/models.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/pack.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/planner.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/policy.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/progress.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/remote_evidence.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/render.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/report.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/reviewers.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/service.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/static_engine.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/static_export.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/static_rules.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/store.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/triggers.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/src/qdw/review/worker.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/conftest.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_concurrency_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_economics_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_graph_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_hotswap_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_human_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_ideas_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_migrations_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_provenance_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_self_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_sources_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_trust_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/adversarial/test_review_verification_v2.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/contract/test_mcp_protocol_real.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/factories/test_api_factory_real.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/integration/test_v10_real.py",
+    "ok": true
+  },
+  {
+    "path": "native_overlay/tests/runtime/test_container_contract.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/certificate.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/change_router.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/checks.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/cli.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/convergence.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/fix_plan.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/models.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/pack.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/policy.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/repo.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/report.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw_review/scanner.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/conftest.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/test_pack_report_certificate.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/test_scanner_cli.py",
+    "ok": true
+  },
+  {
+    "path": "scripts/apply_native_overlay.py",
+    "ok": true
+  },
+  {
+    "path": "scripts/build_final_zip.py",
+    "ok": true
+  },
+  {
+    "path": "scripts/validate_final_pack.py",
+    "ok": true
+  }
+]
