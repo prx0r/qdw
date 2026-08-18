@@ -1,0 +1,20 @@
+{
+  "contractor_id": "redteam.directory",
+  "version": "1.0.0",
+  "team": "red_team",
+  "specialization": "directory",
+  "inputs": [
+    "cert_candidate"
+  ],
+  "outputs": [
+    "attack_report"
+  ],
+  "gates": [
+    "stale_data",
+    "dedupe_failure",
+    "provenance_gap"
+  ],
+  "default_budget_usd": 0.2,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

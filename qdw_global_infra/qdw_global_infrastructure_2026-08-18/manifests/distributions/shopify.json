@@ -1,0 +1,16 @@
+{
+  "surface_id": "shopify",
+  "name": "Shopify storefront",
+  "kind": "commerce",
+  "status": "ACTIVE",
+  "product_types": [
+    "shop"
+  ],
+  "human_account_or_approval_required": true,
+  "requirements": [
+    "merchant_account",
+    "catalog"
+  ],
+  "verification_method": "storefront smoke",
+  "external_side_effect": true
+}

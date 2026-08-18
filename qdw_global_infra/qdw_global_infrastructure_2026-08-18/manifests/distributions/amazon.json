@@ -1,0 +1,16 @@
+{
+  "surface_id": "amazon",
+  "name": "Amazon marketplace",
+  "kind": "commerce",
+  "status": "ACTIVE",
+  "product_types": [
+    "shop"
+  ],
+  "human_account_or_approval_required": true,
+  "requirements": [
+    "seller_account",
+    "marketplace_eligibility"
+  ],
+  "verification_method": "listing lookup",
+  "external_side_effect": true
+}

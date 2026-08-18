@@ -1,0 +1,19 @@
+{
+  "contractor_id": "qa.api",
+  "version": "1.0.0",
+  "team": "qa",
+  "specialization": "api",
+  "inputs": [
+    "artifacts"
+  ],
+  "outputs": [
+    "test_report"
+  ],
+  "gates": [
+    "contract_tests",
+    "negative_tests"
+  ],
+  "default_budget_usd": 0.15,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

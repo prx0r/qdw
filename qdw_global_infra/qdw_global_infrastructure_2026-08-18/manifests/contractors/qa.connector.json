@@ -1,0 +1,19 @@
+{
+  "contractor_id": "qa.connector",
+  "version": "1.0.0",
+  "team": "qa",
+  "specialization": "connector",
+  "inputs": [
+    "artifacts"
+  ],
+  "outputs": [
+    "test_report"
+  ],
+  "gates": [
+    "contract_tests",
+    "retry_tests"
+  ],
+  "default_budget_usd": 0.15,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

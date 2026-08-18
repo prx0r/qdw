@@ -1,0 +1,21 @@
+{
+  "contractor_id": "provenance.general",
+  "version": "1.0.0",
+  "team": "provenance",
+  "specialization": "general",
+  "inputs": [
+    "artifacts",
+    "gate_results"
+  ],
+  "outputs": [
+    "certificate"
+  ],
+  "gates": [
+    "artifact_hashes",
+    "ledger_chain",
+    "lineage_complete"
+  ],
+  "default_budget_usd": 0.05,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

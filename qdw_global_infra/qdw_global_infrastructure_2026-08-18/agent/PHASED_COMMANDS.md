@@ -1,0 +1,38 @@
+# Bounded tasks
+
+- QDW-G0-01 verification runner
+- QDW-G0-02 test guard
+- QDW-G0-03 build certificate
+- QDW-G1-01 global schema migration
+- QDW-G2-01 SourceResult
+- QDW-G2-02 WorldStore
+- QDW-G2-03 entity/claim/relation identity
+- QDW-G3-01 Painfinder
+- QDW-G3-02 Startup Radar
+- QDW-G3-03 StackOracle
+- QDW-G3-04 AlternativeAPI
+- QDW-G3-05 Hacker News adapter
+- QDW-G3-06 YC adapter
+- QDW-G3-07 APIs.guru adapter
+- QDW-G3-08 MCP Registry adapter
+- QDW-G3-09 Gitgoblin adapter interface
+- QDW-G4-01 Opportunity synthesis
+- QDW-G4-02 Idea Genome
+- QDW-G4-03 staged review
+- QDW-G4-04 cemetery/watch
+- QDW-G4-05 dossiers/domain suggestions
+- QDW-G4-06 cross-factory inspiration
+- QDW-G5-01 contractor registry
+- QDW-G5-02 contractor WorkGraph expansion
+- QDW-G5-03 contractor independence gate
+- QDW-G6-01 HumanQueue
+- QDW-G6-02 HumanQueue/WorkGraph bridge
+- QDW-G7-01 product registry/passport
+- QDW-G7-02 factory genome
+- QDW-G7-03 outcome events
+- QDW-G8-01 distribution registry
+- QDW-G8-02 docs publisher
+- QDW-G8-03 Egoic portfolio
+- QDW-G8-04 domain planner
+- QDW-G9-01 analytics adapter
+- QDW-G10-01 AlternativeAPI exemplar

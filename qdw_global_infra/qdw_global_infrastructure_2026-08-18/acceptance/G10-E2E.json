@@ -1,0 +1,39 @@
+{
+  "task_id": "G10-E2E",
+  "invariants": [
+    "All global services share one canonical DB",
+    "Source evidence can traverse into a Product Passport",
+    "Foreign keys remain valid",
+    "Old Factory OS core regressions still pass"
+  ],
+  "commands": [
+    [
+      "python",
+      "-m",
+      "compileall",
+      "-q",
+      "reference/src/qdw",
+      "reference/tests"
+    ],
+    [
+      "python",
+      "-m",
+      "pytest",
+      "reference/tests",
+      "-q"
+    ]
+  ],
+  "negative_tests": [
+    "source_failure_not_empty",
+    "unknown_resource_constraint",
+    "review_stage_skip",
+    "invalid_human_transition",
+    "domain_without_approval",
+    "contractor_manifest_mutation",
+    "failed_receipt_certificate"
+  ],
+  "required_artifacts": [
+    "TEST_RUN.json",
+    "SYNTAX_CHECK.json"
+  ]
+}

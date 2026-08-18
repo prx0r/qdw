@@ -1,0 +1,434 @@
+[
+  {
+    "path": "reference/examples/end_to_end.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/catalog/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/catalog/service.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/cli.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/contractors/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/contractors/registry.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/cli.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/core.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/db.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/executors/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/executors/beads.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/executors/hermes.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/executors/local.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/executors/protocol.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/factories/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/factories/base.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/factories/planner.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/factories/registry.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/graph/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/graph/scheduler.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/graph/store.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/ledger/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/ledger/anchor.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/ledger/events.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/ledger/merkle.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/ledger/signing.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/market/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/market/arbitrage.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/market/marketplaces.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/market/opportunity.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/portfolio/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/portfolio/costs.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/portfolio/learning.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/portfolio/replay.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/portfolio/reward.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/scheduling/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/scheduling/service.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/system.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/teams/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/teams/registry.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/verification/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/verification/certificate.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/core/verification/gates.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/human/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/human/queue.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/ideas/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/ideas/dossier.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/ideas/library.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/ideas/pipeline.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/ideas/service.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/intelligence/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/intelligence/alternative_api.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/intelligence/opportunities.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/intelligence/painfinder.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/intelligence/stack_oracle.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/intelligence/startup_radar.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/products/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/products/registry.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/proof/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/proof/certificate.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/proof/runner.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/proof/test_guard.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/publishing/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/publishing/docs.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/publishing/domain.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/publishing/portfolio.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/publishing/registry.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/sources/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/sources/apisguru.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/sources/gitgoblin.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/sources/hackernews.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/sources/http.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/sources/mcp_registry.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/sources/outcomes.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/sources/protocol.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/sources/yc.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/system.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/watch/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/watch/service.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/world/__init__.py",
+    "ok": true
+  },
+  {
+    "path": "reference/src/qdw/world/store.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/conftest.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_arbitrage.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_certificate.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_core.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_graph.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_learning.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_ledger.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_merkle.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_registry.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_schedule.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_scheduler.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/core/test_signing.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_contractors.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_doctor.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_human_domain.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_ideas.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_integration_flow.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_painfinder.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_products_publish.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_proof.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_sources.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_stack_alternative.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_startup.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_watch_catalog.py",
+    "ok": true
+  },
+  {
+    "path": "reference/tests/global/test_world.py",
+    "ok": true
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "path": "SYNTAX_CHECK.json",
+    "ok": true
+  },
+  {
+    "path": "TEST_RUN.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/G0-PROOF.json",
+    "ok": true
+  },
+  {
+    "path": "acceptance/G10-E2E.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/architecture.general.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/builder.api.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/builder.app.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/cost.general.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/docs.api.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/docs.app.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/domain.general.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/maintenance.general.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/observability.general.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/portfolio.general.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/postrelease.general.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/provenance.general.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/publish.api.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/publish.app.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/publish.python.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/qa.agent.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/qa.api.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/qa.app.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/qa.connector.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/redteam.agent.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/redteam.api.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/redteam.app.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/redteam.commerce.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/redteam.directory.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/research.general.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/security.agent.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/security.api.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/contractors/security.app.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/distributions/amazon.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/distributions/chrome-web-store.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/distributions/ebay.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/distributions/etsy.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/distributions/github.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/distributions/mcp-registry.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/distributions/npm.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/distributions/pypi.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/distributions/shopify.json",
+    "ok": true
+  },
+  {
+    "path": "manifests/distributions/website.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/acceptance_spec.schema.json",
+    "ok": true
+  },
+  {
+    "path": "tasks/IMPLEMENTATION_TASKS.json",
+    "ok": true
+  },
+  {
+    "path": "validation/BUILD_CERTIFICATE.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_2c1d21c563b649c582407d7a6261798c/receipt.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_2f945e7cf7314d9da48e39ba18a71196/receipt.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_3db95c6d2ffe4f3fb47639e4f5a97841/receipt.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_9f70e62ba030480a93dc5ad60a4caf9d/receipt.json",
+    "ok": true
+  },
+  {
+    "path": "validation/runs/receipt_ca4d77ca6b724842ba305d8622eaee06/receipt.json",
+    "ok": true
+  }
+]

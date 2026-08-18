@@ -1,0 +1,20 @@
+{
+  "contractor_id": "security.agent",
+  "version": "1.0.0",
+  "team": "security",
+  "specialization": "agent",
+  "inputs": [
+    "artifacts"
+  ],
+  "outputs": [
+    "security_report"
+  ],
+  "gates": [
+    "secret_scope",
+    "tool_scope",
+    "network_policy"
+  ],
+  "default_budget_usd": 0.2,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

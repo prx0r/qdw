@@ -1,0 +1,21 @@
+{
+  "contractor_id": "architecture.general",
+  "version": "1.0.0",
+  "team": "architecture",
+  "specialization": "general",
+  "inputs": [
+    "idea_id",
+    "factory_id"
+  ],
+  "outputs": [
+    "architecture",
+    "workgraph_plan"
+  ],
+  "gates": [
+    "schema_valid",
+    "dependencies_explicit"
+  ],
+  "default_budget_usd": 0.15,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

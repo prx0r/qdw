@@ -1,0 +1,19 @@
+{
+  "contractor_id": "builder.api",
+  "version": "1.0.0",
+  "team": "builder",
+  "specialization": "api",
+  "inputs": [
+    "architecture"
+  ],
+  "outputs": [
+    "code_artifacts"
+  ],
+  "gates": [
+    "compile",
+    "unit_tests"
+  ],
+  "default_budget_usd": 0.4,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

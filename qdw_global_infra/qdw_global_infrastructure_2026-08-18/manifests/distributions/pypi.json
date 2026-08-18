@@ -1,0 +1,17 @@
+{
+  "surface_id": "pypi",
+  "name": "PyPI",
+  "kind": "package",
+  "status": "ACTIVE",
+  "product_types": [
+    "developer_tool",
+    "connector"
+  ],
+  "human_account_or_approval_required": true,
+  "requirements": [
+    "package_metadata",
+    "account"
+  ],
+  "verification_method": "fresh venv install",
+  "external_side_effect": true
+}

@@ -1,0 +1,21 @@
+{
+  "contractor_id": "research.general",
+  "version": "1.0.0",
+  "team": "research",
+  "specialization": "general",
+  "inputs": [
+    "opportunity_id",
+    "evidence_refs"
+  ],
+  "outputs": [
+    "research_packet",
+    "unknowns"
+  ],
+  "gates": [
+    "evidence_present",
+    "source_failure_explicit"
+  ],
+  "default_budget_usd": 0.15,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

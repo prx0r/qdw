@@ -1,0 +1,24 @@
+{
+  "task_id": "G0-PROOF",
+  "invariants": [
+    "Only executed processes can generate command PASS",
+    "A failed required command prevents a build certificate",
+    "Obvious fake-green test patterns are detected"
+  ],
+  "commands": [
+    [
+      "python",
+      "-m",
+      "pytest",
+      "reference/tests/global/test_proof.py",
+      "-q"
+    ]
+  ],
+  "negative_tests": [
+    "failed_command_certificate_rejection",
+    "assert_true_detection"
+  ],
+  "required_artifacts": [
+    "receipt.json"
+  ]
+}

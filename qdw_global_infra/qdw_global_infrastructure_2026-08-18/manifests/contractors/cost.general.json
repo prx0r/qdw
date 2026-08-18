@@ -1,0 +1,18 @@
+{
+  "contractor_id": "cost.general",
+  "version": "1.0.0",
+  "team": "cost",
+  "specialization": "general",
+  "inputs": [
+    "factory_run_id"
+  ],
+  "outputs": [
+    "cost_report"
+  ],
+  "gates": [
+    "cost_events_reconcile"
+  ],
+  "default_budget_usd": 0.05,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

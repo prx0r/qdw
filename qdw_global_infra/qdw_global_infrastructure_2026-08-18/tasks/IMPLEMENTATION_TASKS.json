@@ -1,0 +1,190 @@
+[
+  {
+    "id": "G0-PROOF",
+    "phase": "G0",
+    "title": "Install process-backed verification layer",
+    "depends_on": [],
+    "acceptance": [
+      "PASS/FAIL computed from real exit code",
+      "certificate rejects missing/failed receipts",
+      "test guard detects fake-green examples"
+    ]
+  },
+  {
+    "id": "G1-SCHEMA",
+    "phase": "G1",
+    "title": "Extend canonical QDW schema",
+    "depends_on": [
+      "G0-PROOF"
+    ],
+    "acceptance": [
+      "empty DB migrates",
+      "migration idempotent",
+      "foreign_key_check empty",
+      "Factory OS regression suite passes"
+    ]
+  },
+  {
+    "id": "G2-WORLD",
+    "phase": "G2",
+    "title": "Install canonical world state",
+    "depends_on": [
+      "G1-SCHEMA"
+    ],
+    "acceptance": [
+      "ERROR/OK_EMPTY/OK distinct",
+      "entity external identity stable",
+      "claims point to observations",
+      "relations use stable entity IDs"
+    ]
+  },
+  {
+    "id": "G3-PAIN",
+    "phase": "G3",
+    "title": "Install Painfinder",
+    "depends_on": [
+      "G2-WORLD"
+    ],
+    "acceptance": [
+      "independent source families counted",
+      "raw observation retained",
+      "cluster score inspectable"
+    ]
+  },
+  {
+    "id": "G3-STACK",
+    "phase": "G3",
+    "title": "Install StackOracle/AlternativeAPI",
+    "depends_on": [
+      "G2-WORLD"
+    ],
+    "acceptance": [
+      "raw measurements retained",
+      "unknown hard constraint cannot pass",
+      "missing substitute creates API-gap opportunity"
+    ]
+  },
+  {
+    "id": "G3-STARTUP",
+    "phase": "G3",
+    "title": "Install Startup Radar",
+    "depends_on": [
+      "G2-WORLD"
+    ],
+    "acceptance": [
+      "startup events reference company entity",
+      "events retain observation link when supplied"
+    ]
+  },
+  {
+    "id": "G4-IDEAS",
+    "phase": "G4",
+    "title": "Install Opportunity/Idea Genome",
+    "depends_on": [
+      "G3-PAIN",
+      "G3-STACK"
+    ],
+    "acceptance": [
+      "feature/evidence snapshots hashed",
+      "duplicate idea fingerprint reused",
+      "reimplementation relation preserved"
+    ]
+  },
+  {
+    "id": "G4-REVIEW",
+    "phase": "G4",
+    "title": "Install staged reviews/cemetery/watch",
+    "depends_on": [
+      "G4-IDEAS"
+    ],
+    "acceptance": [
+      "review stage cannot skip",
+      "cemetery retains assumptions/triggers",
+      "watch cannot silently revive"
+    ]
+  },
+  {
+    "id": "G5-CONTRACTORS",
+    "phase": "G5",
+    "title": "Install contractor mesh",
+    "depends_on": [
+      "G1-SCHEMA"
+    ],
+    "acceptance": [
+      "manifests immutable by version",
+      "contractor expands to normal WorkNode",
+      "specialized gates preserved"
+    ]
+  },
+  {
+    "id": "G6-HUMAN",
+    "phase": "G6",
+    "title": "Install HumanQueue",
+    "depends_on": [
+      "G1-SCHEMA"
+    ],
+    "acceptance": [
+      "idempotent request",
+      "invalid transition rejected",
+      "approval evidence stored"
+    ]
+  },
+  {
+    "id": "G7-PRODUCT",
+    "phase": "G7",
+    "title": "Install Product Passport/Factory Genome/outcomes",
+    "depends_on": [
+      "G4-REVIEW",
+      "G5-CONTRACTORS"
+    ],
+    "acceptance": [
+      "product preserves idea/factory lineage",
+      "genome hashed",
+      "outcomes product-linked"
+    ]
+  },
+  {
+    "id": "G8-PUBLISH",
+    "phase": "G8",
+    "title": "Install distribution/domain/docs/portfolio",
+    "depends_on": [
+      "G6-HUMAN",
+      "G7-PRODUCT"
+    ],
+    "acceptance": [
+      "domain requires authoritative quote",
+      "purchase approval required",
+      "docs generated from passport",
+      "portfolio generated from registry"
+    ]
+  },
+  {
+    "id": "G9-SOURCES",
+    "phase": "G9",
+    "title": "Install public source adapters",
+    "depends_on": [
+      "G2-WORLD"
+    ],
+    "acceptance": [
+      "offline deterministic contract tests",
+      "explicit source failure tests",
+      "live smokes optional and labeled"
+    ]
+  },
+  {
+    "id": "G10-E2E",
+    "phase": "G10",
+    "title": "Run full global infrastructure fixture",
+    "depends_on": [
+      "G3-STARTUP",
+      "G8-PUBLISH",
+      "G9-SOURCES"
+    ],
+    "acceptance": [
+      "source\u2192pain\u2192opportunity\u2192idea\u2192product path proven",
+      "doctor clean",
+      "all regressions pass",
+      "certificate built from receipts"
+    ]
+  }
+]

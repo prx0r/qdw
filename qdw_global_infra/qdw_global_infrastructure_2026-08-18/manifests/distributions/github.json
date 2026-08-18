@@ -1,0 +1,22 @@
+{
+  "surface_id": "github",
+  "name": "GitHub repository",
+  "kind": "code",
+  "status": "ACTIVE",
+  "product_types": [
+    "api",
+    "app",
+    "connector",
+    "agent",
+    "developer_tool",
+    "browser_extension",
+    "benchmark",
+    "data_pipeline"
+  ],
+  "human_account_or_approval_required": false,
+  "requirements": [
+    "repository"
+  ],
+  "verification_method": "repository exists + release/tag checks",
+  "external_side_effect": true
+}

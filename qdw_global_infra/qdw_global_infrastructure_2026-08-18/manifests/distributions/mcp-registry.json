@@ -1,0 +1,17 @@
+{
+  "surface_id": "mcp-registry",
+  "name": "Official MCP Registry",
+  "kind": "agent_registry",
+  "status": "ACTIVE",
+  "product_types": [
+    "agent",
+    "connector"
+  ],
+  "human_account_or_approval_required": true,
+  "requirements": [
+    "namespace_ownership",
+    "server_metadata"
+  ],
+  "verification_method": "registry lookup",
+  "external_side_effect": true
+}

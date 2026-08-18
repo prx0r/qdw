@@ -1,0 +1,20 @@
+{
+  "surface_id": "website",
+  "name": "Website / custom domain",
+  "kind": "web",
+  "status": "ACTIVE",
+  "product_types": [
+    "api",
+    "app",
+    "directory",
+    "agent",
+    "developer_tool",
+    "benchmark"
+  ],
+  "human_account_or_approval_required": true,
+  "requirements": [
+    "deployment_url"
+  ],
+  "verification_method": "HTTP health/smoke",
+  "external_side_effect": true
+}

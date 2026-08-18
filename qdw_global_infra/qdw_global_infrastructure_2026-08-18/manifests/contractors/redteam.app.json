@@ -1,0 +1,20 @@
+{
+  "contractor_id": "redteam.app",
+  "version": "1.0.0",
+  "team": "red_team",
+  "specialization": "app",
+  "inputs": [
+    "cert_candidate"
+  ],
+  "outputs": [
+    "attack_report"
+  ],
+  "gates": [
+    "broken_workflow",
+    "permission_boundary",
+    "error_paths"
+  ],
+  "default_budget_usd": 0.25,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

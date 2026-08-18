@@ -1,0 +1,16 @@
+{
+  "surface_id": "ebay",
+  "name": "eBay marketplace",
+  "kind": "commerce",
+  "status": "ACTIVE",
+  "product_types": [
+    "shop"
+  ],
+  "human_account_or_approval_required": true,
+  "requirements": [
+    "seller_account",
+    "business_policy"
+  ],
+  "verification_method": "listing lookup",
+  "external_side_effect": true
+}

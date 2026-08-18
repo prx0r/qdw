@@ -1,0 +1,19 @@
+{
+  "contractor_id": "publish.python",
+  "version": "1.0.0",
+  "team": "publish",
+  "specialization": "python_package",
+  "inputs": [
+    "certified_product"
+  ],
+  "outputs": [
+    "publication_receipt"
+  ],
+  "gates": [
+    "fresh_install",
+    "release_gate"
+  ],
+  "default_budget_usd": 0.1,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

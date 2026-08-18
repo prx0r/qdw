@@ -1,0 +1,19 @@
+{
+  "contractor_id": "maintenance.general",
+  "version": "1.0.0",
+  "team": "maintenance",
+  "specialization": "general",
+  "inputs": [
+    "product"
+  ],
+  "outputs": [
+    "maintenance_report"
+  ],
+  "gates": [
+    "regression_suite",
+    "dependency_health"
+  ],
+  "default_budget_usd": 0.12,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

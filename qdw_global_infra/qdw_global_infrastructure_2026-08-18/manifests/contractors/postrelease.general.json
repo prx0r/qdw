@@ -1,0 +1,18 @@
+{
+  "contractor_id": "postrelease.general",
+  "version": "1.0.0",
+  "team": "post_release",
+  "specialization": "general",
+  "inputs": [
+    "released_product"
+  ],
+  "outputs": [
+    "smoke_report"
+  ],
+  "gates": [
+    "external_reality_check"
+  ],
+  "default_budget_usd": 0.08,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

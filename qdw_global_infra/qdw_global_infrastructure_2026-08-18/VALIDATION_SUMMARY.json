@@ -1,0 +1,266 @@
+{
+  "status": "PROVEN_REFERENCE_PACK",
+  "test_count": 47,
+  "syntax_files_checked": 108,
+  "syntax_failures": 0,
+  "json_files_checked": 50,
+  "json_failures": 0,
+  "verification_receipts": 5,
+  "receipt_statuses": [
+    {
+      "argv": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "reference/src/qdw",
+        "reference/tests"
+      ],
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "pytest",
+        "reference/tests",
+        "-q"
+      ],
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "qdw.cli",
+        "--db",
+        "validation/qdw.db",
+        "doctor"
+      ],
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "qdw.cli",
+        "--db",
+        "validation/qdw.db",
+        "test-guard",
+        "reference/tests"
+      ],
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "pytest",
+        "reference/tests",
+        "--collect-only",
+        "-q"
+      ],
+      "status": "PASS",
+      "exit_code": 0
+    }
+  ],
+  "build_certificate": {
+    "status": "PROVEN",
+    "task_id": "PACK-FINAL",
+    "acceptance_spec_hash": "182b6e9cf523d08a23c92c2260029f91298e8f97c3a0373c8d87e8fb967b01ef",
+    "issued_at": "2026-08-18T15:17:23.333808Z",
+    "required_commands": [
+      [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "reference/src/qdw",
+        "reference/tests"
+      ],
+      [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "pytest",
+        "reference/tests",
+        "-q"
+      ],
+      [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "qdw.cli",
+        "--db",
+        "validation/qdw.db",
+        "doctor"
+      ],
+      [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "qdw.cli",
+        "--db",
+        "validation/qdw.db",
+        "test-guard",
+        "reference/tests"
+      ],
+      [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "pytest",
+        "reference/tests",
+        "--collect-only",
+        "-q"
+      ]
+    ],
+    "receipts": [
+      {
+        "receipt_id": "receipt_2f945e7cf7314d9da48e39ba18a71196",
+        "task_id": "PACK-FINAL",
+        "started_at": "2026-08-18T15:16:16.133968Z",
+        "finished_at": "2026-08-18T15:16:20.928257Z",
+        "duration_ms": 4794,
+        "cwd": "/mnt/data/qdw_global_infrastructure_2026-08-18",
+        "argv": [
+          "/opt/pyvenv/bin/python",
+          "-m",
+          "compileall",
+          "-q",
+          "reference/src/qdw",
+          "reference/tests"
+        ],
+        "exit_code": 0,
+        "status": "PASS",
+        "stdout_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_2f945e7cf7314d9da48e39ba18a71196/stdout.log",
+        "stderr_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_2f945e7cf7314d9da48e39ba18a71196/stderr.log",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d",
+        "git_sha": null,
+        "git_dirty": null
+      },
+      {
+        "receipt_id": "receipt_2c1d21c563b649c582407d7a6261798c",
+        "task_id": "PACK-FINAL",
+        "started_at": "2026-08-18T15:16:20.933317Z",
+        "finished_at": "2026-08-18T15:16:48.232312Z",
+        "duration_ms": 27298,
+        "cwd": "/mnt/data/qdw_global_infrastructure_2026-08-18",
+        "argv": [
+          "/opt/pyvenv/bin/python",
+          "-m",
+          "pytest",
+          "reference/tests",
+          "-q"
+        ],
+        "exit_code": 0,
+        "status": "PASS",
+        "stdout_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_2c1d21c563b649c582407d7a6261798c/stdout.log",
+        "stderr_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_2c1d21c563b649c582407d7a6261798c/stderr.log",
+        "stdout_sha256": "9ceed3e983192a7dc8bd49041257d40c34675036c553a2ddf8a7097ab29eb552",
+        "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d",
+        "git_sha": null,
+        "git_dirty": null
+      },
+      {
+        "receipt_id": "receipt_9f70e62ba030480a93dc5ad60a4caf9d",
+        "task_id": "PACK-FINAL",
+        "started_at": "2026-08-18T15:16:48.239592Z",
+        "finished_at": "2026-08-18T15:16:52.934309Z",
+        "duration_ms": 4694,
+        "cwd": "/mnt/data/qdw_global_infrastructure_2026-08-18",
+        "argv": [
+          "/opt/pyvenv/bin/python",
+          "-m",
+          "qdw.cli",
+          "--db",
+          "validation/qdw.db",
+          "doctor"
+        ],
+        "exit_code": 0,
+        "status": "PASS",
+        "stdout_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_9f70e62ba030480a93dc5ad60a4caf9d/stdout.log",
+        "stderr_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_9f70e62ba030480a93dc5ad60a4caf9d/stderr.log",
+        "stdout_sha256": "ef6a89ff4d9e5f35cfa9ce18b5f0d6ec5cc927c4d7856dc350f70d0d3dee19ac",
+        "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d",
+        "git_sha": null,
+        "git_dirty": null
+      },
+      {
+        "receipt_id": "receipt_3db95c6d2ffe4f3fb47639e4f5a97841",
+        "task_id": "PACK-FINAL",
+        "started_at": "2026-08-18T15:16:52.938755Z",
+        "finished_at": "2026-08-18T15:16:57.218156Z",
+        "duration_ms": 4279,
+        "cwd": "/mnt/data/qdw_global_infrastructure_2026-08-18",
+        "argv": [
+          "/opt/pyvenv/bin/python",
+          "-m",
+          "qdw.cli",
+          "--db",
+          "validation/qdw.db",
+          "test-guard",
+          "reference/tests"
+        ],
+        "exit_code": 0,
+        "status": "PASS",
+        "stdout_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_3db95c6d2ffe4f3fb47639e4f5a97841/stdout.log",
+        "stderr_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_3db95c6d2ffe4f3fb47639e4f5a97841/stderr.log",
+        "stdout_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d",
+        "git_sha": null,
+        "git_dirty": null
+      },
+      {
+        "receipt_id": "receipt_ca4d77ca6b724842ba305d8622eaee06",
+        "task_id": "PACK-FINAL",
+        "started_at": "2026-08-18T15:17:17.589950Z",
+        "finished_at": "2026-08-18T15:17:23.329869Z",
+        "duration_ms": 5739,
+        "cwd": "/mnt/data/qdw_global_infrastructure_2026-08-18",
+        "argv": [
+          "/opt/pyvenv/bin/python",
+          "-m",
+          "pytest",
+          "reference/tests",
+          "--collect-only",
+          "-q"
+        ],
+        "exit_code": 0,
+        "status": "PASS",
+        "stdout_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_ca4d77ca6b724842ba305d8622eaee06/stdout.log",
+        "stderr_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_ca4d77ca6b724842ba305d8622eaee06/stderr.log",
+        "stdout_sha256": "dd7ddd6dba12fb2ddf41a9c3da7d5a8011391d2623314039f15468cf728d5cd7",
+        "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d",
+        "git_sha": null,
+        "git_dirty": null
+      }
+    ],
+    "artifacts": [
+      {
+        "path": "/mnt/data/qdw_global_infrastructure_2026-08-18/reference/src/qdw/core/schema.sql",
+        "sha256": "0ba6e6ad20de9104c4bd3c8ba0fba520dce3cac479f55eae5831fb0f4706260a",
+        "bytes": 16885
+      },
+      {
+        "path": "/mnt/data/qdw_global_infrastructure_2026-08-18/docs/00_ARCHITECTURE.md",
+        "sha256": "84b5c48d76be212f0379e09fc05ef7d2513260a440d3358740d42c5ec06af902",
+        "bytes": 2921
+      },
+      {
+        "path": "/mnt/data/qdw_global_infrastructure_2026-08-18/tasks/IMPLEMENTATION_TASKS.json",
+        "sha256": "d990bb8d01f44ced9ecad2ed6d3be5966a93ae2ba858524267fe75f0de172348",
+        "bytes": 4272
+      }
+    ],
+    "certificate_hash": "6e8bf0821d432ca057d3385752a6112bb1790faeb43d2f901fb4eaa1b744a6f5"
+  },
+  "not_claimed": [
+    "Docker build of user's real QDW checkout",
+    "live external source reachability",
+    "Cloudflare domain purchase/deployment",
+    "real Gitgoblin integration",
+    "remote GitHub CI"
+  ]
+}

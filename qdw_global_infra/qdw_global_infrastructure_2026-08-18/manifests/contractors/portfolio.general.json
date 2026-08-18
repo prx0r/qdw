@@ -1,0 +1,20 @@
+{
+  "contractor_id": "portfolio.general",
+  "version": "1.0.0",
+  "team": "portfolio",
+  "specialization": "general",
+  "inputs": [
+    "outcomes",
+    "costs"
+  ],
+  "outputs": [
+    "allocation_report"
+  ],
+  "gates": [
+    "decision_features_frozen",
+    "sample_count_reported"
+  ],
+  "default_budget_usd": 0.08,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

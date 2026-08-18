@@ -1,0 +1,16 @@
+{
+  "surface_id": "chrome-web-store",
+  "name": "Chrome Web Store",
+  "kind": "app_store",
+  "status": "ACTIVE",
+  "product_types": [
+    "browser_extension"
+  ],
+  "human_account_or_approval_required": true,
+  "requirements": [
+    "developer_account",
+    "store_metadata"
+  ],
+  "verification_method": "listing lookup",
+  "external_side_effect": true
+}

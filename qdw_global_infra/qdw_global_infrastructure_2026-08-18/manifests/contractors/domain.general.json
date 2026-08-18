@@ -1,0 +1,20 @@
+{
+  "contractor_id": "domain.general",
+  "version": "1.0.0",
+  "team": "domain",
+  "specialization": "general",
+  "inputs": [
+    "product",
+    "domain_candidates"
+  ],
+  "outputs": [
+    "domain_plan"
+  ],
+  "gates": [
+    "authoritative_check",
+    "human_purchase_approval"
+  ],
+  "default_budget_usd": 0.02,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

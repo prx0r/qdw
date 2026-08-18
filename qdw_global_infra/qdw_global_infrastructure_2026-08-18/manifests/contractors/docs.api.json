@@ -1,0 +1,18 @@
+{
+  "contractor_id": "docs.api",
+  "version": "1.0.0",
+  "team": "docs",
+  "specialization": "api",
+  "inputs": [
+    "certified_product"
+  ],
+  "outputs": [
+    "docs_site"
+  ],
+  "gates": [
+    "docs_match_interface"
+  ],
+  "default_budget_usd": 0.1,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

@@ -1,0 +1,19 @@
+{
+  "contractor_id": "observability.general",
+  "version": "1.0.0",
+  "team": "observability",
+  "specialization": "general",
+  "inputs": [
+    "released_product"
+  ],
+  "outputs": [
+    "telemetry_report"
+  ],
+  "gates": [
+    "health_signal",
+    "usage_signal"
+  ],
+  "default_budget_usd": 0.08,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

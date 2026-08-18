@@ -1,0 +1,23 @@
+{
+  "receipt_id": "receipt_2c1d21c563b649c582407d7a6261798c",
+  "task_id": "PACK-FINAL",
+  "started_at": "2026-08-18T15:16:20.933317Z",
+  "finished_at": "2026-08-18T15:16:48.232312Z",
+  "duration_ms": 27298,
+  "cwd": "/mnt/data/qdw_global_infrastructure_2026-08-18",
+  "argv": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "pytest",
+    "reference/tests",
+    "-q"
+  ],
+  "exit_code": 0,
+  "status": "PASS",
+  "stdout_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_2c1d21c563b649c582407d7a6261798c/stdout.log",
+  "stderr_path": "/mnt/data/qdw_global_infrastructure_2026-08-18/validation/runs/receipt_2c1d21c563b649c582407d7a6261798c/stderr.log",
+  "stdout_sha256": "9ceed3e983192a7dc8bd49041257d40c34675036c553a2ddf8a7097ab29eb552",
+  "stderr_sha256": "d3b8e374c1930542a30e2f6a7ae41c900ea83c9a669afc3e5ee9576da1386b3d",
+  "git_sha": null,
+  "git_dirty": null
+}

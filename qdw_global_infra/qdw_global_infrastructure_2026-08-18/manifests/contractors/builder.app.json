@@ -1,0 +1,19 @@
+{
+  "contractor_id": "builder.app",
+  "version": "1.0.0",
+  "team": "builder",
+  "specialization": "app",
+  "inputs": [
+    "architecture"
+  ],
+  "outputs": [
+    "code_artifacts"
+  ],
+  "gates": [
+    "compile",
+    "unit_tests"
+  ],
+  "default_budget_usd": 0.5,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}

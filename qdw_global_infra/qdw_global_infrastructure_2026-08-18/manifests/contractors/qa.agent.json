@@ -1,0 +1,19 @@
+{
+  "contractor_id": "qa.agent",
+  "version": "1.0.0",
+  "team": "qa",
+  "specialization": "agent",
+  "inputs": [
+    "artifacts"
+  ],
+  "outputs": [
+    "eval_report"
+  ],
+  "gates": [
+    "task_fixture",
+    "failure_fixture"
+  ],
+  "default_budget_usd": 0.2,
+  "executor_preference": "hermes",
+  "worker_cannot_self_certify": true
+}
